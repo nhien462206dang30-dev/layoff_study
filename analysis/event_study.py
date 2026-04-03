@@ -214,6 +214,14 @@ def run_single_event(event_row, ff, model='ff4'):
     date_to_relday = {d: i - 20 for i, d in enumerate(all_trading)}
     rel_days = np.array([date_to_relday.get(d, np.nan) for d in evt_data.index])
 
+    # ── Data quality filter: exclude penny stocks / bankrupt OTC stocks ──────
+    # If any single-day |AR| in the event window exceeds 50%, the stock is
+    # likely a near-zero-price OTC/bankruptcy name (e.g. SONDQ, SDCCQ) where
+    # small absolute moves produce enormous % returns.  Standard event-study
+    # practice is to drop these to prevent CAAR distortion.
+    if np.max(np.abs(AR)) > 0.50:
+        return None
+
     # Build daily results
     daily = pd.DataFrame({
         'date': evt_data.index,
