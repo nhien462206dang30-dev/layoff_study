@@ -1,0 +1,12 @@
+anthropic
+pandas
+numpy
+scipy
+statsmodels
+matplotlib
+yfinance
+pandas_datareader
+requests
+beautifulsoup4
+lxml
+openpyxl
