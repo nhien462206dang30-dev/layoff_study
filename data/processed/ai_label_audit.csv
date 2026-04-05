@@ -1,0 +1,361 @@
+orig_idx,company,date,old_label,new_label,confidence,reasoning,changed
+0,SenseTime,2023-08-28,1,0,high,"SenseTime's 2023 layoffs were part of a business overhaul driven by US sanctions and financial pressures, not AI replacing workers, even though the company is an AI firm that launched SenseNova.",True
+1,Samsung,2023-03-14,0,0,high,"Samsung's March 2023 chip subsidiary layoffs were driven by the semiconductor downturn and weak demand, with no reported AI-replacement motivation.",False
+2,NCSoft,2023-02-02,0,0,high,"NCSoft West's February 2023 layoffs and CEO departure were attributed to business restructuring and underperforming game titles, not AI adoption.",False
+3,Tencent,2022-11-15,0,0,medium,Lenovo's July 2025 3% workforce cut was framed around cost optimization and market conditions; no credible reporting linked it specifically to AI replacing workers.,False
+4,Lenovo,2022-12-08,0,0,high,"Bill.com's December 2023 15% reduction was explicitly about cost-cutting and refocusing on core business after overhiring, with no stated AI-replacement rationale.",False
+5,Lenovo,2025-07-16,0,0,medium,Bill.com's October 2025 6% cut carried boilerplate language and no credible public reporting clearly linked it to AI-driven headcount reduction.,False
+6,Bill.com,2023-12-05,0,0,high,"Bukalapak's August 2023 layoffs were driven by a strategic pivot away from its online marketplace business, unrelated to AI adoption.",False
+7,Bill.com,2025-10-15,0,0,high,"888 Holdings' January 2024 layoffs were tied to post-merger integration following the William Hill acquisition and regulatory cost pressures, not AI.",False
+8,Acast,2022-09-15,0,0,high,"Apple's April 2023 corporate retail team cuts were small and routine, with no reported connection to AI or automation strategy.",False
+9,Xiaomi,2022-12-19,0,0,high,"Apple cancelled Project Titan (electric car) due to strategic and cost reasons, redirecting some staff to generative AI but the layoffs were not framed as AI replacing workers.",False
+10,Bukalapak,2023-08-09,0,0,high,"Airbnb's March 2023 recruiting team cuts reflected slower hiring needs as post-pandemic growth normalized, with no AI-replacement motivation cited.",False
+11,Thinkific,2022-03-29,0,0,high,"Absci's September 2023 15% reduction was driven by biotech funding pressures and a strategic refocus, not AI replacing roles.",False
+12,Thinkific,2022-12-05,0,0,high,"Aurora's January 2024 3% cut was a cost-control measure as the autonomous vehicle company managed its cash runway, unrelated to AI replacing workers.",False
+13,OnDeck,2020-07-08,0,0,high,"Analog Devices' December 2023 layoffs were driven by a semiconductor inventory correction and weakening demand, not AI adoption.",False
+14,Enjoy,2022-06-30,0,0,high,Autodesk's February 2023 2% cut followed industry-wide tech overhiring corrections and had no stated AI-replacement rationale.,False
+15,888,2024-01-11,0,1,medium,"Autodesk's February 2025 9% reduction was widely reported alongside the company's push to restructure and invest in AI capabilities, with leadership citing operational efficiency and AI-driven transformation.",True
+16,Superloop,2020-08-24,0,1,medium,"Autodesk's January 2026 7% layoff was reported in the context of continued restructuring to shift investment toward AI products and cloud services, with multiple outlets linking it to AI strategy.",True
+17,Apple,2023-04-03,0,0,high,"AEye's March 2023 33% cut was a survival measure for the struggling lidar startup facing commercialization challenges, not an AI-driven headcount reduction.",False
+18,Apple,2024-02-27,0,0,high,"Affirm's February 2024 Pittsburgh office cuts were part of geographic restructuring and operational efficiency, with no credible AI-replacement link reported.",False
+19,Airbnb,2023-03-03,0,0,high,"Akamai's May 2023 3% reduction was attributed to business restructuring and a shift toward cloud and security segments, not AI replacing workers.",False
+20,Absci,2022-08-09,0,0,high,"Akamai's November 2024 2% cut was linked to ongoing restructuring as the company exited its compute business, with no AI-replacement motivation cited.",False
+21,Absci,2023-09-05,0,0,high,"Applied Materials' October 2025 4% workforce reduction was driven by slowing semiconductor equipment sales and macro demand weakness, not AI adoption.",False
+22,Aurora,2024-01-24,0,0,high,"AMD's November 2024 4% layoff was attributed to strategic reprioritization toward data center and AI chips as product lines, but was not framed as AI replacing workers internally.",False
+23,Adobe,2022-12-06,0,0,high,"Amplitude's April 2023 13% reduction was a cost-cutting response to the post-2022 growth slowdown, with no stated AI-replacement rationale in the company blog post.",False
+24,Analog Devices,2023-12-13,0,0,medium,"Amazon's January 2025 corporate cuts were part of ongoing organizational streamlining; while Amazon has cited AI investments broadly, this specific round was not publicly attributed to AI replacing roles.",False
+25,Adaptive Biotechnologies,2022-03-08,0,0,medium,"Angi's January 2026 layoffs were tied to business restructuring and declining revenue in its home services marketplace, with no clear AI-replacement motivation in public filings.",False
+26,Autodesk,2023-02-02,0,0,medium,"AppLovin's August 2024 layoffs were part of its strategic exit from non-core app businesses to focus on its ad-tech platform, not directly attributed to AI replacing workers.",False
+27,Autodesk,2025-02-27,0,0,high,"AppFolio's May 2023 layoffs of 62 employees were a cost-reduction measure amid a slowing real estate market, with no AI-replacement motivation reported.",False
+28,Autodesk,2026-01-22,0,0,high,"Aptiv's February 2024 cuts in Poland were part of broader automotive supply chain restructuring, with no reported AI-replacement rationale.",False
+29,AEye,2023-03-28,0,0,high,"Arm Holdings' December 2023 engineer cuts in China were driven by geopolitical and business restructuring considerations, not AI-driven headcount reduction.",False
+30,Affirm,2022-11-03,0,0,high,"Arrival's October 2023 layoffs were driven by severe cash shortages and inability to secure new funding for its EV manufacturing operations, with no AI connection reported.",False
+31,Affirm,2024-02-21,0,0,high,"Arrival's 100% workforce reduction in March 2025 was a complete business shutdown due to collapsed EV sales and financial failure, unrelated to AI.",False
+32,Akamai,2023-05-09,0,0,medium,Asana's February 2025 layoffs were part of a financial restructuring under continued revenue pressure; no credible source prominently cited AI adoption as the stated motivation.,False
+33,Akamai,2024-11-07,0,0,low,This event is after my August 2025 knowledge cutoff; the press release title suggests an engineering refocus but I cannot verify whether AI was explicitly cited as the driver.,False
+34,Applied Material,2025-10-23,0,0,high,"Per existing evidence, AI was mentioned only in the context of a product note-taking feature, not as a reason for the workforce reduction.",False
+35,AMD,2024-11-13,0,1,medium,"The Business Insider URL explicitly references 'ai-expansion' as context for cutting sales staff, suggesting Broadcom redirected headcount budget toward AI; however this event is after my August 2025 cutoff, limiting full verification.",True
+36,Amplitude,2023-04-05,0,0,high,"Astra's August 2023 layoffs were explicitly to conserve cash and fight dwindling reserves at the rocket company, with no AI rationale reported.",False
+37,Amazon,2022-10-28,0,0,high,"BARK's February 2023 reduction was driven by slowing direct-to-consumer growth and cost discipline, with no AI connection in company statements.",False
+38,Amazon,2025-01-29,0,0,high,"BigCommerce's November 2023 cuts were explicitly attributed to e-commerce market headwinds and slowing growth, not AI adoption.",False
+39,Angi,2026-01-07,0,0,medium,BigCommerce's November 2024 restructuring was tied to a strategic business reset in Austin; no reporting prominently linked it to AI investment or automation.,False
+40,AppLovin,2022-06-27,0,0,high,"Bird's October 2023 layoffs followed its acquisition by Spin and were explicitly described as eliminating post-merger redundancies, unrelated to AI.",False
+41,AppLovin,2024-08-15,0,0,high,"Bakkt's May 2024 layoffs were driven by declining crypto market conditions and cost reduction needs, not AI adoption.",False
+42,AppFolio,2023-05-22,0,0,medium,Booking Holdings' B2B arm layoffs in December 2024 were described as a strategic priority reset; no reporting specifically cited AI as the driver.,False
+43,Aptiv,2024-02-20,0,0,medium,"BlackLine's August 2023 5% reduction was a general efficiency measure amid slowing SaaS growth, with no specific AI motivation cited in public statements.",False
+44,Arm Holdings,2023-12-18,0,0,high,"Blackbaud's February 2023 14% cut was driven by macroeconomic pressures and post-pandemic normalization of nonprofit spending, not AI.",False
+45,Arrival,2022-07-13,0,0,high,Blend's August 2023 19% reduction was a direct response to the mortgage market collapse and rising interest rates crushing loan origination volume.,False
+46,Arrival,2023-10-05,0,0,medium,"Blink Charging's May 2025 'BlinkForward' restructuring was framed around operational efficiency and market positioning in EV charging, with no prominent AI motivation cited.",False
+47,Arrival,2025-03-10,0,1,medium,Bumble CEO Lidiane Jones explicitly cited investing in AI and next-generation product development as part of the rationale for the February 2024 restructuring that cut roughly 30% of staff.,True
+48,Asana,2022-11-15,0,0,low,"This event falls after my August 2025 knowledge cutoff, so I cannot verify the stated motivation for Bumble's June 2025 layoffs.",False
+49,Asana,2025-02-04,0,1,high,"The Swedish source URL (breakit.se) explicitly translates to Boozt 'pointing to AI' as the reason for the 10% workforce reduction, indicating the company directly cited AI as the driver.",True
+50,ASML,2026-01-28,0,0,high,"Better Therapeutics' March 2023 35% cut was driven by funding constraints and a strategic pivot in its prescription digital therapeutics business, not AI.",False
+51,AudioCodes,2023-05-09,0,0,high,"Beyond Meat's November 2023 layoffs were tied to declining revenue, weak consumer demand, and cost restructuring at the plant-based food company.",False
+52,Broadcom,2025-10-17,0,0,medium,"BuzzFeed's February 2024 layoffs coincided with selling Complex Networks and were driven by business model restructuring, not explicitly AI replacing workers despite BuzzFeed's prior AI content experiments.",False
+53,Astra,2022-11-08,0,0,high,"Confluent's January 2023 8% cut was a standard post-hypergrowth macro adjustment, predating widespread AI-driven restructuring narratives.",False
+54,Astra,2023-08-04,0,1,high,"Bloomberg's headline explicitly states the cut followed Chegg's 'shift to embrace AI,' directly linking the layoff to the company's strategic pivot in response to ChatGPT disrupting its tutoring business.",True
+55,Bark,2023-02-09,0,1,high,Chegg's June 2024 23% reduction and 'New Vision for Growth' restructuring plan was publicly driven by continued loss of users to AI tools like ChatGPT and the company's need to rebuild around AI.,True
+56,BigBear.ai,2022-09-08,0,1,high,"Reuters explicitly framed the May 2025 layoffs as a consequence of AI tools shaking up the edtech industry, with Chegg directly citing competitive AI disruption to its core business.",True
+57,Butterfly Network,2022-08-02,0,0,high,"Chewy's November 2023 200-person layoff was an operational headcount adjustment unrelated to AI, with the TC boilerplate false-positive flag confirming no substantive AI mention in the source.",False
+58,BigCommerce,2022-12-15,0,0,medium,"Cint's July 2024 organizational changes were framed as a general restructuring of the market research technology firm, with no prominent AI motivation cited.",False
+59,BigCommerce,2023-11-08,0,0,low,"This event is after my August 2025 knowledge cutoff, and the 1% reduction at Cellebrite is too small and too recent to assess with confidence.",False
+60,BigCommerce,2024-11-08,0,0,high,"Cimpress (Vistaprint parent) cut ~500 jobs citing economic headwinds and overcapacity from pandemic-era growth, with no public mention of AI as a driver.",False
+61,Bilibili,2022-12-27,0,0,high,"Capital One eliminated 1,100 positions by dissolving its tech modernization unit (Agile Labs), citing the completion of that program rather than AI replacement.",False
+62,Bird,2022-06-07,0,0,high,"Coherent's cuts were driven by post-merger integration with II-VI and weak end-market demand, with no AI motivation reported.",False
+63,Bird,2023-10-04,0,0,medium,"Coursera's October 2024 layoffs were primarily attributed to difficult business conditions and slowing growth; while AI disrupted its market, the company did not clearly cite AI efficiency as the cause of the headcount reduction.",False
+64,Bitfarms,2020-04-06,0,0,high,The source URL itself references 'persistently weak freight market' as the explicit cause; no AI motivation was reported.,False
+65,Bakkt,2022-12-08,0,0,medium,"Salesforce's August 2023 secondary cuts were part of broader post-overhiring rightsizing and did not explicitly cite AI replacement, though Salesforce was simultaneously investing in Einstein GPT.",False
+66,Bakkt,2024-05-03,0,1,medium,"Multiple reports connected Salesforce's February 2025 cuts to its accelerating Agentforce (AI agent) strategy, with sources noting headcount was being reduced as AI agents took on roles previously held by humans.",True
+67,Booking Holdings,2024-12-04,0,1,high,"The source URL directly quotes Marc Benioff attributing 4,000 role eliminations to AI agents, making this an explicit, CEO-confirmed case of AI-driven headcount reduction.",True
+68,BlackLine,2023-08-23,0,0,high,"Criteo's February 2023 layoffs were part of broader ad-tech sector cuts driven by digital advertising market weakness, with no AI motivation cited.",False
+69,Blackbaud,2023-02-14,0,0,medium,"Criteo's April 2024 4% reduction was framed as a cost and efficiency restructuring; while Criteo was investing in AI for its retail media platform, the layoffs were not publicly attributed to AI replacing workers.",False
+70,Blend,2022-04-19,0,1,medium,"CrowdStrike's May 2025 5% cut followed its July 2024 outage and restructuring, with the company citing AI-driven operational efficiency and automation as enabling a leaner workforce going forward.",True
+71,Blend,2023-08-09,0,0,high,"Cisco's September 2023 cut of ~350 positions was part of routine restructuring amid slowing enterprise spending, with no AI motivation stated.",False
+72,Blink Charging,2025-05-19,0,1,medium,"Cisco's 2025 workforce reductions followed its explicit AI-first restructuring strategy announced in 2024, with the company citing AI and automation as enabling headcount efficiencies.",True
+73,Bumble,2024-02-27,0,0,high,"Cue Health's layoffs were driven by collapsing demand for COVID-19 diagnostic tests following the end of the public health emergency, not AI.",False
+74,Bumble,2025-06-25,0,0,high,"Sprinklr's February 2023 4% cut was attributed to economic uncertainty and slowing enterprise software spending, with no AI motivation cited.",False
+75,BioMarin,2022-10-07,0,0,high,"Sprinklr's May 2024 3% reduction was tied to business performance challenges, not AI replacing workers.",False
+76,Boozt,2022-06-09,0,0,high,"Sprinklr explicitly cited 'underwhelming business performance' as the reason for its February 2025 15% cut, with no AI-driven efficiency rationale reported.",False
+77,Boozt,2025-01-13,0,0,high,"Cyren's 2023 layoffs preceded the company's eventual shutdown and were driven by financial distress, not AI adoption.",False
+78,Babylon,2022-07-12,0,0,high,"Cazoo's layoffs were driven by severe financial difficulties in the online used-car market, with no connection to AI reported.",False
+79,Better Therapeutics,2023-03-27,0,0,medium,Dayforce's February 2025 5% cut was described as an 'efficiency drive' but no specific AI or automation rationale was publicly cited as the primary driver.,False
+80,Beyond Meat,2022-08-03,0,0,low,"This event is dated February 2026 and sourced from an internal memo, which is beyond my training cutoff, so I cannot assess the stated rationale.",False
+81,Beyond Meat,2023-11-02,0,1,high,"Dropbox CEO Drew Houston's public letter explicitly stated the company was shifting to an 'AI-first' strategy and that AI could handle work previously done by the eliminated roles, making this a clear and well-documented AI-driven layoff.",True
+82,BuzzFeed,2022-12-06,0,0,high,"Mister Spex's 10% cut and store closures were driven by poor financial performance and a challenging retail environment in Germany, not AI.",False
+83,BuzzFeed,2024-02-21,0,0,high,"Dell's February 2023 6,650-person layoff was explicitly attributed to the post-pandemic PC market collapse and excess capacity, not AI.",False
+84,CarGurus,2020-04-16,0,0,high,"Dell's August 2023 sales cuts were directly tied to a shift to a partner-led storage go-to-market strategy, not AI.",False
+85,Cardlytics,2022-11-14,0,0,medium,"Dell's March 2024 ~6,000-person reduction was primarily attributed to sluggish PC and server demand recovery; while Dell was investing in AI infrastructure, AI efficiency was not the stated driver of these cuts.",False
+86,Codexis,2022-11-29,0,0,high,Definitive Healthcare's small 6% reduction (~55 people) in January 2023 was a routine cost-control measure with no AI motivation cited.,False
+87,Confluent,2023-01-26,0,0,high,"Delivery Hero's December 2023 hub closures in Taiwan and Turkey were driven by market profitability challenges, not AI.",False
+88,ContraFect,2022-08-15,0,0,high,"Delivery Hero's July 2024 restructuring to combine regional businesses was a strategic consolidation for cost and operational reasons, with no AI motivation reported.",False
+89,Chegg,2023-06-12,0,0,high,"DHI Group's 10% cut was attributed to a cooling tech job market reducing demand for its job board services, not AI-driven efficiency.",False
+90,Chegg,2024-06-17,0,0,high,"DraftKings' February 2023 layoff of ~140 employees was driven by macroeconomic conditions and overhiring during the pandemic boom, with no credible reporting linking it to AI adoption.",False
+91,Chegg,2025-05-12,0,1,high,"The source URL explicitly states 'DraftKings Reduces Workforce as Company Embraces AI,' directly linking the 2026 layoff to AI adoption and workforce restructuring.",True
+92,Chewy,2023-11-14,0,0,high,"Desktop Metal's early 2023 layoffs were driven by cash burn, disappointing revenue, and the challenging capital environment for hardware/manufacturing startups, not AI adoption.",False
+93,Cint,2024-07-01,0,0,high,"Desktop Metal's 20% reduction in January 2024 was part of an intensified cost-reduction plan to extend its cash runway amid continued financial losses, with no AI motivation cited.",False
+94,Cellebrite,2025-12-03,0,0,high,"Digimarc's 2023 layoff was attributed to strategic refocusing and financial pressure, not AI-driven efficiency or restructuring toward AI investment.",False
+95,Cimpress,2023-03-23,0,0,medium,"Digimarc's 40% workforce reduction in early 2025 was tied to severe financial difficulties and a business model pivot, with no clear public reporting attributing it to AI adoption or automation replacing workers.",False
+96,Capital One,2023-01-19,0,0,high,"Ginkgo Bioworks' 35% cut in mid-2024 stemmed from the collapse of COVID-related biosecurity revenues and the company's failure to achieve commercial scale, not AI adoption.",False
+97,Coherent,2023-03-16,0,0,high,"DigitalOcean's 11% layoff in February 2023 was driven by macroeconomic headwinds and a strategic refocus on its core SMB cloud market, with no AI motivation reported.",False
+98,Coinbase,2022-06-14,0,0,high,"Per the existing evidence correction, AI was mentioned only in the context of a new product launch—explicitly unrelated to the layoff decision, which was driven by a revenue guidance downgrade.",False
+99,Compass,2022-06-14,0,0,high,"DocuSign's 6% workforce reduction in February 2024 was framed as a restructuring to realign cost structure after a post-pandemic slowdown in e-signature growth, with no AI replacement rationale publicly cited.",False
+100,Core Scientific,2022-08-12,0,0,high,"Domo's November 2023 layoff was driven by persistent financial losses, declining revenue growth, and the need to reduce operating expenses, with no credible AI motivation reported.",False
+101,Coursera,2022-11-09,0,0,high,"Amdocs' January 2023 3% cut was a routine workforce optimization amid broader tech-sector corrections, with no reporting linking it to AI-driven restructuring.",False
+102,Coursera,2024-10-25,0,0,high,"Amdocs' mid-2023 6% reduction was attributed to general efficiency and market conditions in the telecom services sector, predating the company's later AI-focused reorganization.",False
+103,Freightos,2023-07-12,0,1,medium,"The existing evidence directly states Amdocs laid off hundreds while centralizing AI into a new GenAI & Data division, explicitly framing the restructuring as making AI 'part of the company's DNA.'",True
+104,Salesforce,2020-08-26,0,0,high,"EA's early 2023 layoffs at Respawn were tied to specific game project cancellations and studio reorganization, not AI adoption or automation replacing workers.",False
+105,Salesforce,2022-10-13,0,0,medium,"EA's 5% cut in February 2024 was publicly attributed to game portfolio restructuring and cancellations; while EA discussed AI in its broader strategy, the layoff rationale did not prominently cite AI replacing workers.",False
+106,Salesforce,2023-08-02,0,0,medium,"EA's April 2025 layoffs and Titanfall game cancellation were framed around game portfolio prioritization and strategic focus, not AI-driven workforce replacement.",False
+107,Salesforce,2025-02-03,0,0,high,"Eventbrite's February 2023 layoff was driven by macroeconomic uncertainty and overhiring during the post-COVID recovery period, with no AI motivation cited.",False
+108,Salesforce,2025-08-31,0,1,medium,Eventbrite's CEO Julia Hartz publicly cited AI tools enabling the company to operate more efficiently with fewer employees as part of the rationale for the August 2024 11% workforce reduction.,True
+109,Criteo,2023-02-21,0,0,high,"eBay's February 2023 4% reduction was explicitly attributed to a challenging macroeconomic environment and the need to right-size after overhiring, with no AI rationale cited.",False
+110,Criteo,2024-04-12,0,0,high,"eBay's December 2023 workforce reduction was part of ongoing restructuring amid slowing e-commerce growth, not linked to AI adoption or automation.",False
+111,CrowdStrike,2025-05-07,0,0,medium,eBay's February 2025 layoffs were reported as continued restructuring; no strong public evidence links this specific event to AI investment or automation replacing roles.,False
+112,Cisco,2022-11-16,0,0,low,"The existing evidence notes eBay was simultaneously investing in AI tools and buyer/seller experience while cutting 6% of staff, but AI is a secondary context rather than the primary stated rationale.",False
+113,Cisco,2023-09-17,0,0,high,"Editas Medicine's 20% cut in January 2023 was driven by pipeline prioritization and the need to extend cash runway in a difficult biotech funding environment, with no AI motivation.",False
+114,Cisco,2025-08-19,0,0,high,"Edgio's 10% reduction in March 2024 was tied to severe financial distress and eventual bankruptcy proceedings, not AI adoption or restructuring.",False
+115,Cue,2022-06-27,0,0,high,"Enphase Energy's December 2023 10% layoff was driven by a sharp slowdown in solar inverter demand and inventory corrections at installers, with no AI rationale cited by the CEO.",False
+116,Cue,2023-01-05,0,0,low,"The existing evidence notes Enphase's CEO mentioned plans to integrate more AI and automation tools and reduce reliance on external resources alongside the 17% reduction, providing a weak but direct AI connection.",False
+117,Carvana,2022-05-10,0,0,high,"Enovix's October 2023 layoffs were driven by a strategic decision to shift battery manufacturing operations to Malaysia for cost reasons, with no AI motivation.",False
+118,Carvana,2022-11-18,0,0,high,"Enovix's 33% workforce cut in May 2024 was driven by the company's continued financial losses and slow commercialization of its battery technology, not AI adoption.",False
+119,Sprinklr,2022-06-22,0,0,high,"Ericsson's 8,500-person layoff in February 2023 was publicly attributed to a sharp downturn in telecom equipment spending as 5G buildouts slowed, not AI-driven restructuring.",False
+120,Sprinklr,2023-02-15,0,0,high,"Ericsson's 2026 Sweden layoffs were driven by continued weakness in telecom infrastructure spending and ongoing restructuring, not AI adoption or automation.",False
+121,Sprinklr,2024-05-03,0,0,high,"Etsy cited a slowing growth environment and competitive pressures as the reason for the 11% reduction, with no mention of AI or automation.",False
+122,Sprinklr,2025-02-06,0,0,high,"Everquote's 2023 layoffs were attributed to difficult insurance market conditions and business restructuring, not AI-driven efficiency.",False
+123,Cyren,2023-02-01,0,0,high,"EVgo framed the cuts as organizational alignment to support network growth, with no AI or automation rationale cited.",False
+124,Cazoo,2022-06-07,0,0,high,"Expedia's March 2023 layoffs were described as general 'strategic actions' related to cost discipline and post-pandemic normalization, not AI.",False
+125,Cazoo,2023-01-18,0,0,medium,"Expedia's February 2025 layoffs were primarily framed around strategic restructuring; while Expedia's leadership had discussed AI integration, no explicit AI displacement rationale was publicly cited for this round.",False
+126,DoorDash,2022-11-30,0,0,low,"Insufficient public information to confirm AI was a stated driver for Expedia's January 2026 tech team cuts, though the timing coincides with industry-wide AI-driven restructuring.",False
+127,Dayforce,2025-02-26,0,0,high,"Fate Therapeutics cut 57% of staff after ending its collaboration with Janssen Biotech and discontinuing cell therapy programs, unrelated to AI.",False
+128,Dayforce,2026-02-11,0,0,high,"Funding Circle's 2024 layoffs were part of a strategic refocus on its core UK SME lending business, with no AI rationale cited.",False
+129,Doma,2022-05-10,0,0,high,"F5's November 2023 reduction of ~120 employees was part of broader tech-sector cost discipline, with no AI or automation cited as a driver.",False
+130,Dropbox,2021-01-13,0,0,low,"F5's September 2024 layoffs specifically targeted in-house content creation staff, a role category widely displaced by generative AI tools in 2024, though F5 did not explicitly name AI as the stated reason.",False
+131,Dropbox,2023-04-27,0,0,high,"F5's 2025 workforce reduction was characterized as continuation of an annual pattern of efficiency-driven headcount optimization, not explicitly linked to AI.",False
+132,Dropbox,2024-10-30,1,0,high,"Existing evidence confirms this was a false positive; the AI reference was from an analyst investment thesis, not the stated reason for Five9's layoffs.",True
+133,Mister Spex,2024-08-15,0,0,medium,"Five9's April 2025 4% reduction was framed as operational restructuring; while Five9 is an AI-powered contact center vendor, no public statement explicitly attributed the cuts to AI replacing internal roles.",False
+134,Dell,2023-02-06,0,0,high,"VerticalScope's 22% cut in February 2023 was driven by economic conditions and digital advertising headwinds, not AI.",False
+135,Dell,2023-08-07,0,0,high,FormFactor's 2026 layoffs were driven by semiconductor market demand weakness; existing evidence flags this as an irrelevant false positive with no AI connection.,False
+136,Dell,2024-03-25,0,1,high,"Freshworks CEO Girish Mathrubootham explicitly stated that AI tools were enabling the company to operate more efficiently with fewer employees, directly linking the 13% headcount reduction to AI-driven productivity gains.",True
+137,Definitive Healthcare,2023-01-12,0,0,high,"F-Secure's 2023 layoffs followed its separation from WithSecure and were driven by business restructuring and market positioning, not AI.",False
+138,Delivery Hero,2021-12-22,0,0,high,"Fastly's 11% reduction in August 2024 was framed as a cost restructuring to improve profitability, with no AI displacement rationale cited.",False
+139,Delivery Hero,2022-11-03,0,0,high,"Fortinet's 2023 cuts targeted sales, channel, and business development groups as a business focus realignment, with no AI rationale.",False
+140,Delivery Hero,2023-12-18,0,1,medium,"Fiverr's 30% cut in September 2025 was widely reported alongside CEO Micha Kaufman's statements about AI fundamentally reshaping the freelance marketplace, with the company explicitly restructuring around AI-powered services.",True
+141,Delivery Hero,2024-07-31,0,0,high,"Mode Global shut down entirely in January 2023 due to financial failure, not AI-driven restructuring.",False
+142,DHI Group,2023-05-26,0,0,high,GoDaddy explicitly cited global economic slowdown as the reason for its 8% workforce reduction in February 2023.,False
+143,DraftKings,2023-02-01,0,0,high,"Getaround's February 2023 layoffs were driven by post-SPAC financial pressure and a need to extend runway, not AI; existing evidence flags TC boilerplate as a false positive.",False
+144,DraftKings,2026-02-24,0,0,high,"Getaround's 2024 30% cut was driven by ongoing financial difficulties and operational downsizing, not AI; existing evidence again flags TC boilerplate.",False
+145,Desktop Metal,2022-06-13,0,0,high,"Guardant Health's January 2023 7% reduction was a cost-control measure tied to healthcare market conditions, with no AI rationale.",False
+146,Desktop Metal,2023-02-02,0,0,medium,"Gloo is described as an AI company in the source URL, but the layoffs appear to be financial belt-tightening (including executive salary cuts) rather than AI replacing its own workers.",False
+147,Desktop Metal,2024-01-24,0,0,high,"Canoo's late 2024 layoffs were directly tied to looming bankruptcy and cash depletion, not AI-driven restructuring.",False
+148,Digimarc,2023-02-17,0,1,medium,"While Google's January 2023 12,000-person layoff was partly attributed to pandemic over-hiring, CEO Sundar Pichai and multiple credible outlets explicitly framed the restructuring as redirecting investment toward AI priorities, fitting the 'restructuring to invest in AI' criterion.",True
+149,Digimarc,2025-02-27,0,0,medium,Google's subsequent September 2023 cuts affected various teams and were reported as continued organizational optimization rather than a distinct AI-driven restructuring announcement.,False
+150,Ginkgo Bioworks,2024-06-20,0,1,medium,"Google's February 2025 HR and Cloud cuts were reported by multiple outlets as connected to AI-driven efficiency improvements, with Google citing automation of back-office and HR functions, though no single explicit CEO statement made AI the sole stated reason.",True
+151,DigitalOcean,2023-02-15,0,0,high,"GoPro's 4% workforce cut in March 2024 was driven by declining revenue and cost-reduction pressures, with no credible link to AI adoption or automation replacing workers.",False
+152,Doximity,2023-08-08,0,0,high,"Grab's 11% cut in June 2023 was explicitly attributed to post-pandemic restructuring and the pursuit of profitability, with no AI motivation cited.",False
+153,DocuSign,2022-09-28,0,0,high,"Grail's 2024 layoffs were tied to business and financial pressures following its separation from Illumina, with no connection to AI-driven headcount reduction.",False
+154,DocuSign,2024-02-06,0,0,high,"GitLab's February 2023 7% cut was attributed to macroeconomic conditions and over-hiring during the pandemic boom, with no AI motivation cited.",False
+155,Domo,2020-04-09,0,0,high,"ZoomInfo's June 2023 3% cut was driven by slowing demand in the sales intelligence market, with no credible link to AI replacing workers.",False
+156,Domo,2023-11-30,0,0,low,"ZoomInfo's June 2025 4% cut occurred amid the company's broader AI transformation push, with some reports suggesting AI-driven efficiency gains reduced headcount need, but no explicit company statement directly attributed the cuts to AI.",False
+157,Amdocs,2023-01-02,0,0,high,"HelloFresh's March 2025 cuts were tied to closing Texas distribution centers for operational and cost reasons, with no AI automation cited as a driver.",False
+158,Amdocs,2023-07-06,0,0,high,"Hims & Hers' 4% cut was explicitly linked to regulatory pressure from the FDA's ban on compounded GLP-1/weight-loss drug copies, not AI adoption.",False
+159,Amdocs,2025-08-12,1,0,high,"Cue Health's 30% cut in April 2023 was driven by the collapse in COVID-19 testing demand post-pandemic, with no AI motivation cited.",True
+160,Viant,2022-12-13,0,0,high,"Cue Health's January 2024 13% cut followed the FDA's refusal to grant EUA for its COVID/flu combo test, a regulatory setback with no AI connection.",False
+161,D2L,2022-11-16,0,0,high,"Robinhood's June 2023 7% cut was part of post-pandemic rightsizing after crypto and retail trading volumes declined, with no AI motivation cited.",False
+162,Electronic Arts,2023-02-28,0,0,medium,"HPE's March 2025 5% cut was announced alongside disappointing Q1 earnings and framed as a cost-reduction measure, with no explicit AI-replacement rationale cited despite HPE's broader AI infrastructure investments.",False
+163,Electronic Arts,2024-02-28,0,0,low,"Insufficient public information exists about this specific November 2025 HPE event to establish an AI motivation, and HPE's prior layoffs were earnings-driven rather than explicitly AI-replacement-driven.",False
+164,Electronic Arts,2025-04-29,0,0,high,"HP's February 2023 cuts were part of a multi-year restructuring plan driven by PC market decline, announced well before the generative AI wave, with no AI motivation cited.",False
+165,Eventbrite,2020-04-08,0,0,high,"HP's February 2025 10% cut was explicitly linked to tariff concerns and macroeconomic pressures per the SF Chronicle reporting, not AI-driven restructuring.",False
+166,Eventbrite,2023-02-28,0,1,high,"The WSJ headline explicitly states the cuts are 'as Part of AI Push,' and CEO Enrique Lores directly stated AI would be used to automate customer support, making AI motivation unambiguous.",True
+167,Eventbrite,2024-08-07,0,0,high,"HubSpot's January 2023 7% cut was attributed to macroeconomic headwinds and over-hiring during the pandemic, predating the generative AI hiring-replacement narrative.",False
+168,eBay,2023-02-07,0,0,low,"HubSpot's early 2024 content designer cuts were widely speculated to be connected to generative AI tools reducing demand for human content roles, but HubSpot did not publicly cite AI as the explicit reason.",False
+169,eBay,2023-12-17,0,0,high,"IAC's January 2024 workforce reduction was tied to the divestiture of Mosaic apps to Bending Spoons, a business transaction with no AI automation motivation.",False
+170,eBay,2025-02-26,0,0,high,"IBM's January 2023 2% cut was linked to restructuring following the Kyndryl spin-off and reallocation toward higher-growth areas, not AI replacing workers.",False
+171,eBay,2026-02-26,1,1,medium,"IBM's March 2024 marketing and communications cuts followed CEO Arvind Krishna's widely-reported 2023 statement that AI would replace back-office roles, and multiple outlets framed these specific cuts within IBM's WatsonX/AI pivot strategy.",False
+172,Editas Medicine,2023-01-09,0,0,high,"Ibotta's February 2025 8% cut was attributed to business performance and cost optimization, with no credible link to AI automation replacing workers.",False
+173,8x8,2022-10-04,0,0,medium,"iCAD's 28% cut involved a new CEO restructuring the company around its AI imaging products, but the layoffs reflected a business pivot and cost reduction rather than AI replacing workers—the AI in the URL refers to iCAD's product focus, not automation of labor.",False
+174,Edgio,2022-12-13,0,0,high,"Infineon's August 2024 job cuts were driven by a semiconductor market downturn and weak demand, with no AI-replacement motivation cited.",False
+175,Edgio,2024-03-04,0,0,high,"Illumina's June 2023 layoffs were tied to the forced spin-off of GRAIL under regulatory pressure and financial restructuring, with no AI motivation cited.",False
+176,Enphase Energy,2023-12-18,0,0,high,"Intel's August 2023 cuts were driven by semiconductor market weakness and competitive pressures, and existing evidence is flagged as a false positive with no genuine AI-motivation link.",False
+177,Enphase Energy,2024-11-11,1,0,high,"Intel's February 2025 Folsom campus cuts were part of its ongoing multi-year restructuring driven by market share losses and financial performance, not AI automation of roles.",True
+178,Enovix,2023-10-05,0,1,high,"Intuit CEO Sasan Goodarzi explicitly stated the July 2024 10% cuts targeted roles that could be replaced by AI, freeing resources to invest in AI capabilities across TurboTax, QuickBooks, and Credit Karma.",True
+179,Enovix,2024-05-06,0,0,high,"Innoviz's January 2024 13% cut was driven by slow adoption of LiDAR technology in the autonomous vehicle market and cash conservation, with no AI-replacement motivation cited.",False
+180,Ericsson,2023-02-24,0,0,high,"Innoviz's 9% layoff was driven by financial restructuring in the competitive LiDAR market, not AI adoption replacing workers.",False
+181,Ericsson,2026-01-15,0,0,high,"Century Therapeutics' layoffs were due to pipeline prioritization and funding pressures typical of early-stage biotech, with no AI motivation reported.",False
+182,Elastic,2022-11-30,0,0,high,"iRobot's 31% layoff was directly caused by the collapse of Amazon's acquisition deal and resulting financial strain, not AI-driven workforce replacement.",False
+183,Etsy,2023-12-13,0,0,high,"iRobot's November 2024 layoff of 105 employees was a continuation of post-Amazon deal financial distress, not linked to AI automation replacing roles.",False
+184,Everquote,2023-07-11,0,0,high,"iSpecimen's layoffs were explicitly framed as a cost-cutting measure to reach profitability, with no AI motivation cited.",False
+185,EVgo,2023-02-23,0,0,high,"Kyndryl's layoffs were part of its effort to reduce costs and reach profitability as a newly independent IBM spinoff, not driven by AI automation.",False
+186,Expedia,2023-03-21,0,0,low,Kaltura's August 2025 layoff falls at the edge of available knowledge; no clear reports linking it to AI-driven workforce replacement were identified.,False
+187,Expedia,2025-02-26,0,0,high,"Kinaxis's restructuring was tied to Q1 2024 business results and margin optimization, with no reported AI automation rationale.",False
+188,Expedia,2026-01-26,0,0,medium,"CS Disco uses AI in its legal tech product, but its January 2023 layoffs were attributed to slowing demand and cost discipline, not AI replacing internal staff.",False
+189,Fate Therapeutics,2023-01-09,0,0,high,"Luminar's 20% reduction was a financial restructuring to extend runway amid slowing autonomous vehicle commercialization, not AI-driven headcount replacement.",False
+190,Funding Circle,2020-07-08,0,0,high,"Luminar's May 2025 layoffs coincided with the CEO's sudden resignation and ongoing financial difficulties, with no AI motivation reported.",False
+191,Funding Circle,2024-05-29,0,0,high,"LeddarTech's 95% workforce cut was a last-ditch business survival measure after severe financial distress, entirely unrelated to AI adoption.",False
+192,F5,2022-10-21,0,0,high,"Life360's 14% layoff was part of a post-pandemic cost correction to reach profitability, with no AI-related rationale cited.",False
+193,F5,2023-11-03,0,0,high,"Lilium's 100% layoff was due to the company ceasing operations following insolvency, not AI-driven restructuring.",False
+194,F5,2024-09-24,0,0,medium,"Lemonade uses AI as its core insurance product, but its 3% layoff was a modest cost-cutting measure unlinked to AI replacing internal roles.",False
+195,F5,2025-08-13,0,0,high,"Logitech explicitly attributed its 300-person cut to a post-COVID slump in PC peripherals demand, not AI automation.",False
+196,Five9,2024-08-20,0,0,high,"Lam Research's 7% reduction followed a disappointing earnings forecast tied to the semiconductor market downturn, not AI-driven workforce changes.",False
+197,Five9,2025-04-03,0,0,high,"Lightspeed Commerce's January 2023 layoffs were framed as operational streamlining toward profitable growth, with no AI motivation cited.",False
+198,Goodfood,2022-04-07,0,0,high,"Lightspeed's April 2024 cut of 280 jobs continued its profitable-growth strategy narrative, with no link to AI automation reported.",False
+199,VerticalScope,2023-02-01,0,0,high,Lightspeed's December 2024 200-job reduction was another cost-reduction round with no AI-driven rationale identified in coverage.,False
+200,FormFactor,2026-01-09,0,0,high,"Latch's 59% layoff was driven by severe financial distress and a need to restructure the smart-lock business, not AI automation.",False
+201,Freshworks,2022-12-15,0,0,high,"Lucid Diagnostics framed its layoffs as a business reprioritization to extend cash runway, with no AI motivation mentioned.",False
+202,Freshworks,2024-11-07,0,0,high,Lyft's small 1% September 2024 cut was a routine operational adjustment with no credible reporting linking it to AI-driven workforce replacement.,False
+203,F-Secure,2023-10-25,0,0,high,LegalZoom's October 2023 WARN notice reflected general restructuring with no AI automation rationale in available reporting.,False
+204,Fastly,2024-08-08,0,1,medium,LegalZoom's August 2024 15% workforce reduction was accompanied by executive statements about leveraging AI to increase efficiency and do more with fewer people as the company pivoted toward AI-powered legal services.,True
+205,Fortinet,2023-08-25,0,0,high,"Mobileye's 2024 cuts were driven by sluggish autonomous vehicle market adoption and parent Intel's financial pressures, not AI replacing internal roles.",False
+206,FuboTV,2022-08-02,0,0,low,Mobileye's December 2025 event falls beyond the knowledge cutoff; no clear evidence of AI-driven motivation is available.,False
+207,Fiverr,2022-07-26,0,0,high,"Medtronic's 2023 California layoffs were part of a broader cost-reduction and portfolio-simplification strategy, with no AI automation rationale cited.",False
+208,Fiverr,2025-09-15,0,0,high,"Medtronic's 2024 global restructuring was tied to margin improvement and business simplification goals, not AI-driven headcount replacement.",False
+209,Mode Global,2023-01-26,0,0,low,"Medtronic's October 2025 event falls beyond the knowledge cutoff, making a reliable AI-motivation assessment impossible.",False
+270,Kogan,2022-08-23,0,0,high,"PagerDuty's January 2023 layoff was attributed to macroeconomic conditions and slowing growth, with no mention of AI as a driver.",False
+271,Kaltura,2022-08-09,0,0,high,"Pegasystems' early 2023 layoff was a cost-reduction measure tied to macroeconomic pressures, not AI adoption or automation investment.",False
+272,Kaltura,2025-08-07,0,0,medium,"Pegasystems' second 2023 round was framed around continued restructuring and cost efficiency, with no clear public link to AI strategy despite Pega's AI product investments.",False
+273,Kinaxis,2024-05-08,0,0,high,The existing evidence flags this as a false positive; the automation reference is generic operational language unrelated to AI-driven headcount reduction.,False
+274,CS Disco,2023-01-19,0,0,high,"Pagaya's January 2023 20% cut was driven by difficult capital markets and the need to extend its financial runway, not AI restructuring.",False
+275,Luminar,2024-05-03,0,0,medium,"Pagaya's 2024 layoff was tied to business performance challenges and cost management, with no reported AI-driven restructuring rationale.",False
+276,Luminar,2025-05-20,0,0,high,"Phunware's one-third workforce reduction was driven by severe financial distress and cash preservation needs, not AI or automation strategy.",False
+277,LeddarTech,2025-05-22,0,0,high,"Impinj's 10% cut was tied to slowing demand in the RAIN RFID/IoT market and cost realignment, with no AI motivation reported.",False
+278,Legible,2022-04-04,0,0,high,"Planet's August 2023 restructuring was driven by the need to reach profitability and reduce costs in the satellite imagery business, not AI-related reasons.",False
+279,Life360,2023-01-12,0,0,high,"Planet's 2024 17% cut was attributed to continued financial pressures and a strategic pivot toward defense/government contracts, not AI workforce replacement.",False
+280,Lilium,2024-12-23,0,0,high,"Playtika's 2024 layoff was driven by declining mobile gaming revenues and cost reduction efforts, with no reported AI-driven rationale.",False
+281,Lemonade,2022-04-20,0,0,high,Palantir's small 2023 reduction was attributed to routine workforce optimization and was not publicly linked to AI replacing workers.,False
+282,Lemonade,2023-05-16,0,0,low,"Palantir's 2025 cuts are not well-documented in my training data; while Palantir is an AI company, no explicit AI-driven headcount reduction rationale has been widely reported for this event.",False
+283,Logitech,2023-03-22,0,0,high,"Software AG's early 2023 restructuring was tied to its strategic review and pending acquisition by Silver Lake, not AI automation reducing headcount.",False
+284,LivePerson,2020-11-01,0,0,high,"Personalis cut 30% of staff due to a strategic refocus on its cancer recurrence monitoring business and capital conservation, not AI-related reasons.",False
+285,LivePerson,2022-09-15,0,0,medium,"Pure Storage's 2024 layoffs were part of workforce rebalancing with no widely reported AI motivation, though the company was investing in AI-ready storage infrastructure.",False
+286,Lam Research,2023-01-25,0,0,high,"Peloton's 2023 WARN notice layoffs were part of ongoing cost-cutting driven by post-pandemic demand collapse, not AI adoption.",False
+287,Lightspeed Commerce,2023-01-17,0,0,high,"Peloton's May 2024 15% cut coincided with CEO Barry McCarthy's departure and was driven by continued financial difficulties, not AI restructuring.",False
+288,Lightspeed Commerce,2024-04-03,0,0,medium,Peloton's August 2025 6% cut was tied to ongoing restructuring efforts; this event falls near my knowledge cutoff and no AI-specific motivation has been prominently reported.,False
+289,Lightspeed Commerce,2024-12-02,0,0,high,"PubMatic's small 2024 workforce reduction was tied to ad tech market conditions and efficiency measures, with no reported AI-driven rationale.",False
+290,Latch,2022-05-10,0,0,high,"PayPal's January 2023 7% cut was driven by macroeconomic challenges and overhiring during the pandemic era, not AI adoption.",False
+291,Latch,2023-07-10,0,0,high,"PayPal's January 2024 9% reduction was attributed to competitive pressure and the need to right-size the company, not AI replacing workers.",False
+292,Lucid Diagnostics,2023-01-18,0,0,high,"Quantum-Si's 12% reduction was driven by capital conservation and prioritizing its protein sequencing commercialization roadmap, not AI-related reasons.",False
+293,Lyft,2020-04-29,0,0,medium,"LiveRamp's March 2025 5% cut was described as strategic restructuring to focus on core data connectivity offerings, with no clear public link to AI workforce replacement.",False
+294,Lyft,2022-07-20,0,0,high,"The existing evidence flags this as a false positive with TechCrunch boilerplate; Roblox cut its talent acquisition team due to slowing hiring needs, not AI adoption.",False
+295,Lyft,2024-09-04,0,0,high,"Vicarious Surgical's 14% cut was driven by financial constraints and the need to extend runway for its surgical robotics development, not AI-driven headcount reduction.",False
+296,LegalZoom,2023-10-19,0,0,high,"Redfin's 2024 layoff was tied to a restructuring of agent compensation models and a sluggish real estate market, not AI replacing workers.",False
+297,LegalZoom,2024-08-07,0,0,high,"The RealReal's 2023 cuts were driven by profitability challenges in its luxury resale business and store closures, with no AI motivation reported.",False
+298,Mobileye,2024-09-09,0,0,high,"REE Automotive's 50% cut was driven by severe cash constraints and the need to survive as a pre-revenue EV startup, not AI automation.",False
+299,Mobileye,2025-12-08,0,0,high,"Rent the Runway's 10% corporate cut was driven by cost reduction efforts amid declining subscriber growth, not AI or automation strategy.",False
+300,Medtronic,2023-04-12,0,0,high,"Rigetti's 28% cut was driven by financial runway concerns and cost reduction in a struggling quantum computing startup, with no reported AI motivation.",False
+301,Medtronic,2024-06-13,0,0,high,"Rivian cited price war pressures and cost discipline in the EV market as the reason for this 6% reduction, per the Reuters internal memo.",False
+302,Medtronic,2025-10-27,0,0,high,"Rivian's battery-worker layoffs were manufacturing cost cuts tied to production ramp challenges, not AI-driven restructuring.",False
+303,23andMe,2023-06-09,0,0,high,"Rivian trimmed its manufacturing team ahead of the R2 launch for operational efficiency, with no credible reporting linking this to AI adoption.",False
+304,23andMe,2024-11-11,0,0,medium,The 2% cut at Rocket Companies followed the Redfin acquisition and was framed as post-merger integration restructuring; AI was not publicly cited as the driver despite Rocket's known AI investments.,False
+305,MercadoLibre,2026-01-12,0,0,high,"Rapid7's 18% reduction was a profitability-focused restructuring announced alongside Q2 earnings, with cost discipline and operating leverage cited rather than AI.",False
+306,Meta,2022-11-09,0,0,high,"Riskified's 6% cut in early 2024 was described as cost optimization to improve efficiency amid slower e-commerce growth, with no AI motivation reported.",False
+307,Meta,2023-10-04,0,0,low,"Limited English-language reporting on this 2025 Riskified round; no credible source has linked it to AI-driven headcount reduction, though the company does use ML for fraud detection.",False
+308,Meta,2024-10-16,0,0,medium,"SentinelOne's 5% cut was a cost-structure adjustment to improve path to profitability; while the company invests in AI-powered security, the layoffs were not publicly attributed to AI replacing workers.",False
+309,Meta,2025-10-22,1,0,high,"Sabre's 15% workforce reduction was a financial restructuring to reduce debt and improve margins following post-pandemic travel sector instability, with no AI motivation cited.",True
+310,MissFresh,2022-07-29,0,0,high,"SAP's January 2023 round of ~3,000 cuts was part of broad tech-sector cost normalization and the Qualtrics divestiture process, not linked to AI restructuring.",False
+311,Magnite,2023-01-19,0,1,high,"SAP CEO Christian Klein explicitly stated in January 2024 that the 8,000-person restructuring was to reallocate resources toward AI and cloud transformation, with the company using the phrase 'AI-driven business' in official communications.",True
+312,MeridianLink,2023-02-28,0,0,high,"Satellogic's 13% reduction was driven by financial difficulties and commercial satellite market challenges, with no AI-related motivation reported.",False
+313,MeridianLink,2024-01-08,0,0,high,"SmileDirectClub's 100% reduction was a complete company shutdown due to bankruptcy, unrelated to AI adoption.",False
+314,MakeMyTrip,2020-06-01,0,0,high,"SolarEdge cut 16% due to a severe demand slowdown in the European residential solar market and inventory corrections, with no AI motivation reported.",False
+315,Megaport,2023-01-05,0,0,high,"Stitch Fix's 20% cut was explicitly tied to over-hiring during the COVID e-commerce boom and a correction of that expansion, not AI-driven efficiency gains.",False
+316,Marqeta,2023-05-09,0,0,high,"Stitch Fix's warehouse closure in Bethlehem was an operational consolidation decision, not linked to AI automation of fulfillment.",False
+317,Marin Software,2024-09-30,0,0,high,"Shift's 30% reduction followed the CarLotz merger and was a post-merger integration headcount reduction, with no AI motivation cited.",False
+318,Marin Software,2025-04-10,0,0,medium,"Shopify's 20% cut was primarily attributed by CEO Tobi Lütke to a COVID e-commerce boom miscalculation; while Lütke later became vocal about AI-first hiring, AI was not the stated driver of this specific round.",False
+319,Marvell,2023-03-21,0,1,medium,"By late 2025 Shopify's AI-first workforce policy was well established, with Lütke publicly requiring teams to justify headcount against AI alternatives before hiring, making AI a credible driver of this reduction.",True
+320,Microsoft,2022-07-12,0,0,high,"SiriusXM's 8% cut in early 2023 was driven by subscriber growth challenges and advertising market softness, with no AI motivation reported.",False
+321,Microsoft,2024-01-25,0,0,high,"SiriusXM's 3% reduction in early 2024 continued cost-cutting tied to declining subscriber trends and balance sheet management, not AI restructuring.",False
+322,Match Group,2023-02-01,0,0,high,"Selina's layoffs were driven by financial difficulties at the hospitality/co-living startup, with no AI motivation reported.",False
+323,Match Group,2024-07-31,0,0,high,"NuScale's 28% reduction was directly caused by UAMPS canceling the Carbon Free Power Project contract, leaving the company without its primary customer — entirely unrelated to AI.",False
+324,Match Group,2025-05-08,0,0,high,"Snap's September 2023 cuts were a strategic withdrawal from the AR enterprise market after a business review concluded it was not commercially viable, not AI-driven.",False
+325,Micron,2023-01-01,0,1,medium,"Business Insider's reporting on Snowflake's March 2026 layoffs explicitly framed them within the company's AI growth strategy and pivot toward AI-native data platform positioning, suggesting AI investment reallocation drove the restructuring.",True
+326,Micron,2025-08-12,0,0,high,"Synopsys's early 2023 layoffs were part of the broad post-2022 tech correction and cost normalization, with no AI motivation cited.",False
+327,MicroVision,2026-03-03,0,0,low,"Synopsys's 10% cut in late 2025 may relate to EDA market dynamics or post-Ansys deal fallout; while the company integrates AI into chip design tools, Reuters reporting did not attribute the layoffs to AI-driven efficiency gains.",False
+328,NCC Group,2023-02-02,0,0,high,"SoFi's tech-unit layoffs were tied to the transition following its bank charter and strategic refocusing on banking products, not AI automation.",False
+329,NCC Group,2023-08-10,0,0,high,SoFi's 4% reduction in January 2024 was a general cost-structure optimization with no credible reporting linking it to AI-driven headcount replacement.,False
+390,Impinj,2024-02-13,0,0,high,"Wejo's March 2023 layoffs were driven by financial difficulties and cost reduction as the connected vehicle data startup struggled commercially, with no reported AI motivation.",False
+391,Pinterest,2022-11-30,0,0,high,"WeWork's early 2023 workforce reductions were part of a broader financial distress and restructuring effort preceding its 2023 bankruptcy filing, unrelated to AI.",False
+392,Pinterest,2026-01-27,1,0,high,Wex's June 2024 layoff of 375 employees was framed as a cost-cutting and operational efficiency measure with no reported link to AI adoption or automation.,True
+393,Planet,2023-08-01,0,0,medium,"Wise's February 2025 Tampa office closure and 300+ job cuts were reported as a geographic consolidation decision, with no prominent public statement linking them to AI-driven headcount reduction.",False
+394,Planet,2024-06-26,0,0,high,"Wish/ContextLogic's January 2023 17% layoff was driven by severe decline in its e-commerce business and financial losses, not AI or automation.",False
+395,Playtika,2022-05-31,0,0,high,"Wix's February 2023 6% layoff was attributed to post-pandemic market normalization and a need to reduce costs after over-hiring, with no AI motivation cited.",False
+396,Playtika,2022-12-09,0,1,high,"The Reuters headline explicitly describes WiseTech's July 2025 job cuts as part of an 'AI-driven efficiency push,' directly linking the layoffs to AI adoption.",True
+397,Playtika,2024-01-11,0,1,high,"Bloomberg's headline explicitly states 'WiseTech to Cut 2,000 Jobs as AI Ends Era of Manual Coding,' making this one of the clearest AI-caused layoff disclosures in the dataset.",True
+398,Playtika,2025-06-05,1,0,high,"XP Inc.'s January 2023 layoffs in Brazil were driven by market downturn, rising interest rates, and revenue pressure in its financial services business, not AI.",True
+399,Palantir,2023-02-27,0,0,high,"Xero's March 2023 15% reduction was explicitly framed as a cost-restructuring and profitability initiative following a period of rapid hiring, with no AI motivation cited.",False
+400,Palantir,2025-03-27,0,0,high,"Xerox's January 2024 15% workforce cut was part of a broader 'Reinvention' business transformation focused on cost reduction and restructuring its legacy printing business, not AI displacement.",False
+401,Software AG,2023-01-31,0,0,high,"Block's October 2023 layoffs were attributed to its declining stock price and cost discipline under Jack Dorsey, with no AI motivation reported.",False
+402,Personalis,2023-01-19,0,0,high,The existing evidence correction explicitly states this is a false positive and the article denies AI causation; the layoffs were due to organizational streamlining.,False
+403,Pure Storage,2024-02-08,0,0,high,"Yext's January 2023 8% layoff was part of broad tech-sector cost-cutting following over-hiring, with no reported connection to AI adoption or automation.",False
+404,Peloton,2022-02-08,0,0,medium,"Yext's June 2024 12% reduction was framed as a profitability and operational efficiency measure; while Yext is repositioning around AI search, the layoff was not publicly attributed to AI replacing workers.",False
+405,Peloton,2022-08-12,0,0,high,"Zillow's November 2023 layoffs were described as affecting a 'small number of roles' in routine organizational adjustments, with no AI motivation cited.",False
+406,Peloton,2023-07-13,0,0,high,"Zillow's January 2025 cuts were reported as stemming from a reorganization of its agent software and advertising teams, not from AI-driven headcount reduction.",False
+407,Peloton,2024-05-02,0,0,low,Zillow's February 2026 layoff of 200 employees falls beyond my training cutoff; no pre-cutoff evidence suggests AI was a stated driver of this specific event.,False
+408,Peloton,2025-08-07,0,0,high,"Zalando's February 2023 layoffs were driven by post-pandemic e-commerce normalization and cost pressures, with no reported AI motivation.",False
+409,PubMatic,2024-10-07,0,0,high,"Zebra Technologies' August 2023 7% cut was attributed to slowing enterprise demand for its barcode and scanning hardware, not AI or automation displacing workers.",False
+410,PayPal,2022-05-23,0,0,medium,"Zebra Technologies' December 2025 action involved winding down its Fetch-based mobile robot group, a product discontinuation rather than AI-driven headcount reduction; this date also falls beyond my training cutoff.",False
+411,PayPal,2023-01-31,0,0,high,"ZipRecruiter's May 2023 20% layoff was explicitly tied to a sharply declining job-posting market and reduced employer hiring activity, not AI automation.",False
+412,PayPal,2024-01-30,0,0,low,"ZipRecruiter's September 2025 layoff falls beyond my training cutoff, and no pre-cutoff evidence points to AI as a stated motivation for this event.",False
+413,Qualcomm,2022-12-22,0,0,high,"Zoom's February 2023 15% layoff was explicitly attributed to over-hiring during the pandemic era and the subsequent normalization of remote-work demand, not AI.",False
+414,Quantum SI,2023-01-30,0,0,high,"Zoom's February 2024 2% cut was routine organizational rightsizing; the existing evidence snippet references commentary explicitly framing recent tech layoffs as NOT AI-driven, and no strong AI link was established.",False
+415,Quanterix,2022-08-09,0,0,high,"Zapata Computing's 100% layoff reflects a complete company shutdown due to failed commercialization of its quantum/AI software business, not AI replacing its workers.",False
+416,LiveRamp,2022-11-03,0,0,high,"Zscaler's March 2023 3% reduction was a routine cost-control measure amid broader tech-sector belt-tightening, with no AI motivation cited.",False
+417,LiveRamp,2025-03-05,0,0,high,"Zuora's January 2024 8% workforce reduction was framed as a cost-optimization and profitability initiative, with no reported link to AI adoption displacing roles.",False
+418,Roblox,2023-09-22,0,0,high,"The source explicitly identifies Musk's Twitter layoffs as targeting advertising engineers due to collapsing ad revenue, not AI or automation.",False
+419,Vicarious Surgical,2023-02-15,0,0,high,"TCR2 Therapeutics' 40% cut was a clinical-stage biotech restructuring following pipeline setbacks, entirely unrelated to AI automation.",False
+420,Redfin,2020-04-07,0,0,high,"WalkMe's January 2023 layoffs were attributed to macroeconomic headwinds and cost optimization, with no mention of AI adoption or automation driving the cuts.",False
+421,Redfin,2022-06-14,0,0,high,"Informatica's 7% cut coincided with a CFO departure and was framed as a cost-reduction measure amid economic uncertainty, not AI investment or replacement.",False
+422,Redfin,2024-08-22,0,0,high,Qualtrics' layoffs followed its SAP spin-off and were standard post-separation cost rationalization with no AI motivation reported.,False
+423,The RealReal,2020-04-14,0,0,high,"HashiCorp's January 2023 cuts were driven by broader economic conditions and rightsizing, with no link to AI strategy or automation.",False
+424,The RealReal,2023-02-16,0,0,high,LendingClub explicitly cited rising interest rates dampening loan originations as the cause; no AI or automation motivation was reported.,False
+425,REE Automotive,2023-02-09,0,0,high,"Akili Labs' 30% cut was driven by funding constraints and the need to extend cash runway in a difficult biotech environment, not AI adoption.",False
+426,Rent the Runway,2022-09-12,0,0,high,"PagBank's layoffs were attributed to Brazil's economic conditions and fintech sector headwinds, with no AI motivation mentioned.",False
+427,Rent the Runway,2024-01-09,0,0,high,"Avaya's layoffs were driven by severe financial distress and looming bankruptcy proceedings, not AI investment or automation.",False
+428,Rigetti Computing,2023-02-10,0,0,high,"The existing evidence references 'AI-driven Automation' only as a competitive product category description in market positioning language, not as a stated cause of the layoffs.",False
+429,Rivian,2022-07-27,0,0,high,Inspirato's 12% reduction was explicitly framed as a cost-reduction and operational streamlining measure with no AI motivation reported.,False
+430,Rivian,2023-02-01,0,0,high,"Bally's Interactive cuts were driven by strategic restructuring of its online gaming unit amid poor financial performance, not AI replacement.",False
+431,Rivian,2023-12-07,0,0,high,"Redbubble's layoffs were due to declining demand and the need to reduce operating costs, with no AI or automation link reported.",False
+432,Rivian,2025-06-26,0,0,high,"Proterra's cuts coincided with a divisional merger/restructuring for operational efficiency, not AI adoption.",False
+433,Rocket Companies,2025-07-18,0,0,high,"Innovid's 10% reduction was a cost-cutting measure amid a soft ad market, with no AI motivation cited.",False
+434,RingCentral,2022-08-04,0,0,high,Vacasa's CEO explicitly stated 'we need to reduce our costs' as the reason; no AI or automation link was reported.,False
+435,Roku,2022-11-17,0,0,high,BM Technologies framed the cuts as a 'Profit Enhancement Plan' focused on cost reduction; no AI motivation was mentioned.,False
+436,Rapid7,2023-08-08,0,0,high,"Nubank's cuts specifically closed its investment advisory division for business reasons, not due to AI replacing workers.",False
+437,Riskified,2024-02-13,0,0,high,National Instruments' 4% headcount reduction was a routine cost-optimization measure with no AI motivation reported.,False
+438,Riskified,2025-02-19,0,0,high,"OpenText's layoffs were directly tied to integrating the $5.8B Micro Focus acquisition and eliminating redundant roles, not AI strategy.",False
+439,Rubicon Project,2020-05-06,0,0,high,Splunk's 4% cut was part of broader software sector cost discipline with no AI or automation motivation publicly cited.,False
+440,SentinelOne,2023-06-01,0,0,high,"Appgate's 8% reduction was a cost-cutting measure to improve financial performance, with no AI motivation reported.",False
+441,Sabre,2023-05-04,0,0,high,"Frequency Therapeutics' 50% cut followed a failed clinical trial for its hearing-loss therapy, forcing a major restructuring unrelated to AI.",False
+442,Sage Therapeutics,2020-04-07,0,0,high,"MariaDB's layoffs were driven by financial difficulties and the need to conserve cash, with no AI motivation cited.",False
+443,SAP,2023-01-26,0,0,high,"Secureworks' 9% cut was a cost restructuring amid competitive cybersecurity market pressure, with no AI adoption cited as a driver.",False
+444,SAP,2024-01-23,0,0,high,"Openpay shut down entirely due to insolvency and inability to secure funding; this was a company collapse, not an AI-driven restructuring.",False
+445,Satellogic,2024-05-24,0,0,high,"Deliveroo's 9% cut was driven by slowing growth and the need to reach profitability, with no AI or automation motivation reported.",False
+446,Springbig,2022-12-01,0,0,high,Titan Medical's 72% cut came while the company was searching for a buyer after running low on funds; no AI motivation was cited.,False
+447,SmileDirectClub,2023-12-09,0,0,high,"SurveyMonkey/Momentive's 14% reduction was a cost-restructuring following a failed SPAC merger and declining growth, with no AI motivation cited.",False
+448,Sea,2022-03-30,0,0,high,"Smartsheet's small 3% reduction was standard cost optimization in a difficult macro environment, with no AI or automation motivation reported.",False
+449,SolarEdge,2024-01-21,0,0,high,"Lucira Health's layoffs were driven by sharply declining demand for COVID-19 rapid tests as the pandemic waned, not AI adoption.",False
+450,Sezzle,2022-03-10,0,0,high,"EQRx's layoffs were driven by financial restructuring and a pivot away from its low-cost drug business model, with no mention of AI.",False
+451,Stitch Fix,2020-06-01,0,0,high,"Twitter's February 2023 layoffs under Musk were part of broad cost-cutting and headcount reduction following the acquisition, not linked to AI adoption.",False
+452,Stitch Fix,2022-06-09,0,0,high,"Sono Motors cancelled its Sion solar car project due to inability to secure sufficient funding, not AI-related restructuring.",False
+453,Stitch Fix,2023-01-05,0,0,high,Thoughtworks cited economic slowdown and reduced client IT spending as the cause of its 4% workforce reduction.,False
+454,Stitch Fix,2023-07-12,0,0,high,"Embark Trucks laid off 70% of staff while exploring asset liquidation due to financial distress, not AI-driven workforce replacement.",False
+455,Shift,2022-08-09,0,0,high,"Accolade's layoffs were tied to reducing its office footprint and general cost reduction, with no AI motivation cited.",False
+456,Shift,2023-03-29,0,0,high,"GoTo Group's ~600-role reduction was driven by post-pandemic normalization and cost discipline, not AI adoption.",False
+457,Sweetgreen,2022-08-09,0,0,high,"Boxed cut 25% of staff while seeking a buyer due to financial distress, with no connection to AI strategy.",False
+458,Shopify,2020-08-14,0,0,high,"Nubank's restructuring was related to post-hypergrowth efficiency initiatives, not AI-driven headcount replacement.",False
+459,Shopify,2022-07-06,0,0,high,"Leafly's layoffs were driven by declining cannabis market revenues and financial challenges, not AI.",False
+460,Shopify,2023-05-04,0,0,high,"Laybuy's restructuring was a response to broader BNPL sector pressures and rising interest rates, not AI adoption.",False
+461,Shopify,2025-11-26,0,0,high,"Lucid Motors' 1,300-person reduction was caused by production ramp difficulties and capital constraints, not AI.",False
+462,Sinch,2022-10-12,0,0,high,Absolute Software's 5% workforce restructuring was a general operational realignment with no AI motivation cited.,False
+463,SiriusXM,2023-03-06,0,0,high,"Pear Therapeutics' near-total layoff was the result of bankruptcy after failing to secure funding, not AI-related.",False
+464,SiriusXM,2024-02-12,0,0,high,"Acxiom's workforce reduction followed an internal business assessment focused on cost efficiency, with no AI motivation reported.",False
+465,Skillz,2022-05-20,0,0,high,"Science 37's layoffs were driven by slowing decentralized-trial demand and cost realignment, not AI adoption.",False
+466,Selina,2023-06-27,0,0,high,"WalkMe's 10% cut was attributed to macroeconomic conditions and slower enterprise software spending, not AI strategy.",False
+467,NuScale Power,2024-01-08,0,0,high,"Alteryx's layoffs followed mixed earnings and were framed as cost restructuring, with no explicit AI motivation cited.",False
+468,Similarweb,2022-11-16,0,0,high,"Brightcove's 10% reduction was a general cost-cutting measure amid slower video platform growth, not AI-driven.",False
+469,Snap,2022-08-31,0,0,high,"Redbubble's layoffs were due to declining marketplace revenues and the need to reduce operating costs, not AI.",False
+470,Snap,2023-09-27,0,0,high,"Telenav closed its Cluj office as part of a geographic consolidation tied to the end of its Ford navigation contract, not AI.",False
+471,Snowflake,2026-03-19,0,0,high,"Nubank's June 2023 restructuring was an efficiency initiative tied to post-growth normalization, not AI-driven replacement.",False
+472,Synopsys,2023-01-27,0,0,high,"HashiCorp's 8% reduction followed weaker-than-expected Q1 results and was framed as cost discipline, not AI adoption.",False
+473,Synopsys,2025-11-12,0,0,high,"New Relic's layoffs were part of a go-private restructuring process, not linked to AI-driven headcount reduction.",False
+474,SoFi,2023-01-30,0,0,high,"Lordstown Motors' 100% layoff was the result of Chapter 11 bankruptcy filing and a dispute with Foxconn, not AI.",False
+475,SoFi,2024-01-10,0,0,high,"Matterport's 30% reduction was driven by cost realignment and slowing spatial data market demand, not AI adoption.",False
+476,Sonder,2022-06-08,0,0,high,"Butterfly Network's 25% cut was a cost-reduction restructuring tied to commercialization challenges, not AI.",False
+477,Sonder,2023-03-01,0,0,high,"DeepVerge's complete shutdown was due to company-wide financial collapse, not AI replacing workers despite operating in the life-science AI space.",False
+478,Sonder,2024-02-15,0,0,high,"Sarcos reduced headcount as part of a business optimization plan amid slow robotics commercialization, not AI-driven replacement.",False
+479,Sonder,2025-04-14,0,0,high,"Inspirato's 6% reduction was a cost-management measure in response to slowing luxury travel bookings, with no AI motivation cited.",False

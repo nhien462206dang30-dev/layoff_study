@@ -1,0 +1,468 @@
+company_fyi,ticker,announcement_date,ai_tier,ai_causal,ai_primary,ai_broad,ai_desktop,fetch_success,evidence,source_url
+SenseTime,0020.HK,2023-08-28,3,1,1,1,1,1,[CAUSAL] ...Chinese AI company SenseTime has reportedly reduced staff across various departments. Affected individuals have been...,https://technode.com/2023/08/28/chinese-ai-company-sensetime-initiates-new-round-of-layoffs-in-overhaul/
+Samsung,005930.KS,2023-03-14,0,0,0,0,0,0,,https://www.zeebiz.com/companies/news-samsung-layoffs-2023-south-korean-giant-cuts-3-jobs-at-us-chip-subsidiary-225788
+NCSoft,036570.KS,2023-02-02,0,0,0,0,0,0,,https://venturebeat.com/games/ncsoft-west-lays-off-20-of-its-staff-and-ceo-departs/
+Tencent,0700.HK,2022-11-15,0,0,0,0,0,0,,https://www.reuters.com/technology/chinas-tencent-starts-new-round-layoffs-sources-2022-11-15/
+Lenovo,0992.HK,2022-12-08,0,0,0,0,0,0,,https://wraltechwire.com/2022/12/09/blindsided-lenovo-confirms-layoffs-but-denies-report-of-10-cuts/
+Lenovo,0992.HK,2025-07-16,0,0,0,0,0,0,,https://www.newsobserver.com/news/business/article310699130.html
+Xiaomi,1810.HK,2022-12-19,0,0,0,0,0,1,,https://technode.com/2022/12/19/chinese-phone-maker-xiaomi-begins-large-scale-layoffs-report/
+Thinkific,5S0A.F,2022-12-05,0,0,0,0,0,1,,https://techcouver.com/2022/12/05/rebound-thinkific-labs-layoffs/
+Superloop,9SL.F,2020-08-24,0,0,0,0,0,0,,https://www.arnnet.com.au/article/682373/superloop-reduces-losses-30-workers-laid-off-amid-covid-19/
+Apple,AAPL,2023-04-03,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2023-04-03/apple-to-make-small-number-of-job-cuts-in-some-corporate-retail-teams#xj4y7vzkg
+Apple,AAPL,2024-02-27,2,0,1,1,0,1,"[STRATEGIC] ...earned. Some remaining employees will be shifted to Apple’s generative AI projects, according to Bloomberg , which first reported the...",https://techcrunch.com/2024/02/27/apple-cancels-electric-car-project-titan/
+Airbnb,ABNB,2023-03-03,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2023-03-03/airbnb-layoffs-hit-recruiting-staff-even-as-it-selectively-hires
+Absci,ABSI,2022-08-09,0,0,0,0,0,0,,https://www.absci.com/message-from-ceo-08-09-2022/
+Absci,ABSI,2023-09-05,0,0,0,0,0,0,,https://www.geekwire.com/2023/biotech-company-absci-lays-off-30-employees-about-15-of-staff/
+Aurora,ACB,2024-01-24,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2024/01/24/self-driving-vehicle-company-aurora-cuts-3-of-its-workforce/
+Adobe,ADBE,2022-12-06,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2022-12-06/adobe-cuts-100-jobs-concentrated-in-sales-as-tech-tightens-belt
+Analog Devices,ADI,2023-12-13,0,0,0,0,0,0,,https://www.bizjournals.com/sanjose/news/2023/12/13/layoffs-come-to-analog-devices-as-111.html
+Adaptive Biotechnologies,ADPT,2022-03-08,0,0,0,0,0,0,,https://www.geekwire.com/2022/adaptive-biotechnologies-lays-off-about-100-people-12-of-headcount-to-streamline-our-workforce/
+Autodesk,ADSK,2023-02-02,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2023-02-03/autodesk-layoffs-hit-250-jobs-joining-tech-industry-peers
+Autodesk,ADSK,2025-02-27,1,0,0,1,0,1,"[SPECIFIC] ...and protect the company's leadership in cloud computing and artificial intelligence, Anagnost wrote. San Francisco-based Autodesk will make fac...",https://www.cnbc.com/2025/02/27/autodesk-says-it-will-cut-1350-employees.html
+AEye,AEYE,2023-03-28,0,0,0,0,0,0,,https://investors.aeye.ai/node/8921/html
+Affirm,AFRM,2022-11-03,0,0,0,0,0,0,,https://www.theinformation.com/briefings/e-commerce-layoff-tally-mounts-with-faire-affirm-cuts
+Affirm,AFRM,2024-02-21,0,0,0,0,0,0,,https://bnnbreaking.com/finance-nav/affirms-pittsburgh-layoffs-a-tale-of-corporate-strategy-and-employee-impact
+Akamai,AKAM,2023-05-09,1,0,0,1,0,0,[URL_SIGNAL] https://www.bizjournals.com/boston/news/2023/05/09/akamai-cuts-global-workforce-2023.html,https://www.bizjournals.com/boston/news/2023/05/09/akamai-cuts-global-workforce-2023.html
+Akamai,AKAM,2024-11-07,1,0,0,1,0,0,[URL_SIGNAL] https://www.bizjournals.com/boston/news/2024/11/07/akamai-layoffs-2024.html,https://www.bizjournals.com/boston/news/2024/11/07/akamai-layoffs-2024.html
+Applied Material,AMAT,2025-10-23,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2025-10-23/applied-materials-to-cut-4-of-global-staff-after-sales-slow
+AMD,AMD,2024-11-13,0,0,0,0,0,0,,https://www.techopedia.com/news/amd-layoffs-amid-mixed-earnings-and-intel-merger-speculation
+Amplitude,AMPL,2023-04-05,0,0,0,0,0,1,,https://amplitude.com/blog/team-update
+Amazon,AMZN,2022-10-28,0,0,0,0,0,0,,https://www.geekwire.com/2022/amazon-makes-staff-cuts-at-amp-the-app-it-launched-this-year-to-reimagine-radio/
+Amazon,AMZN,2025-01-29,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2025-01-29/amazon-cuts-dozens-of-corporate-jobs-in-latest-round-of-layoffs
+AppLovin,APP,2022-06-27,0,0,0,0,0,0,,https://www.bizjournals.com/sanjose/news/2022/06/29/applovin-lays-off-300-workers-report.html
+AppLovin,APP,2024-08-15,1,0,0,1,0,1,[SPECIFIC] ...chip leviathan scrambles to deploy more resources into the artificial intelligence sector. San Jose-based Cisco disclosed on Aug. 14 its inten...,https://www.siliconvalley.com/2024/08/19/economy-tech-jobs-layoff-south-bay-silicon-valley-biotech-internet/
+AppFolio,APPF,2023-05-22,0,0,0,0,0,0,,https://www.pacbiztimes.com/2023/05/22/appfolio-lays-off-62-people/
+Aptiv,APTV,2024-02-20,0,0,0,0,0,1,,"https://wyborcza.biz/biznes/7,159911,30719165,w-pol-godziny-zwolnili-250-osob-dostal-godzine-na-spakowanie.html?disableRedirects=true"
+Arrival,ARVLF,2022-07-13,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2022/07/13/arrival-to-slash-costs-cut-up-to-30-of-workforce-to-meet-on-ev-van-production-target/
+Arrival,ARVLF,2023-10-05,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2023/10/10/cash-strapped-ev-maker-arrival-lays-off-yet-more-workers/
+Asana,ASAN,2022-11-15,0,0,0,0,0,1,,https://www.linkedin.com/posts/anneraimondi_earlier-today-we-shared-the-incredibly-difficult-activity-6998297745270718465-a_MV/
+Asana,ASAN,2025-02-04,0,0,0,0,0,0,,Internal memo
+AudioCodes,AUDC,2023-05-09,1,0,0,1,0,1,"[SPECIFIC] ...selected by Enablis Take this down Mia: Audiocodes provides automated note-taking for Microsoft Teams users In Pivot, AudioCodes...",https://www.calcalistech.com/ctechnews/article/hjnggpd43
+Broadcom,AVGO,2025-10-17,0,0,0,0,0,0,,https://www.businessinsider.com/broadcom-layoffs-rifs-cuts-sales-staff-ai-expansion-2025-10
+Astra,AZN,2022-11-08,0,0,0,0,0,1,,https://www.linkedin.com/posts/chrisckemp_today-we-made-the-difficult-decision-to-activity-6995868932138033153-knfZ/
+Astra,AZN,2023-08-04,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2023/08/04/astra-lays-off-25-of-workforce-reallocates-engineers-in-an-effort-to-fight-dwindling-cash-reserves/
+Bark,BARK,2023-02-09,0,0,0,0,0,0,,https://investors.bark.co/news/news-details/2023/BARK-Reports-Third-Quarter-Fiscal-Year-2023-Results/default.aspx
+BigBear.ai,BBAI,2022-09-08,1,0,0,1,0,0,[URL_SIGNAL] https://www.bizjournals.com/baltimore/news/2022/09/08/columbia-bigbear-ai-layoff-staff-cash-flow-issues.html,https://www.bizjournals.com/baltimore/news/2022/09/08/columbia-bigbear-ai-layoff-staff-cash-flow-issues.html
+Butterfly Network,BFLY,2022-08-02,0,0,0,0,0,0,,Internal memo
+Bilibili,BILI,2022-12-27,0,0,0,0,0,1,,https://technode.com/2022/12/27/bilibili-reportedly-cuts-30-of-staff-across-operations-gaming-and-streaming-units/
+Bird,BIRD,2023-10-04,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2023/10/04/bird-lays-off-staff-after-spin-acquisition-to-reduce-redundancies/
+Bakkt,BKKT,2024-05-03,0,0,0,0,0,1,,https://seekingalpha.com/news/4099966-crypto-platform-bakkt-to-lay-off-28-employees
+Booking Holdings,BKNG,2024-12-04,1,0,0,1,0,1,"[SPECIFIC] ...As Booking Holdings resets its investment priorities in the AI era, its business-to-business services, which Expedia has f...",https://skift.com/2024/12/04/booking-holdings-laid-off-60-employees-at-b2b-arm-as-it-resets-priorities/
+BlackLine,BL,2023-08-23,0,0,0,0,0,0,,https://beststocks.com/blackline-announces-workforce-reduction-to-st/
+Blackbaud,BLKB,2023-02-14,0,0,0,0,0,1,,https://www.postandcourier.com/business/sc-tech-employer-blackbaud-has-cut-about-500-jobs-since-last-year/article_ef9dd60a-ac9b-11ed-8c4a-bbbeb9f0cda5.html
+Blend,BLND,2023-08-09,0,0,0,0,0,1,,http://archive.fast-edgar.com/20230809/A7L2K22CZ22282Z2222G22ZZMTBIQQB2A252/
+Blink Charging,BLNK,2025-05-19,0,0,0,0,0,1,,https://blinkcharging.com/news/blink-charging-announces-workforce-reduction-to-accelerate-blinkforward-initiative-and-strengthen-global-market-position
+Bumble,BMBL,2024-02-27,1,0,0,1,0,1,[SPECIFIC] ...ative? These 6 chip suppliers look set to gain big from the AI boom Jefferies says buy this under-the-radar software stock...,https://www.cnbc.com/2024/02/27/bumble-layoffs-350-employees-or-about-37percent-of-workforce.html
+Bumble,BMBL,2025-06-25,0,0,0,0,0,1,,https://www.cnbc.com/2025/06/25/bumble-layoffs.html
+BioMarin,BMRN,2022-10-07,0,0,0,0,0,0,,https://www.fiercebiotech.com/biotech/biomarin-lays-120-employees-save-50m-year-us-hit-hardest
+Boozt,BOOZT.ST,2022-06-09,0,0,0,0,0,1,,https://www.breakit.se/artikel/33353/sparpaket-pa-boozt-efter-vinstsmallen-sager-upp-personal
+Boozt,BOOZT.ST,2025-01-13,1,0,0,1,0,1,[SPECIFIC] ...Boozt säger upp var tionde – pekar på AI - Breakit Logga in Prenumerera Nyheter Rapporter Data Kurse...,https://www.breakit.se/artikel/42184/boozt-sager-upp-var-tionde-pekar-pa-ai
+Babylon,BPP.AX,2022-07-12,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2022-07-12/uk-health-app-babylon-plans-job-cuts-in-bid-to-slash-costs#xj4y7vzkg
+Better Therapeutics,BTTX,2023-03-27,0,0,0,0,0,1,,https://www.mobihealthnews.com/news/prescription-digital-therapeutics-company-better-therapeutics-announces-layoffs
+Beyond Meat,BYND,2022-08-03,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2022-08-03/beyond-meat-eliminates-about-40-positions-in-cost-cutting-move
+Beyond Meat,BYND,2023-11-02,0,0,0,0,0,0,,https://investors.beyondmeat.com/news-releases/news-release-details/beyond-meatr-provides-select-third-quarter-financial-results
+CarGurus,CARG,2020-04-16,0,0,0,0,0,1,,https://layoffs.fyi/2020/05/04/cargurus-laid-off-130-employees/
+Cardlytics,CDLX,2022-11-14,0,0,0,0,0,1,,https://www.marketscreener.com/quote/stock/CARDLYTICS-INC-40680969/news/Cardlytics-to-Terminate-51-Employees-Appoints-John-Balen-Chairman-Shares-up-After-Hours-42312731/
+Codexis,CDXS,2022-11-29,0,0,0,0,0,1,,https://www.codexis.com/investors/news-events/press-releases/detail/342/codexis-provides-update-on-prioritized-corporate-strategy
+Confluent,CFLT,2023-01-26,0,0,0,0,0,0,,https://investors.confluent.io/node/8216/html
+ContraFect,CFRXQ,2022-08-15,0,0,0,0,0,1,,https://www.benzinga.com/general/biotech/22/08/28497436/contrafect-cuts-workforce-after-trial-setback
+Chegg,CHGG,2023-06-12,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2023-06-12/chegg-slashes-4-of-workforce-following-shift-to-embrace-ai#xj4y7vzkg
+Chegg,CHGG,2024-06-17,0,0,0,0,0,0,,https://www.businesswire.com/news/home/20240617323391/en/Chegg-Announces-Restructuring-Plan-and-New-Vision-for-Growth
+Chegg,CHGG,2025-05-12,0,0,0,0,0,0,,https://www.reuters.com/world/americas/chegg-lay-off-22-workforce-ai-tools-shake-up-edtech-industry-2025-05-12/
+Chewy,CHWY,2023-11-14,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2023/11/14/online-pet-goods-retailer-chewy-lays-off-200-employees/
+Cint,CINT,2024-07-01,0,0,0,0,0,1,,https://investors.cint.com/en/press/organizational-changes-cint-group-2248206
+Cellebrite,CLBT,2025-12-03,1,0,0,1,0,1,[SPECIFIC] ...te alums raise $8.5M in Seed funding to guard against rogue AI agents Cellebrite acquires Corellium in $170M deal to push...,https://www.calcalistech.com/ctechnews/article/izmghyvm1
+Cimpress,CMPR,2023-03-23,0,0,0,0,0,0,,https://www.marketwatch.com/story/cimpress-plans-to-cut-about-500-jobs-768d3efc
+Capital One,COF,2023-01-19,0,0,0,0,0,0,,https://www.reuters.com/technology/capital-one-scraps-1100-tech-positions-source-2023-01-19/
+Coherent,COHR,2023-03-16,0,0,0,0,0,1,,https://www.siliconvalley.com/2023/03/16/coherent-fremont-job-cut-tech-layoff-google-facebook-twitter-economy/
+Coinbase,COIN,2022-06-14,0,0,0,0,0,1,,https://www.cnbc.com/2022/06/14/coinbase-lays-off-18percent-as-execs-prepare-for-recession-crypto-winter.html
+Compass,COMP,2022-06-14,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2022-06-14/compass-to-cut-about-10-of-workforce-amid-us-housing-slowdown#xj4y7vzkg
+Coursera,COUR,2022-11-09,0,0,0,0,0,1,,https://blog.coursera.org/changes-to-the-coursera-team/
+Coursera,COUR,2024-10-25,0,0,0,0,0,0,,https://www.classcentral.com/report/cousera-layoffs-2024/
+Freightos,CRGO,2023-07-12,0,0,0,0,0,1,,https://sourcingjournal.com/topics/logistics/freightos-layoffs-13-percent-persistently-weak-freight-market-job-cuts-costs-445086/
+Salesforce,CRM,2020-08-26,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2020-08-26/salesforce-cuts-1-000-jobs-after-banner-quarter-stock-surge
+Salesforce,CRM,2022-10-13,0,0,0,0,0,0,,https://www.protocol.com/bulletins/salesforce-layoffs-hiring-freeze
+Salesforce,CRM,2023-08-02,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2023-08-02/salesforce-cuts-more-jobs-after-10-reduction-earlier-this-year?in_source=embedded-checkout-banner#xj4y7vzkg
+Salesforce,CRM,2025-02-03,1,0,0,1,0,1,"[SPECIFIC] ...n 1,000 jobs as it simultaneously hires workers to sell new artificial intelligence products, Bloomberg News reported on Monday. Displaced work...",https://finance.yahoo.com/news/salesforce-cut-1-000-roles-002028643.html
+Salesforce,CRM,2025-08-31,0,0,0,0,0,0,,https://www.businessinsider.com/marc-benioff-says-salesforce-cut-4000-roles-because-of-agents-2025-9
+Criteo,CRTO,2023-02-21,1,0,0,1,0,1,"[SPECIFIC] ..., with a new focus on incrementality 02 The Creator Economy AI influencer discovery tools are changing how agencies cast c...",https://digiday.com/media-buying/criteo-adds-to-the-ongoing-wave-of-ad-tech-layoffs/
+Criteo,CRTO,2024-04-12,0,0,0,0,0,0,,https://www.businessinsider.com/criteo-layoffs-global-staff-job-reductions-2024-4
+CrowdStrike,CRWD,2025-05-07,0,0,0,0,0,1,,https://www.wsj.com/business/crowdstrike-to-cut-5-of-workforce-8eda42ed?st=dVSJCS&reflink=desktopwebshare_permalink
+Cisco,CSCO,2022-11-16,0,0,0,0,0,0,,https://www.bizjournals.com/sanjose/news/2022/11/16/cisco-announces-600m-restructuring-layoffs.html
+Cisco,CSCO,2023-09-17,0,0,0,0,0,0,,https://www.marketwatch.com/story/cisco-to-cut-350-jobs-in-latest-round-of-layoffs-f9084451
+Cisco,CSCO,2025-08-19,3,1,1,1,0,1,"[CAUSAL] ...ple right now,” Robbins told CNBC last week, stressing that AI was meant to boost productivity, not reduce headcount. “I just want our engineers that we have today to innovate...",https://www.sfchronicle.com/tech/article/cisco-oracle-layoffs-bay-area-20824135.php
+Cue,CUE,2022-06-27,0,0,0,0,0,0,,https://www.genomeweb.com/business-news/cue-health-lay-170-people#.YrpDa-zML9t
+Cue,CUE,2023-01-05,0,0,0,0,0,0,,https://www.360dx.com/business-news/cue-health-lay-388-people-cost-reduction-plan#.Y7iqquzMK8A
+Carvana,CVNA,2022-05-10,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2022/05/10/carvana-to-cut-2500-staff-as-it-struggles-with-overcapacity/
+Carvana,CVNA,2022-11-18,0,0,0,0,0,1,,https://www.wsj.com/articles/carvana-plans-to-lay-off-1-500-employees-cites-economic-concerns-11668793114
+Sprinklr,CXM,2023-02-15,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2023/02/15/sprinklr-layoffs-2023/
+Sprinklr,CXM,2024-05-03,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2024/05/03/sprinklr-lays-off-more-than-100-employees/
+Sprinklr,CXM,2025-02-06,3,1,1,1,0,1,"[CAUSAL] ...d C3.ai founding member Stephen Ward as new board directors amid its shifting focus toward developing AI-led experiences. In a related announcement, Sprinklr said t...",https://techcrunch.com/2025/02/06/sprinklr-cuts-500-employees-citing-underwhelming-business-performance/
+Cazoo,CZOOF,2023-01-18,0,0,0,0,0,1,,https://sifted.eu/articles/cazoo-alex-chesterman-ceo-exit/
+DoorDash,DASH,2022-11-30,0,0,0,0,0,0,,https://www.reuters.com/business/retail-consumer/doordash-cuts-1250-jobs-an-effort-rein-expenses-2022-11-30/
+Dayforce,DAY,2025-02-26,0,0,0,0,0,0,,https://www.marketwatch.com/story/dayforce-to-cut-about-5-of-workforce-in-efficiency-drive-2eabda38?mod=investing
+Dropbox,DBX,2021-01-13,0,0,0,0,0,1,,https://www.cnbc.com/2021/01/13/dropbox-to-cut-11percent-of-its-global-workforce.html
+Dropbox,DBX,2023-04-27,1,0,0,1,0,1,"[SPECIFIC] ...o longer sustainable. Second, and more consequentially, the AI era of computing has finally arrived. We’ve believed for ma...",https://blog.dropbox.com/topics/company/a-message-from-drew
+Dropbox,DBX,2024-10-30,2,0,1,1,1,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2024/10/30/dropbox-is-laying-off-20-of-its-staff/
+Dell,DELL,2023-02-06,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2023-02-06/dell-dell-lays-off-about-6-650-employees-in-latest-tech-cuts#xj4y7vzkg
+Dell,DELL,2023-08-07,0,0,0,0,0,1,,https://www.crn.com/news/channel-news/dell-confirms-sales-layoffs-as-part-of-new-partner-led-storage-strategy
+Dell,DELL,2024-03-25,1,0,0,1,0,1,[SPECIFIC] ...nd the corner. Last month it said it has high hopes for its artificial intelligence-enabled PCs and computer servers. It noted that orders for...,https://siliconangle.com/2024/03/25/dell-reduces-global-workforce-around-6000-jobs/
+Definitive Healthcare,DH,2023-01-12,0,0,0,0,0,0,,https://www.cmlviz.com/stocks/DH/news/b/2023/01/12/definitive-healthcare-to-cut-current-workforce-by-about-55-people
+Delivery Hero,DHER.DE,2021-12-22,0,0,0,0,0,1,,https://www.businessinsider.de/gruenderszene/food/nach-foodpanda-aus-delivery-hero-kuendigt-300-mitarbeitern-b/
+Delivery Hero,DHER.DE,2022-11-03,0,0,0,0,0,1,,https://mobile.twitter.com/GergelyOrosz/status/1588220445039497222
+Delivery Hero,DHER.DE,2023-12-18,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2023-12-18/delivery-hero-closes-hubs-in-taiwan-turkey-in-push-to-cut-costs
+Delivery Hero,DHER.DE,2024-07-31,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2024-07-31/delivery-hero-to-combine-european-and-asian-businesses-cut-jobs
+DHI Group,DHX,2023-05-26,0,0,0,0,0,0,,https://aimgroup.com/2023/05/26/dhi-group-to-cut-workforce-by-10/
+DraftKings,DKNG,2023-02-01,0,0,0,0,0,1,,https://www.cnbc.com/2023/02/01/draftkings-cuts-140-jobs.html
+Digimarc,DMRC,2023-02-17,0,0,0,0,0,1,,https://www.oregonlive.com/silicon-forest/2023/02/oregon-tech-company-digimarc-will-lay-off-17-of-its-workforce.html
+Digimarc,DMRC,2025-02-27,0,0,0,0,0,1,,https://www.oregonlive.com/silicon-forest/2025/02/digimarc-shares-plunge-as-oregon-company-lays-off-40-of-its-staff.html
+Ginkgo Bioworks,DNA,2024-06-20,0,0,0,0,0,1,,https://www.bostonglobe.com/2024/06/25/business/gingko-jason-kelly-mit-securities-and-exchange-commission-covid-biosecurity/
+DigitalOcean,DOCN,2023-02-15,0,0,0,0,0,1,,https://www.theregister.com/2023/02/15/digitalocean_layoffs/
+Doximity,DOCS,2023-08-08,0,0,0,0,0,0,,https://www.fiercehealthcare.com/health-tech/doximity-lays-10-workforce-stock-sinks-company-downgrades-revenue-guidance
+DocuSign,DOCU,2022-09-28,0,0,0,0,0,1,,https://www.sfgate.com/news/article/san-francisco-tech-company-docusign-layoffs-17473918.php
+DocuSign,DOCU,2024-02-06,0,0,0,0,0,1,,https://www.cnbc.com/2024/02/06/docusign-to-lay-off-6percent-of-workforce-or-about-440-jobs.html
+Domo,DOMO,2020-04-09,0,0,0,0,0,1,,https://www.ksl.com/article/46740514/domo-forced-to-lay-off-10-of-workforce-due-to-economic-impact-caused-by-covid-19
+Domo,DOMO,2023-11-30,0,0,0,0,0,0,,https://finance.yahoo.com/news/q3-2024-domo-inc-earnings-134921438.html
+Amdocs,DOX,2023-01-02,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/bj4shoeco
+Amdocs,DOX,2023-07-06,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/sjfzud4f3
+Amdocs,DOX,2025-08-12,3,1,1,1,1,1,"[CAUSAL] ...tech. Over the next few years, entire departments could be replaced or dramatically reduced, with AI agents performing the work of hundreds of employees around...",https://www.calcalistech.com/ctechnews/article/legpd5dv7
+Viant,DSP,2022-12-13,0,0,0,0,0,0,,https://www.businessinsider.com/viant-lay-off-13-percent-of-workforce-2022-12
+Electronic Arts,EA,2023-02-28,0,0,0,0,0,0,,https://kotaku.com/ea-apex-legends-bugs-layoffs-respawn-zoom-1850168472
+Electronic Arts,EA,2024-02-28,1,0,0,1,0,1,[SPECIFIC] ...ative? These 6 chip suppliers look set to gain big from the AI boom Jefferies says buy this under-the-radar software stock...,https://www.cnbc.com/2024/02/28/ea-layoffs-company-to-cut-5percent-of-workforce-or-about-670-employees.html
+Electronic Arts,EA,2025-04-29,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2025-04-29/electronic-arts-lays-off-hundreds-cancels-titanfall-game
+Eventbrite,EB,2020-04-08,0,0,0,0,0,1,,https://layoffs.fyi/2020/04/13/eventbrite-laid-off-500-employees/
+Eventbrite,EB,2023-02-28,0,0,0,0,0,0,,https://www.reuters.com/markets/us/ticketing-service-provider-eventbrite-lay-off-8-workforce-2023-02-28/
+Eventbrite,EB,2024-08-07,0,0,0,0,0,0,,https://www.marketwatch.com/story/eventbrite-to-about-100-jobs-reducing-headcount-by-11-a5daf94b
+eBay,EBAY,2023-02-07,0,0,0,0,0,0,,https://www.reuters.com/technology/ebay-lay-off-500-employees-2023-02-07/
+eBay,EBAY,2023-12-17,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/h1d3zchia
+eBay,EBAY,2025-02-26,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/bjgsl8n9yl
+Editas Medicine,EDIT,2023-01-09,0,0,0,0,0,1,,https://endpts.com/editas-edits-pipeline-lays-off-20-and-says-bye-to-cso-to-kick-off-jpm23/
+8x8,EGHT,2022-10-04,0,0,0,0,0,0,,https://www.channelfutures.com/business-models/8x8-lays-off-workers-cites-operational-efficiency
+Enphase Energy,ENPH,2023-12-18,0,0,0,0,0,1,,https://enphase.com/blog/employees/dec-2023-message-from-our-ceo
+Enphase Energy,ENPH,2024-11-11,1,0,0,1,1,1,[SPECIFIC] ...environment.” He added that Enphase plans to integrate more automation and artificial intelligence tools across the company and re...,https://www.sfgate.com/tech/article/enphase-energy-layoffs-workers-solar-19907535.php
+Enovix,ENVX,2023-10-05,0,0,0,0,0,0,,https://www.theinformation.com/articles/the-electric-enovix-lays-off-185-engineers-and-shifts-most-of-its-operations-to-malaysia
+Enovix,ENVX,2024-05-06,0,0,0,0,0,0,,https://www.theinformation.com/articles/battery-developer-enovix-lays-off-roughly-one-third-of-staff
+Ericsson,ERIC,2023-02-24,0,0,0,0,0,0,,https://www.reuters.com/business/media-telecom/ericsson-lay-off-8500-employees-memo-2023-02-24/
+Elastic,ESTC,2022-11-30,0,0,0,0,0,1,,https://www.elastic.co/blog/ceo-ash-kulkarni-email-to-elastic-employees
+Etsy,ETSY,2023-12-13,0,0,0,0,0,1,,https://www.cnbc.com/2023/12/13/etsy-laying-off-11percent-of-staff-citing-competitive-environment.html
+Everquote,EVER,2023-07-11,0,0,0,0,0,1,,https://www.insurancejournal.com/news/national/2023/07/11/729444.htm
+EVgo,EVGO,2023-02-23,0,0,0,0,0,0,,https://www.businesswire.com/news/home/20230223005797/en/EVgo-Inc.-Aligns-Organization-Around-Growing-Its-Charging-Network
+Expedia,EXPE,2023-03-21,0,0,0,0,0,0,,https://www.geekwire.com/2023/expedia-group-lays-off-workers-as-part-of-strategic-actions/
+Expedia,EXPE,2025-02-26,0,0,0,0,0,0,,https://www.geekwire.com/2025/expedia-confirms-layoffs-at-seattle-travel-giant/
+Funding Circle,FCHL.XC,2020-07-08,0,0,0,0,0,1,,https://www.altfi.com/article/6790_funding-circle-joins-bounce-back-loan-scheme-as-it-cuts-us-headcount-by-85
+Funding Circle,FCHL.XC,2024-05-29,0,0,0,0,0,1,,https://markets.ft.com/data/announce/detail?dockey=600-202405290435DGAP____UKPR_____UK_Regulatory_1913105-1
+F5,FFIV,2022-10-21,0,0,0,0,0,0,,https://www.geekwire.com/2022/f5-cutting-fewer-than-100-jobs-due-to-current-macroeconomic-environment/
+F5,FFIV,2023-11-03,0,0,0,0,0,0,,https://www.geekwire.com/2023/seattle-cloud-giant-f5-lays-off-120-employees/
+F5,FFIV,2024-09-24,0,0,0,0,0,0,,https://www.geekwire.com/2024/f5-layoffs-impact-in-house-content-creation-employees/
+F5,FFIV,2025-08-13,0,0,0,0,0,0,,https://www.geekwire.com/2024/f5-confirms-new-round-of-job-cuts-continuing-annual-pattern-of-workforce-reductions/
+Five9,FIVN,2024-08-20,2,0,1,1,0,1,[STRATEGIC] ...-a-service (CCaaS) sector “primed to be a beneficiary of AI/GenAI related investments.” “The announcement is in line with Fiv...,https://www.crn.com/news/cloud/2024/five9-plans-7-percent-workforce-layoffs
+Five9,FIVN,2025-04-03,0,0,0,0,0,0,,https://www.marketwatch.com/story/five9-to-cut-4-of-workforce-cd4da325
+Goodfood,FOOD.TO,2022-04-07,0,0,0,0,0,1,,https://thelogic.co/news/exclusive/meal-kit-pioneer-goodfood-goes-through-another-round-of-staff-cuts-amid-struggles-with-supply-chain-inflation/
+VerticalScope,FORA.TO,2023-02-01,0,0,0,0,0,1,,https://www.theglobeandmail.com/business/article-verticalscope-cuts-22-per-cent-of-staff-in-latest-canadian-tech/
+Freshworks,FRSH,2022-12-15,0,0,0,0,0,0,,https://inc42.com/buzz/facing-macroeconomic-headwinds-freshworks-trims-nearly-2-workforce/
+Freshworks,FRSH,2024-11-07,0,0,0,0,0,1,,https://entrackr.com/news/freshworks-announces-13-layoffs-400-mn-stock-buyback-and-q3-results-7561767
+F-Secure,FSECURE.HE,2023-10-25,0,0,0,0,0,1,,https://yle.fi/a/74-20056883
+Fastly,FSLY,2024-08-08,0,0,0,0,0,0,,https://seekingalpha.com/news/4137719-fastly-to-reduce-global-headcount-by-11
+Fortinet,FTNT,2023-08-25,0,0,0,0,0,1,,https://www.crn.com/news/security/fortinet-makes-cuts-to-sales-channel-business-development-groups
+FuboTV,FUBO,2022-08-02,0,0,0,0,0,0,,https://www.businessinsider.com/fubotv-conducts-layoffs-in-us-2022-8
+Fiverr,FVRR,2022-07-26,0,0,0,0,0,1,,https://en.globes.co.il/en/article-fiverr-lays-off-60-including-30-employees-in-israel-1001419413
+Fiverr,FVRR,2025-09-15,1,0,0,1,0,1,"[SPECIFIC] ...bout 250 jobs, part of an effort to become a leaner, faster AI-first company with fewer management layers. The cuts repres...",https://www.wsj.com/business/fiverr-to-cut-about-250-jobs-in-refocusing-effort-reiterates-guidance-8f15ee4b
+GoDaddy,GDDY,2020-06-24,0,0,0,0,0,1,,https://domainnamewire.com/2020/06/24/godaddy-plans-layoffs-and-is-closing-austin-offices/
+GoDaddy,GDDY,2023-02-08,0,0,0,0,0,1,,https://techstartups.com/2023/02/08/godaddy-to-lay-off-8-of-its-workforce-or-about-530-employees-amid-global-economic-slowdown/
+GoodRx,GDRX,2022-08-31,0,0,0,0,0,0,,https://seekingalpha.com/news/3879125-goodrx-laying-off-140-employees-16-of-workforce
+Guardant Health,GH,2023-01-25,0,0,0,0,0,0,,https://www.genomeweb.com/business-news/guardant-health-lays-7-percent-workforce#.Y9HcqOzMK8A
+GoHealth,GOCO,2022-08-09,0,0,0,0,0,1,,https://www.chicagobusiness.com/technology/gohealth-lays-800-workers-online-health-insurance-seller-cuts-back
+Google,GOOG,2023-01-20,1,0,0,1,0,1,"[SPECIFIC] ...refocus on products and technology core to its future, like artificial intelligence . “We hired for a different economic reality than the one w...",https://www.nytimes.com/2023/01/20/business/google-alphabet-layoffs.html
+Google,GOOG,2023-09-13,0,0,0,0,0,1,,https://www.eastbaytimes.com/2023/10/31/google-tech-job-cut-layoff-bay-area-economy-office-lease-alphabet/
+Google,GOOG,2025-02-27,2,0,1,1,0,1,[STRATEGIC] ...o drive more cost-cutting as Google expands its spending on AI infrastructure in 2025. In this article GOOGL Follow your favorite stocks...,https://www.cnbc.com/2025/02/27/google-makes-cuts-to-hr-and-cloud-units.html
+GoPro,GPRO,2020-04-15,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2020/04/16/gopro-lays-off-200-employees-representing-20-of-the-company/
+GoPro,GPRO,2024-03-26,0,0,0,0,0,1,,https://www.wsj.com/business/earnings/gopro-to-cut-total-workforce-by-4-reduce-office-space-208f369a?
+Grab,GRAB,2023-06-20,0,0,0,0,0,0,,https://www.reuters.com/technology/singapores-grab-informs-staff-1000-layoffs-2023-06-20/
+Groupon,GRPN,2020-04-13,0,0,0,0,0,1,,https://layoffs.fyi/2020/04/17/groupon-laid-off-or-furloughed-2800-employees/
+Groupon,GRPN,2022-08-08,1,0,0,1,0,1,"[SPECIFIC] ...dership team has been challenging our current processes and automating how we work, both with an eye toward taking costs out of th...",https://techcrunch.com/2022/08/08/groupon-cuts-over-500-staff-as-the-downturn-takes-its-tolll/
+GitLab,GTLB,2023-02-09,0,0,0,0,0,1,,https://www.cnbc.com/2023/02/09/gitlab-layoffs-company-to-cut-7percent-of-staff-or-about-130-employees.html
+ZoomInfo,GTM,2023-06-02,0,0,0,0,0,0,,https://www.bizjournals.com/portland/inno/stories/news/2023/06/02/zoominfo-layoffs.html
+ZoomInfo,GTM,2025-06-09,0,0,0,0,0,1,,https://www.oregonlive.com/silicon-forest/2025/06/zoominfo-one-of-portland-areas-most-valuable-companies-will-cut-200-jobs.html
+Guidewire,GWRE,2022-08-11,0,0,0,0,0,0,,Internal memo
+Hims & Hers,HIMS,2025-05-30,0,0,0,0,0,0,,https://www.reuters.com/business/healthcare-pharmaceuticals/hims-cut-4-workforce-amid-ban-weight-loss-drug-copies-2025-05-30/
+Robinhood,HOOD,2023-06-26,0,0,0,0,0,1,,https://www.wsj.com/articles/robinhood-lays-off-about-7-of-its-full-time-employees-2111cb48
+Hewlett Packard Enterprise,HPE,2025-03-06,1,0,0,1,0,1,[SPECIFIC] ...analysts. The company had higher than normal inventory for artificial intelligence servers because of a shift to next-generation Blackwell gra...,https://www.cnbc.com/2025/03/06/hewlett-packard-enterprise-hpe-q1-earnings-report-2025.html
+Hewlett Packard Enterprise,HPE,2025-11-05,0,0,0,0,0,1,,https://www.sfchronicle.com/tech/article/layoffs-hpe-hitachi-vantara-21140900.php
+HP,HPQ,2023-02-19,0,0,0,0,0,0,,https://www.themarker.com/technation/2023-02-19/ty-article/.premium/00000186-692c-d22b-ad9e-7f6e08aa0000
+HP,HPQ,2025-02-28,1,0,0,1,0,1,"[SPECIFIC] ...saw increased demand for its new technologies, particularly AI-powered PCs, with Chief Executive Officer Enrique Lores not...",https://www.sfchronicle.com/tech/article/hp-job-cuts-tariff-concerns-20193141.php
+HP,HPQ,2025-11-25,1,0,0,1,1,1,[SPECIFIC] ...oonan Share Resize Listen (1 min) HP CEO Enrique Lores said AI could be used to help automate customer support. ann wang/R...,https://www.wsj.com/tech/hp-to-cut-up-to-10-of-workforce-as-part-of-ai-push-a2c198da?mod=hp_lead_pos4
+HubSpot,HUBS,2023-01-31,0,0,0,0,0,0,,https://www.marketwatch.com/story/hubspot-to-lay-off-about-500-employees-consolidate-workspace-leases-01675175630
+HubSpot,HUBS,2024-01-24,0,0,0,0,0,1,,https://www.linkedin.com/posts/jcolman_hubspot-content-designers-open-to-work-activity-7156050968306991105-917M/
+IAC,IAC,2024-01-10,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2024-01-10/iac-divests-mosaic-apps-to-bending-spoons-in-deal-valued-at-100-million-plus?embedded-checkout=true
+IBM,IBM,2023-01-25,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2023-01-25/ibm-to-cut-about-3-900-workers-still-hiring-in-higher-growth-areas
+IBM,IBM,2024-03-12,3,1,1,1,1,1,"[CAUSAL] ...ur employees on AI,"" after it announced a plan in August to replace nearly 8,000 jobs with AI. IBM said on its earnings call in January of last year that...",https://www.cnbc.com/2024/03/12/ibm-tells-employees-of-job-cuts-in-marketing-and-communications.html
+Infineon,IFX.DE,2024-08-05,0,0,0,0,0,1,,https://finance.yahoo.com/news/infineon-cut-1-400-jobs-125510481.html
+Illumina,ILMN,2022-11-14,0,0,0,0,0,0,,https://www.genomeweb.com/business-news/illumina-lays-approximately-500-employees-response-economic-climate#.Y4FAPOzMJjM
+Illumina,ILMN,2023-06-21,0,0,0,0,0,0,,https://www.sec.gov/Archives/edgar/data/1110803/000111080323000048/ilmn-20230621.htm
+Intel,INTC,2022-12-06,1,0,0,1,0,1,"[SPECIFIC] ...laid off – those positions included a senior manager in the artificial intelligence business unit, an executive assistant, and a manager-level...",https://www.crn.com/news/computing/intel-begins-layoffs-in-california-voluntary-unpaid-leave-program
+Intel,INTC,2023-08-17,2,0,1,1,0,1,[STRATEGIC] ...wer. And getting billions of dollars from the Chips act. If ChatGPT could develop processors I bet Intel and other companies wo...,https://www.tomshardware.com/news/intel-to-make-further-workforce-cuts-in-us-report
+Intel,INTC,2025-02-04,0,0,0,0,0,1,,https://folsomtimes.com/intel-announces-another-58-layoffs-for-folsom-campus/
+Intuit,INTU,2020-06-22,0,0,0,0,0,0,,https://intuitblog.com/news-social/a-message-from-intuit-ceo-sasan-goodarzi-to-intuit-employees/
+Intuit,INTU,2024-07-10,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2024-07-10/intuit-to-cull-10-of-employees-in-latest-round-of-tech-layoffs
+Innoviz,INVZ,2024-01-31,1,0,0,1,0,1,"[SPECIFIC] ...m Risk Maneuver (MRM) software solution and the InnovizCore AI compute module, along with other previously unannounced ini...",https://www.calcalistech.com/ctechnews/article/hjs6xbucp
+Innoviz,INVZ,2025-02-04,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/hydnmjjkjx
+Century Therapeutics,IPSC,2023-01-09,0,0,0,0,0,0,,https://www.bizjournals.com/philadelphia/news/2023/01/09/century-therapeutics-jobs-cell-therapy-cancer.amp.html
+iSpecimen,ISPC,2023-09-06,0,0,0,0,0,0,,https://seekingalpha.com/news/4009713-ispecimen-to-lay-off-20-of-its-employees-as-it-seeks-profitability
+Jumia,JMIA,2022-11-21,0,0,0,0,0,1,,https://techcrunch.com/2023/02/16/jumia-laid-off-20-of-staff-in-q4-2022-amid-work-to-reduce-losses-by-half-this-year/
+Just Eat Takeaway,JTKWY,2022-07-20,0,0,0,0,0,0,,https://www.reuters.com/business/retail-consumer/just-eat-takeaway-cut-staff-france-spokesperson-says-2022-07-20/
+Kyndryl,KD,2023-03-30,0,0,0,0,0,0,,https://www.channelfutures.com/business-models/kyndryl-confirms-layoffs-as-no-1-cost-is-always-flesh-and-bone
+Kaltura,KLTR,2022-08-09,0,0,0,0,0,1,,https://en.globes.co.il/en/article-kaltura-laying-off-10-of-workforce-1001420938
+Kaltura,KLTR,2025-08-07,1,0,0,1,0,1,"[SPECIFIC] ...y streamlines operations despite improved revenue and first AI sales. Sophie Shulman 14:12, 07.08.25 Kaltura, the corporat...",https://www.calcalistech.com/ctechnews/article/6a8duhohw
+Kinaxis,KXS.TO,2024-05-08,0,0,0,0,0,0,,https://investors.kinaxis.com/news-releases/news-release-details/2024/Kinaxis-Inc.-Reports-First-Quarter-2024-Results/default.aspx
+CS Disco,LAW,2023-01-19,0,0,0,0,0,1,,https://d18rn0p25nwr6d.cloudfront.net/CIK-0001625641/f8a9ad04-6c29-4631-b07d-b08d849fbcfa.pdf
+Luminar,LAZRQ,2024-05-03,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2024/05/03/luminar-layoffs-reduction-restructuring-lidar/
+Luminar,LAZRQ,2025-05-20,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2025/05/20/luminar-kicks-off-another-round-of-layoffs-amid-ceos-sudden-resignation/
+Lemonade,LMND,2022-04-20,0,0,0,0,0,0,,https://coverager.com/layoffs-at-lemonade/
+Lemonade,LMND,2023-05-16,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/s18wcz11r2
+Logitech,LOGI,2023-03-22,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2023-03-22/logitech-cuts-300-jobs-on-post-covid-slump-in-computer-gadgets?srnd=technology-vp#xj4y7vzkg
+LivePerson,LPSN,2020-11-01,1,0,0,1,0,1,[SPECIFIC] ...Customer AI-powered messaging company LivePerson Inc. (Nasdaq: LPSN );...,https://en.globes.co.il/en/article-liveperson-to-lay-off-30-in-israel-1001347824#
+LivePerson,LPSN,2022-09-15,0,0,0,0,0,0,,Internal memo
+Lam Research,LRCX,2023-01-25,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2023-01-25/lam-research-to-cut-7-of-workforce-after-forecast-disappoints?leadSource=uverify%20wall
+Lightspeed Commerce,LSPD.TO,2023-01-17,0,0,0,0,0,1,,https://www.prnewswire.com/news-releases/lightspeed-commerce-streamlines-operations-with-a-continued-focus-on-profitable-growth-301723292.html
+Lightspeed Commerce,LSPD.TO,2024-04-03,0,0,0,0,0,0,,https://www.bnnbloomberg.ca/lightspeed-commerce-cutting-280-jobs-as-it-focuses-on-profitable-growth-1.2054620
+Lightspeed Commerce,LSPD.TO,2024-12-02,0,0,0,0,0,0,,https://www.marketwatch.com/story/lightspeed-commerce-to-cut-200-jobs-17842379
+Latch,LTCH,2022-05-10,1,0,0,1,0,1,"[SPECIFIC] ...weeks after COVID-19 arrived in the U.S., the Boston-based machine learning company conducted layoffs due to “ uncertainty .” Fast-forw...",https://techcrunch.com/2022/05/13/startup-tech-layoff-and-hiring-freeze-in-may/
+Latch,LTCH,2023-07-10,0,0,0,0,0,1,,https://www.marketscreener.com/quote/stock/LATCH-INC-117136898/news/Latch-Drives-Additional-Discipline-and-Efficiency-Setting-the-Stage-For-Accelerated-Future-Growth-44303832/
+Lucid Diagnostics,LUCD,2023-01-18,0,0,0,0,0,0,,https://www.genomeweb.com/business-news/lucid-diagnostics-lays-20-percent-workforce-business-reprioritization#.Y9HdouzMK8A
+Lyft,LYFT,2020-04-29,0,0,0,0,0,1,,https://layoffs.fyi/2020/04/30/lyft-laid-off-982-employees/
+Lyft,LYFT,2022-07-20,0,0,0,0,0,1,,https://www.wsj.com/articles/lyft-lays-off-about-60-employees-folds-its-car-rentals-for-riders-11658340622
+Lyft,LYFT,2024-09-04,0,0,0,0,0,1,,https://www.cnbc.com/2024/09/04/lyft-layoffs.html
+LegalZoom,LZ,2023-10-19,0,0,0,0,0,0,,https://www.bizjournals.com/austin/news/2023/10/19/legal-zoom-layoffs-williamson-county-warn-notice.html
+LegalZoom,LZ,2024-08-07,0,0,0,0,0,1,,https://finance.yahoo.com/news/legalzoom-reports-second-quarter-2024-200100127.html
+Mobileye,MBLY,2024-09-09,1,0,0,1,0,1,"[SPECIFIC] ...sors have dropped significantly. Meanwhile, advancements in AI raise questions about their necessity. About five years ago...",https://www.calcalistech.com/ctechnews/article/bj11rpdhh0
+Mobileye,MBLY,2025-12-08,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/hjznnzvzzl
+Medtronic,MDT,2023-04-12,0,0,0,0,0,0,,https://www.massdevice.com/medtronic-layoffs-california/
+Medtronic,MDT,2024-06-13,0,0,0,0,0,0,,https://www.massdevice.com/medtronic-layoffs-global-confirmed/
+Medtronic,MDT,2025-10-27,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/s1g3z02cgg
+Meta,META,2022-11-09,1,0,0,1,0,1,"[SPECIFIC] ...o a smaller number of high priority growth areas — like our AI discovery engine, our ads and business platforms, and our l...",https://www.cnbc.com/2022/11/09/meta-to-lay-off-more-than-11000-thousand-employees.html
+Meta,META,2023-10-04,0,0,0,0,0,0,,https://www.reuters.com/technology/meta-lay-off-employees-metaverse-silicon-unit-wednesday-2023-10-03/
+Meta,META,2024-10-16,2,0,1,1,0,1,"[STRATEGIC] ...ate jobs Robert Hart Oct 28, 2025 Most Popular Most Popular Anthropic essentially bans OpenClaw from Claude by making subscribers...",https://www.theverge.com/2024/10/16/24272195/meta-layoffs-whatsapp-instagram-reality-labs
+Meta,META,2025-10-22,3,1,1,1,1,1,"[CAUSAL] ...dels in April received a lukewarm response from developers. Following Meta's massive investment in Scale AI, Zuckerberg unveiled a new unit called Meta Superintelligen...",https://www.cnbc.com/2025/10/22/meta-layoffs-ai.html
+Magnite,MGNI,2023-01-19,0,0,0,0,0,0,,https://seekingalpha.com/news/3926164-magnite-slashes-jobs-by-6-globally-sec-filing
+MakeMyTrip,MMYT,2020-06-01,0,0,0,0,0,1,,https://www.livemint.com/companies/news/covid-19-lockdown-makemytrip-to-lay-off-10-of-its-workforce-as-revenues-hit-11591008074698.html
+Megaport,MP1.AX,2023-01-05,0,0,0,0,0,1,,https://www.afr.com/technology/megaport-lays-off-35-staff-losses-narrow-20220809-p5b8bz
+Marqeta,MQ,2023-05-09,0,0,0,0,0,1,,https://www.fool.com/earnings/call-transcripts/2023/05/09/marqeta-mq-q1-2023-earnings-call-transcript/
+Marvell,MRVL,2023-03-21,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2023-03-21/marvell-to-cut-4-of-workforce-in-response-to-chip-slowdown?leadSource=uverify%20wall
+Microsoft,MSFT,2022-07-12,0,0,0,0,0,1,,https://www.cnbc.com/2022/07/12/microsoft-cuts-small-percentage-of-employees-as-new-fiscal-year-begins.html
+Microsoft,MSFT,2024-01-25,0,0,0,0,0,1,,https://www.theverge.com/2024/1/25/24049050/microsoft-activision-blizzard-layoffs
+Match Group,MTCH,2023-02-01,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2023-02-01/match-will-reduce-global-workforce-by-8-as-sales-miss-estimates?leadSource=uverify%20wall
+Match Group,MTCH,2024-07-31,2,0,1,1,0,1,"[STRATEGIC] ...inds Match shifting its focus to other offerings, including generative AI. The decision to end livestreaming will directly impact dat...",https://techcrunch.com/2024/07/31/match-group-ends-live-streaming-service-layoffs/
+Match Group,MTCH,2025-05-08,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2025-05-08/match-group-cuts-13-staff-in-latest-move-to-reverse-declines
+Micron,MU,2023-01-01,0,0,0,0,0,0,,https://www.forbes.com/sites/qai/2023/01/01/tech-layoffs-micron-to-lay-off-10-of-staff-due-to-low-demand-for-chips/?sh=5d303fd41472
+Micron,MU,2025-08-12,0,0,0,0,0,1,,https://www.scmp.com/tech/big-tech/article/3321613/micron-starts-lay-offs-china-us-memory-chipmaker-retreats-mobile-nand-market
+NCC Group,NCC.L,2023-02-02,0,0,0,0,0,1,,https://www.businesstimes.com.sg/companies-markets/british-cybersecurity-firm-ncc-group-cut-workforce-7
+NCC Group,NCC.L,2023-08-10,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2023/08/10/ncc-group-layoffs/
+nCino,NCNO,2023-01-18,0,0,0,0,0,1,,https://portcitydaily.com/local-news/2023/01/18/ncino-lays-off-7-of-workforce-cites-challenges-in-global-economy/
+nCino,NCNO,2025-05-27,1,0,0,1,0,1,"[SPECIFIC] ...like ours. Change is also necessary to WIN in the vertical AI opportunity, and, as we look ahead, I ask you to keep these...",https://www.housingwire.com/articles/ncino-workforce-layoffs-artificial-intelligence-technology/
+Cloudflare,NET,2024-01-11,0,0,0,0,0,1,,https://twitter.com/eastdakota/status/1745697840180191501
+Netflix,NFLX,2022-04-28,0,0,0,0,0,1,,https://www.thewrap.com/netflix-layoffs-tudum-site-marketing-department/
+NIO,NIO,2023-11-03,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2023-11-03/chinese-ev-maker-nio-to-cut-10-of-staff-positions-and-may-spin-off-businesses#xj4y7vzkg
+Presto,NPK,2023-11-20,1,0,0,1,0,0,[URL_SIGNAL] https://investor.presto.com/news-releases/news-release-details/presto-automation-announces-fiscal-first-quarter-2024-financial,https://investor.presto.com/news-releases/news-release-details/presto-automation-announces-fiscal-first-quarter-2024-financial
+NerdWallet,NRDS,2024-07-30,0,0,0,0,0,0,,https://www.marketwatch.com/amp/story/nerdwallet-to-cut-15-of-its-workforce-aa1db7c7
+Nerdy,NRDY,2022-12-08,0,0,0,0,0,0,,https://www.bizjournals.com/stlouis/news/2022/12/08/online-tutoring-firm-nerdy-slashes.html
+NetApp,NTAP,2023-01-31,0,0,0,0,0,1,,https://www.theregister.com/2023/01/31/netapp_layoffs_8_percent/
+NetApp,NTAP,2025-04-30,1,0,0,1,0,1,[SPECIFIC] ...AI/ML NetApp trims workforce amid mixed market signals Chris M...,https://blocksandfiles.com/2025/04/30/netapp-making-layoffs/
+NetEase,NTES,2025-02-22,0,0,0,0,0,0,,https://www.techinasia.com/news/netease-cuts-jobs-projects-as-growth-remains-slow
+Nutanix,NTNX,2022-08-09,0,0,0,0,0,1,,https://www.marketscreener.com/quote/stock/NUTANIX-INC-31497437/news/NUTANIX-INC-Costs-Associated-with-Exit-or-Disposal-Activities-form-8-K-41257917/
+Natera,NTRA,2022-11-22,0,0,0,0,0,0,,https://www.bizjournals.com/sanjose/news/2022/11/22/peninsula-biotechs-cutting-dozens-of-jobs.html
+Nextdoor,NXDR,2023-11-07,0,0,0,0,0,0,,https://investors.nextdoor.com/news/news-details/2023/Nextdoor-Reports-Third-Quarter-2023-Results/
+Nextdoor,NXDR,2025-08-07,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2025-08-07/nextdoor-cuts-12-of-workforce-in-quest-for-profitability
+Nayax,NYAX,2025-07-07,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/bjzblekrel
+Ocado,OCDO.L,2023-12-31,0,0,0,0,0,1,,https://www.thetimes.com/business-money/entrepreneurs/article/ocado-reduced-staff-numbers-amid-difficult-times-for-online-grocers-xrxknd58s
+Okta,OKTA,2022-08-26,3,1,1,1,0,1,[CAUSAL] ...ca Josh Bersin: ‘We’re not going to lose the HR department’ because of agentic AI Interview | Strategy and Leadership Western Digital: Why HR...,https://www.unleash.ai/economy/okta-lays-off-us-sourcing-team/
+Okta,OKTA,2024-02-01,0,0,0,0,0,1,,https://www.cnbc.com/2024/02/01/okta-to-lay-off-7percent-of-staff-about-400-employees.html
+Okta,OKTA,2025-02-04,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2025/02/04/okta-lays-off-180-employees-nearly-one-year-after-last-workforce-reduction/
+Offerpad,OPAD,2022-11-11,0,0,0,0,0,0,,https://www.bizjournals.com/phoenix/news/2022/11/11/offerpad-zillow-opendoor-redfin-arizona-layoffs.html
+Opendoor,OPEN,2022-11-02,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2022-11-02/opendoor-lays-off-18-of-workers-in-wave-of-housing-cutbacks
+Opendoor,OPEN,2024-11-07,0,0,0,0,0,0,,https://investor.opendoor.com/static-files/b720864a-b9b8-4286-a2f0-d35abb057f17
+Oportun,OPRT,2023-02-09,0,0,0,0,0,0,,https://seekingalpha.com/news/3934558-oportun-financial-to-lay-off-10-of-headcount-reports-q4-prelim-results
+Oportun,OPRT,2023-11-07,1,0,0,1,0,1,"[SPECIFIC] ...the ""most proven and profitable parts of the business"": an automated savings app that charges $5 a month, and its main product o...",https://finance.yahoo.com/news/oportun-lay-off-18-corporate-021807823.html
+Oracle,ORCL,2022-08-01,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2022-08-01/oracle-cuts-workers-in-us-customer-analytics-division?sref=Oeyjq8by#xj4y7vzkg
+Oracle,ORCL,2025-08-13,2,0,1,1,0,1,"[STRATEGIC] ...the company announced that it was ushering in a “new era of AI driven health records.” The following day, officials announced tha...",https://www.pleasantonweekly.com/business/2025/08/19/dozens-of-pleasanton-workers-hit-by-wave-of-oracle-layoffs/
+Oatly,OTLY,2022-11-15,1,0,0,1,0,1,[SPECIFIC] ...N Video Ad Feedback CNN writer explains how Microsoft's new AI model works 02:20 Now playing • Source: CNN See more videos...,https://www.cnn.com/2022/11/15/business-food/oatly-q3-2022-results/index.html
+Otovo,OTOVO.OL,2024-02-08,0,0,0,0,0,1,,https://www.mynewsdesk.com/otovo/pressreleases/otovo-q4-2023-cost-cuts-and-efficiency-program-executed-ready-for-2024-3302572
+Ouster,OUST,2022-09-20,0,0,0,0,0,0,,https://www.businesswire.com/news/home/20220920005531/en/Ouster-Streamlines-Cost-Structure-to-Bolster-Path-to-Profitability
+Owlet,OWLT,2022-07-22,0,0,0,0,0,1,,https://www.linkedin.com/feed/update/urn:li:activity:6957832944329580544/
+PagSeguro,PAGS,2023-01-25,0,0,0,0,0,1,,https://news.fintechnexus.com/pagseguro-and-will-bank-part-of-layoff-wave-in-latam/
+UiPath,PATH,2022-06-27,1,0,0,1,1,1,"[SPECIFIC] ...a new SEC filing . The company, a provider of software for automating office tasks, said that it had 4,200 employees as of April...",https://www.cnbc.com/2022/06/27/uipath-to-cut-5percent-of-its-workforce-as-part-of-restructuring-plan.html
+UIPath,PATH,2024-07-09,1,0,0,1,1,1,"[SPECIFIC] ...Images | Lightrocket | Getty Images UiPath , a developer of automation software, is cutting 10% of its workforce, or about 420 job...",https://www.cnbc.com/2024/07/09/uipath-layoffs-company-to-cut-10percent-of-workforce.html
+Paycom,PAYC,2025-10-01,0,0,0,0,0,0,,https://www.oklahoman.com/story/business/information-technology/2025/10/01/paycom-layoffs-2025-workers-replaced-with-ai/86448337007/
+Payoneer,PAYO,2023-06-26,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/sjctoolon
+Payoneer,PAYO,2025-12-08,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/s1fu4c4zzg
+Procore,PCOR,2024-01-30,0,0,0,0,0,0,,Internal memo
+PagerDuty,PD,2023-01-24,0,0,0,0,0,0,,https://www.marketwatch.com/story/pagerduty-to-lay-off-7-of-staff-revenue-officer-to-exit-271674568511
+Pegasystems,PEGA,2023-01-03,0,0,0,0,0,0,,https://www.bizjournals.com/boston/news/2023/01/03/pegasystems-to-cut-4-of-its-workforce.html
+Pegasystems,PEGA,2023-08-31,0,0,0,0,0,0,,https://www.bizjournals.com/boston/news/2023/08/31/pegasystems-layoffs-second-round.html
+Perion,PERI,2022-08-08,1,0,0,1,0,1,"[SPECIFIC] ...en for business focus, operational performance, integrating automation tools and maximizing synergy in the company's growing opera...",https://en.globes.co.il/en/article-perion-network-lays-off-20-transfers-us-activities-to-israel-1001420801
+Perion,PERI,2024-06-25,1,0,0,1,0,1,"[SPECIFIC] ...en for business focus, operational performance, integrating automation tools and maximizing synergy in the company's growing opera...",https://en.globes.co.il/en/article-perion-network-lays-off-20-transfers-us-activities-to-israel-1001420801
+Pagaya,PGY,2023-01-18,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/rjdsyoboo
+Pagaya,PGY,2024-06-05,1,0,0,1,0,1,"[SPECIFIC] ...Pagaya reassure international partners during wartime? “If AI models were adopted by all lenders nationwide in the US, we...",https://www.calcalistech.com/ctechnews/article/h19floaec
+Philips,PHG,2022-10-24,0,0,0,0,0,0,,https://www.reuters.com/business/philips-cut-4000-jobs-after-medical-equipment-recall-2022-10-24/
+Phunware,PHUN,2023-07-20,0,0,0,0,0,0,,https://seekingalpha.com/news/3989259-software-developer-phunware-to-lay-off-one-third-of-its-workforce
+Impinj,PI,2024-02-13,0,0,0,0,0,0,,https://www.bizjournals.com/seattle/news/2024/02/12/impinj-layoffs-seattle-internet-of-things.html
+Pinterest,PINS,2022-11-30,0,0,0,0,0,0,,https://www.theinformation.com/briefings/pinterest-cuts-recruiting-team-slows-hiring
+Planet,PL,2023-08-01,0,0,0,0,0,1,,https://www.cnbc.com/2023/08/01/planet-pl-lays-off-about-10percent-company-restructures.html
+Planet,PL,2024-06-26,0,0,0,0,0,1,,https://spacenews.com/planet-lays-off-17-of-workforce/
+Playtika,PLTK,2022-05-31,0,0,0,0,0,1,,https://en.globes.co.il/en/article-israeli-mobile-games-co-playtika-to-lay-off-250-1001413811
+Playtika,PLTK,2022-12-09,0,0,0,0,0,1,,https://en.globes.co.il/en/article-playtika-to-lay-off-600-1001432312
+Playtika,PLTK,2024-01-11,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/skb6elt006
+Playtika,PLTK,2025-06-05,1,0,0,1,1,1,"[SPECIFIC] ...the product—is what keeps users coming back"" ""People worry AI will replace them, but those who master it will thrive"" Des...",https://www.calcalistech.com/ctechnews/article/hjhutnrggg
+Palantir,PLTR,2023-02-27,0,0,0,0,0,1,,https://www.cnbc.com/2023/02/27/palantir-layoffs-75-employees-2percent-of-workforce.html
+Palantir,PLTR,2025-03-27,2,0,1,1,0,1,[STRATEGIC] ...hitecture that could expand margins and unlock new value as AI adoption accelerates. This article first appeared on GuruFocus . Ter...,https://finance.yahoo.com/news/palantir-just-cut-over-60-192816370.html
+Personalis,PSNL,2023-01-19,0,0,0,0,0,0,,https://www.genomeweb.com/business-news/personalis-lay-30-percent-workforce#.Y8nuFezMK8A
+Pure Storage,PSTG,2024-02-08,2,0,1,1,0,1,"[STRATEGIC] ...s making inroads at Meta, a big FlashBlade customer, in the large language model training arena, using all-flash storage servers orchestrate...",https://blocksandfiles.com/2024/02/08/pure-storage-lays-off-staff-again/
+Peloton,PTON,2022-02-08,0,0,0,0,0,1,,https://techcrunch.com/2022/02/08/peloton-ceo-steps-down-as-the-company-cuts-2800-jobs/
+Peloton,PTON,2022-08-12,0,0,0,0,0,1,,https://www.cnbc.com/2022/08/12/peloton-shares-jump-as-company-announces-price-hikes-for-some-products.html
+Peloton,PTON,2023-07-13,0,0,0,0,0,1,,https://dol.ny.gov/system/files/documents/2023/07/warn-peloton-interactive-nyc-2023-0006-7-14-2023.pdf
+Peloton,PTON,2024-05-02,0,0,0,0,0,1,,https://www.cnbc.com/2024/05/02/peloton-ceo-barry-mccarthy-steps-down-15percent-of-staff-laid-off.html
+Peloton,PTON,2025-08-07,0,0,0,0,0,0,,https://www.reuters.com/technology/peloton-cut-more-jobs-forecasts-strong-2026-revenue-shares-rise-2025-08-07/
+PubMatic,PUBM,2024-10-07,0,0,0,0,0,0,,https://www.businessinsider.com/adtech-company-pubmatic-layoffs-staff-reductions-2024-10
+PayPal,PYPL,2022-05-23,0,0,0,0,0,0,,https://www.bizjournals.com/sanjose/news/2022/05/23/paypal-lays-off-83-workers-from-san-jose-hq.html
+PayPal,PYPL,2023-01-31,0,0,0,0,0,1,,https://www.cnbc.com/2023/01/31/paypal-to-lay-off-2000-employees-in-coming-weeks-about-7percent-of-workforce.html
+PayPal,PYPL,2024-01-30,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2024-01-30/paypal-to-cut-around-2-500-jobs-as-rivals-snag-market-share
+Qualcomm,QCOM,2022-12-22,0,0,0,0,0,1,,https://www.sandiegouniontribune.com/business/story/2022-12-22/qualcomm-trims-local-workforce-by-153-jobs-as-smartphone-demand-remains-sluggish
+Quantum SI,QSI,2023-01-30,0,0,0,0,0,0,,https://www.genomeweb.com/proteomics-protein-research/quantum-si-laying-12-percent-workforce#.Y9wOl-zMK8A
+Quanterix,QTRX,2022-08-09,0,0,0,0,0,0,,https://www.genomeweb.com/business-news/quanterix-slashing-workforce-25-percent-it-refocuses-commercial-efforts#.Y3J8V-zMK8B
+LiveRamp,RAMP,2022-11-03,0,0,0,0,0,1,,https://www.marketscreener.com/quote/stock/LIVERAMP-HOLDINGS-INC-54039111/news/LIVERAMP-HOLDINGS-INC-Costs-Associated-with-Exit-or-Disposal-Activities-form-8-K-42212180/
+LiveRamp,RAMP,2025-03-05,0,0,0,0,0,1,,https://www.benzinga.com/news/guidance/25/03/44189581/saas-company-liveramp-lays-off-5-of-full-time-workforce-amid-strategic-restructuring
+Roblox,RBLX,2023-09-22,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2023/09/21/roblox-cuts-30-on-talent-acquisition-team-as-hiring-slows/
+Vicarious Surgical,RBOT,2023-02-15,0,0,0,0,0,1,,https://www.medtechdive.com/news/RBOT-Vicarious-Baxter-BAX-layoffs/642848/
+The RealReal,REAL,2023-02-16,0,0,0,0,0,0,,https://www.theinformation.com/briefings/the-realreal-to-cut-7-of-headcount-close-some-stores-and-offices
+REE Automotive,REE,2023-02-09,0,0,0,0,0,0,,https://www.calcalistech.com/ctechnews/article/6gilogwwn
+Rent the Runway,RENT,2024-01-09,0,0,0,0,0,1,,https://www.wsj.com/business/retail/rent-the-runway-to-cut-about-10-of-corporate-jobs-lose-operating-chief-f7bc74b3
+Rigetti Computing,RGTI,2023-02-10,0,0,0,0,0,0,,https://www.marketwatch.com/story/rigetti-computing-to-slash-28-of-jobs-59be433b
+Rivian,RIVN,2023-02-01,0,0,0,0,0,0,,https://www.reuters.com/business/autos-transportation/ev-maker-rivian-cut-6-jobs-amid-price-war-internal-memo-2023-02-01/
+Rivian,RIVN,2023-12-07,0,0,0,0,0,0,,https://www.theinformation.com/articles/exclusive-from-the-electric-rivian-becomes-the-latest-to-lay-off-battery-workers
+Rivian,RIVN,2025-06-26,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2025/06/26/rivian-cuts-dozens-on-manufacturing-team-ahead-of-r2-launch/
+Rocket Companies,RKT,2025-07-18,0,0,0,0,0,1,,https://www.housingwire.com/articles/rocket-lays-off-2-of-workforce-after-closing-redfin-acquisition/
+RingCentral,RNG,2022-08-04,0,0,0,0,0,0,,https://www.bizjournals.com/sanfrancisco/news/2022/08/04/ringcentral-lays-off-50-at-belmont-headquarters.html
+Roku,ROKU,2022-11-17,2,0,1,1,0,1,"[STRATEGIC] ...ast Platform for Anyone to Launch Their Own Show 3 days ago OpenAI Buys TBPN, a Daily Tech Talk Show, to Help Drive ‘Construct...",https://variety.com/2022/digital/news/roku-layoffs-200-employees-1235435468/amp/
+Rapid7,RPD,2023-08-08,0,0,0,0,0,0,,https://www.bizjournals.com/boston/news/2023/08/08/rapid7-layoffs-q2-earnings.html
+Riskified,RSKD,2024-02-13,0,0,0,0,0,1,,https://en.globes.co.il/en/article-israeli-fintech-co-riskified-lays-off-6-of-workforce-1001471055
+Riskified,RSKD,2025-02-19,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/h1hkriq91l
+SentinelOne,S,2023-06-01,0,0,0,0,0,1,,https://s28.q4cdn.com/399982429/files/doc_earnings/2024/q1/generic/Shareholder-Letter-Q1-FY24-FINAL-SentinelOne.pdf
+Sabre,SABR,2023-05-04,0,0,0,0,0,1,,https://skift.com/2023/05/04/sabre-is-cutting-15-percent-of-its-workforce-roughly-1100-jobs/
+SAP,SAP,2023-01-26,0,0,0,0,0,1,,https://www.cnbc.com/2023/01/26/sap-to-cut-3000-roles-explore-sale-of-qualtrics-stake.html
+SAP,SAP,2024-01-23,1,0,0,1,0,1,"[SPECIFIC] ...Management is looking to accelerate growth, partly through artificial intelligence, as it continues a push to become cloud-centric. Christian...",https://www.cnbc.com/2024/01/23/sap-plans-job-changes-or-buyouts-for-8000-employees-in-restructuring-plan.html
+Satellogic,SATL,2024-05-24,0,0,0,0,0,1,,https://spacenews.com/satellogic-lays-off-13-of-workforce/
+Springbig,SBIG,2022-12-01,0,0,0,0,0,0,,https://mjbizdaily.com/marijuana-software-firm-springbig-laying-off-nearly-25-percent-of-workforce/
+SolarEdge,SEDG,2024-01-21,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/rk4xlfcya
+Stitch Fix,SFIX,2020-06-01,0,0,0,0,0,1,,https://www.cnbc.com/2020/06/01/stitch-fix-is-laying-off-1400-in-california-18percent-of-workforce.html
+Stitch Fix,SFIX,2022-06-09,0,0,0,0,0,1,,https://www.cnbc.com/2022/06/09/stitch-fix-is-laying-off-15percent-of-its-salaried-employees-internal-memo-says.html
+Stitch Fix,SFIX,2023-01-05,0,0,0,0,0,1,,https://www.cnbc.com/2023/01/05/stitchfix-ceo-steps-down-20percent-of-salaried-workforce-to-be-cut.html
+Stitch Fix,SFIX,2023-07-12,0,0,0,0,0,1,,https://www.inquirer.com/jobs/labor/stitch-fix-layoffs-closure-bethlehem-lehigh-valley-warehouse-20230712.html
+Shopify,SHOP,2020-08-14,0,0,0,0,0,1,,https://betakit.com/shopify-cuts-office-staff-amid-remote-work-shift/
+Shopify,SHOP,2022-07-06,0,0,0,0,0,1,,https://www.theglobeandmail.com/business/article-shopify-compensation-hiring-plans/
+Shopify,SHOP,2023-05-04,1,0,0,1,0,1,[SPECIFIC] ...4 minutes The audio version of this article is generated by AI-based technology. Mispronunciations can occur. We are worki...,https://www.cbc.ca/news/business/shopify-layoffs-1.6831842
+Shopify,SHOP,2025-11-26,0,0,0,0,0,0,,https://www.thecanadianpressnews.ca/business/shopify-lays-off-staff-to-keep-team-fast-sharp-and-focused/article_2b3b4e8c-4531-5e36-a0ad-b02a9f8e6b6a.html
+Sinch,SINCH.ST,2022-10-12,0,0,0,0,0,1,,https://uk.finance.yahoo.com/news/sinch-provides-further-details-cost-050000622.html?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAADRwGUBG5kbOJSYKYLt0IB4O8FbUDo9ttkFRgcUELO6Gf8q-smbnt44fBnI2cQFSmYc-4WiXRXdWx6qJdy54DTsJ-irN2alA4VstuV5lfL5PxPrE0vqlEnbbUVGbcRKu_XA3zO7BBQ2GLIT4onEZtoyXzlECwxiIa5kcgNBN3ih4
+SiriusXM,SIRI,2023-03-06,2,0,1,1,0,1,"[STRATEGIC] ...ast Platform for Anyone to Launch Their Own Show 3 days ago OpenAI Buys TBPN, a Daily Tech Talk Show, to Help Drive ‘Construct...",https://variety.com/2023/digital/news/siriusxm-layoffs-465-employees-1235543907/
+SiriusXM,SIRI,2024-02-12,2,0,1,1,0,1,"[STRATEGIC] ...ast Platform for Anyone to Launch Their Own Show 3 days ago OpenAI Buys TBPN, a Daily Tech Talk Show, to Help Drive ‘Construct...",https://variety.com/2024/digital/news/siriusxm-layoffs-160-employees-1235908020/
+Skillz,SKLZ,2022-05-20,0,0,0,0,0,1,,https://techcrunch.com/2022/05/20/startup-tech-layoff-may-week-3/
+NuScale Power,SMR,2024-01-08,0,0,0,0,0,1,,https://www.oregonlive.com/business/2024/01/oregon-nuclear-power-company-nuscale-acknowledges-layoffs-says-154-workers-lost-their-jobs.html
+Similarweb,SMWB,2022-11-16,0,0,0,0,0,1,,https://en.globes.co.il/en/article-similarweb-cuts-10-of-workforce-1001430060
+Snap,SNAP,2022-08-31,2,0,1,1,0,1,[STRATEGIC] ...es. Alex Heath News Snapchat Tech Most Popular Most Popular Anthropic essentially bans OpenClaw from Claude by making subscribers...,https://www.theverge.com/2022/8/30/23329301/snap-layoffs-20-percent-employees-snapchat
+Snap,SNAP,2023-09-27,2,0,1,1,0,1,"[STRATEGIC] ...and less-engaging for our customers. Second, the advent of generative AI has made it easier for companies of all sizes to create try...",https://newsroom.snap.com/ar-enterprise-strategic-review
+Synopsys,SNPS,2023-01-27,0,0,0,0,0,1,,https://www.eastbaytimes.com/2023/01/27/synopsys-mountain-view-sunnyvale-job-layoff-tech-facebook-google/
+Synopsys,SNPS,2025-11-12,0,0,0,0,0,0,,https://www.reuters.com/business/world-at-work/synopsys-cut-about-10-its-workforce-2025-11-12/
+SoFi,SOFI,2023-01-30,0,0,0,0,0,0,,https://www.americanbanker.com/news/sofis-bank-charter-drives-positive-outlook-though-layoffs-hit-tech-unit
+SoFi,SOFI,2024-01-10,0,0,0,0,0,1,,https://twitter.com/SoFiIR/status/1745100766681960696
+Sonder,SONDQ,2023-03-01,0,0,0,0,0,0,,https://www.sec.gov/ix?doc=/Archives/edgar/data/0001819395/000181939523000010/son-20230301.htm
+Sonder,SONDQ,2024-02-15,0,0,0,0,0,0,,https://www.sec.gov/ixviewer/ix.html?doc=/Archives/edgar/data/1819395/000181939524000007/son-20240215.htm
+Sonder,SONDQ,2025-04-14,0,0,0,0,0,1,,https://skift.com/2025/04/14/sonder-announces-50-million-in-layoffs-and-spending-cuts-ahead-of-marriott-integration/
+Sonos,SONO,2020-06-24,0,0,0,0,0,1,,https://www.cnbc.com/2020/06/24/sonos-says-its-cutting-12percent-of-global-employees-because-of-covid-19.html
+Sonos,SONO,2023-06-14,0,0,0,0,0,1,,https://www.cnbc.com/2023/06/14/sonos-layoffs-company-cuts-7percent-or-about-130-employees.html
+Sonos,SONO,2024-08-14,2,0,1,1,0,1,"[STRATEGIC] ...troubles Chris Welch Apr 10, 2025 Most Popular Most Popular Anthropic essentially bans OpenClaw from Claude by making subscribers...",https://www.theverge.com/2024/8/14/24220357/sonos-layoffs-august-2024-app
+Spotify,SPOT,2022-10-06,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2022/10/06/spotify-cancels-11-original-podcasts-lays-off-under-5-of-staff/
+Spotify,SPOT,2023-12-04,0,0,0,0,0,1,,https://www.cnbc.com/2023/12/04/spotify-to-lay-off-17percent-of-employees-ceo-daniel-ek-says.html
+Spotify,SPOT,2024-07-15,2,0,1,1,0,1,[STRATEGIC] ...T Featured Stories Executive Moves Kate Rouch steps down as OpenAI CMO The company is seeking a new permanent CMO as Rouch ste...,https://adage.com/article/digital-marketing-ad-tech-news/spotify-focus-smaller-clients-programmatic-ad-tech-includes-40-layoffs/2569771
+Sprout Social,SPT,2024-11-25,0,0,0,0,0,1,,https://docs.google.com/spreadsheets/d/18Grpra9ciB9dWzWJ2W0ao8WjCrm_t5foqFt6Ebb6aUo/edit?gid=1610497511#gid=1610497511
+Sportradar,SRAD,2023-11-02,0,0,0,0,0,1,,https://www.sportspromedia.com/news/sportradar-job-cuts-sports-data/?zephr_sso_ott=VfONzi
+Stem,STEM,2025-04-29,0,0,0,0,0,0,,https://seekingalpha.com/news/4437501-stem-announces-27-percent-workforce-reduction-with-30m-savings-target-for-2025
+Stone,STNE,2020-05-12,0,0,0,0,0,0,,https://www.reuters.com/article/us-stoneco-layoff/brazilian-card-processor-stoneco-lays-off-20-of-workforce-1300-employees-idUSKBN22O31N
+Storytel,STORY-B.ST,2022-03-17,0,0,0,0,0,1,,https://www.svt.se/kultur/storytel-pausar-planen-om-varldsherravalde-pa-ljudboksmarknaden
+Storytel,STORY-B.ST,2024-01-24,0,0,0,0,0,1,,https://investors.storytel.com/en/storytel-sharpens-focus-on-profitability-on-the-back-of-strong-q4-2023-earnings-and-upgrades-mid-term-financial-targets-announces-efficiency-initiative-and-write-downs/
+Seagate,STX,2022-10-26,0,0,0,0,0,1,,https://www.cnbc.com/2022/10/26/seagate-will-cut-3000-employees-in-latest-sign-of-major-pc-and-cloud-slowdown.html
+SWVL,SWVL,2022-05-30,1,0,0,1,1,1,"[SPECIFIC] ...ts overall growth, it will need to make reductions on roles automated by investments in its engineering and product and support f...",https://techcrunch.com/2022/05/30/swvl-plans-to-lay-off-32-of-its-team-two-months-after-going-public/
+Synlogic,SYBX,2022-12-01,0,0,0,0,0,0,,https://www.fiercebiotech.com/biotech/sqz-ceo-exits-biotech-axes-60-staff-synlogic-succumbs-layoff-pressure
+TaskUs,TASK,2023-02-22,0,0,0,0,0,1,,https://www.expressnews.com/business/article/taskus-layoff-186-employees-san-antonio-17798813.php
+Taboola,TBLA,2022-09-13,1,0,0,1,0,1,[SPECIFIC] ...Related articles: Taboola acquiring Gravity R&D to advance AI and e-Commerce personalization “I live in a nerd’s Disneyla...,https://www.calcalistech.com/ctechnews/article/hybe11icxs
+Teradata,TDC,2024-08-06,0,0,0,0,0,0,,https://www.marketwatch.com/story/teradata-slides-13-after-2q-revenue-falls-guidance-cut-243b01c6
+Teladoc Health,TDOC,2023-01-18,0,0,0,0,0,0,,https://digitalhealth.modernhealthcare.com/finance/teladoc-health-layoffs-staff-cut-jason-gorevic
+ThredUp,TDUP,2022-08-15,0,0,0,0,0,1,,https://www.retaildive.com/news/thredup-lays-off-15-of-its-corporate-workforce-as-q2-losses-widen/629766/
+Atlassian,TEAM,2023-03-06,0,0,0,0,0,1,,https://www.cnbc.com/2023/03/06/atlassian-cuts-5percent-of-headcount-as-it-focuses-on-high-priority-areas.html
+Atlassian,TEAM,2025-07-30,3,1,1,1,0,1,"[CAUSAL] ...ort needs. It has disputed the claim that the jobs will be “replaced by AI”. According to The Australian , Cannon-Brookes told affecte...",https://au.finance.yahoo.com/news/atlassian-billionaire-spruiks-ai-as-ceo-fires-150-workers-over-video-in-scary-digital-revolution-052623412.html
+Tenable,TENB,2024-02-07,0,0,0,0,0,0,,https://bnnbreaking.com/finance-nav/tenable-reveals-strong-q4-2023-financial-performance-and-strategy-optimization
+TomTom,TOM2.AS,2022-06-01,0,0,0,0,0,0,,https://www.businessinsider.com/tomtom-gps-navigation-tech-layoffs-employees-maps-unit-2022-6
+TomTom,TOM2.AS,2023-12-12,1,0,0,1,0,1,"[SPECIFIC] ...irmy, której domeną jest produkcja systemów nawigacyjnych — AI może wykonywać coraz więcej zadań. "" Raj informatyczny właś...",https://businessinsider.com.pl/wiadomosci/tomtom-oglosil-zwolnienia-grupowe-wszystko-przez-sztuczna-inteligencje/czlqpyz
+TomTom,TOM2.AS,2025-06-30,0,0,0,0,0,0,,https://www.tomtom.com/newsroom/press-releases/earnings-other/29121/tomtom-advances-its-product-led-strategy-and-realigns-its-organization/
+Toast,TOST,2024-02-15,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2024-02-15/toast-layoffs-to-impact-hundreds-at-restaurant-tech-company?embedded-checkout=true
+LendingTree,TREE,2022-11-03,0,0,0,0,0,0,,https://investors.lendingtree.com/static-files/b06a0e39-53f1-480a-867f-230222a6a84c
+TripAdvisor,TRIP,2020-04-28,0,0,0,0,0,1,,https://layoffs.fyi/2020/04/30/tripadvisor-laid-off-900-employees/
+TripAdvisor,TRIP,2023-08-02,0,0,0,0,0,0,,https://ir.tripadvisor.com/static-files/d6752890-85a0-4764-a90e-f6213480c7e1
+TripAdvisor,TRIP,2025-02-04,0,0,0,0,0,1,,https://skift.com/2025/02/04/tripadvisor-fires-more-than-150-employees-and-contractors-scoop/
+TripAdvisor,TRIP,2025-11-05,1,0,0,1,0,1,"[SPECIFIC] ...where travel itself is expanding fastest — Experiences, and AI-enabled discovery, planning, and booking."" [See the full em...",https://skift.com/2025/11/05/layoffs-hit-20-of-tripadvisor-viator-and-administrative-staff-scoop/
+Maven,TRLFF,2020-03-30,0,0,0,0,0,0,,https://www.businesswire.com/news/home/20200330005734/en/Maven-Announces-Broad-Cost-Containment-Initiative-Including-9
+Tesla,TSLA,2022-06-03,1,0,0,1,0,1,"[SPECIFIC] ...EATE FREE ACCOUNT Tesla Inc CEO Elon Musk attends the World Artificial Intelligence Conference (WAIC) in Shanghai, China August 29, 2019. Aly S...",https://www.cnbc.com/2022/06/03/heres-the-email-elon-musk-sent-all-tesla-employees-10percent-job-cuts.html
+Tesla,TSLA,2024-04-15,0,0,0,0,0,1,,https://www.nytimes.com/2024/04/15/business/tesla-layoff-elon-musk.html
+The Trade Desk,TTD,2025-12-17,1,0,0,1,0,1,"[SPECIFIC] ...same time, The Trade Desk is still leaning into Kokai , the AI-powered update to its media buying platform, which launched...",https://www.adexchanger.com/platforms/the-trade-desk-lays-off-staff-one-year-after-its-last-major-reorg/
+TechTarget,TTGT,2022-12-08,0,0,0,0,0,0,,https://www.marketwatch.com/story/techtarget-focuses-on-restructuring-plan-cutting-60-positions-271670628385
+Take-Two Interactive,TTWO,2023-03-07,0,0,0,0,0,0,,https://www.gamespot.com/articles/gta-parent-company-confirms-layoffs-primarily-impacting-non-development-positions/1100-6512117/
+Take-Two,TTWO,2024-04-16,0,0,0,0,0,1,,https://www.ign.com/articles/take-two-announces-layoffs-while-canceling-multiple-in-development-projects
+Twilio,TWLO,2022-09-14,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2022/09/14/twilio-lays-off-11-of-its-staff-as-it-aims-for-profitability-in-2023/
+Twilio,TWLO,2023-12-04,0,0,0,0,0,0,,https://www.bloomberg.com/news/articles/2023-12-04/twilio-to-cut-another-5-of-workforce-in-third-round-of-layoffs
+Twist Bioscience,TWST,2023-05-05,0,0,0,0,0,0,,https://www.biospace.com/article/releases/twist-bioscience-reports-fiscal-second-quarter-2023-financial-results/
+10X Genomics,TXG,2022-08-04,0,0,0,0,0,0,,https://www.genomeweb.com/business-news/10x-genomics-lays-approximately-100-employees#.YuxWk-zMKqV
+Unity,U,2022-06-29,0,0,0,0,0,0,,https://kotaku.com/sources-unity-laying-off-hundreds-of-staffers-1849125482
+Unity,U,2023-01-17,0,0,0,0,0,1,,https://www.wsj.com/articles/unity-software-lays-off-more-workers-as-tech-job-cuts-grow-11673974721
+Unity,U,2025-02-11,2,0,1,1,0,1,"[STRATEGIC] ...ing Unity Jay Peters Jun 17, 2024 Most Popular Most Popular Anthropic essentially bans OpenClaw from Claude by making subscribers...",https://www.theverge.com/news/610165/unity-layoffs-2025-runtime-fee
+Uber,UBER,2022-09-07,0,0,0,0,0,1,,https://www.linkedin.com/posts/gergelyorosz_uber-lithuania-softwareengineering-activity-6973669838502187009-aK1z/
+Uber,UBER,2023-06-21,0,0,0,0,0,0,,https://www.nasdaq.com/articles/uber-to-lay-off-200-employees-in-recruitment-division
+Udemy,UDMY,2023-02-14,0,0,0,0,0,0,,https://about.udemy.com/udemy-news/a-message-from-gregg-coccari-ceo-of-udemy/
+Udemy,UDMY,2024-09-11,0,0,0,0,0,0,,https://investors.udemy.com/static-files/98f10e29-29a6-4b13-bfcc-79ee29c14a02
+Upstart,UPST,2022-11-01,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2022/11/01/upstart-layoffs/
+Upwork,UPWK,2023-05-03,0,0,0,0,0,0,,https://www.upwork.com/press/releases/a-message-from-our-ceo
+Upwork,UPWK,2024-10-23,0,0,0,0,0,0,,https://investors.upwork.com/news-releases/news-release-details/upwork-announces-organizational-changes-drive-continued
+Vista Group,VGL.NZ,2023-07-05,0,0,0,0,0,1,,https://www.nzherald.co.nz/business/vista-group-the-latest-kiwi-tech-to-lay-off-staff/XEXAP52NNZCR3GO7EJKWUDSAHY/
+View,VRAYQ,2023-04-03,0,0,0,0,0,1,,https://therealdeal.com/national/2023/04/03/view-cuts-23-of-staff-seeks-funds-to-survive-2023/
+Varonis,VRNS,2022-11-06,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/hjfkkmrbo
+Viasat,VSAT,2023-04-12,0,0,0,0,0,1,,https://www.sandiegouniontribune.com/business/story/2023-04-12/viasat-trims-global-workforce
+Viasat,VSAT,2023-11-02,0,0,0,0,0,1,,https://news.bloomberglaw.com/bankruptcy-law/viasat-to-cut-global-workforce-by-approximately-10
+Wayfair,W,2022-08-19,0,0,0,0,0,1,,https://www.bostonglobe.com/2022/08/19/business/wayfair-cuts-870-jobs-including-400-boston-it-reacts-decline-sales/
+Wayfair,W,2024-01-19,1,0,0,1,0,1,"[SPECIFIC] ...may be forming 'double top' 'One of the best valuations for AI': Buy the dip in this Big Tech stock, strategist says Choos...",https://www.cnbc.com/2024/01/19/wayfair-layoffs-home-goods-retailer-to-cut-1650-employees.html
+Wayfair,W,2025-01-10,0,0,0,0,0,1,,https://www.cnbc.com/2025/01/10/wayfair-to-exit-germany-cut-730-jobs-in-latest-layoffs.html
+Wallbox,WBX,2023-01-19,0,0,0,0,0,0,,https://investorplace.com/2023/01/wallbox-layoffs-2023-what-to-know-about-the-latest-wbx-job-cuts/
+Workday,WDAY,2023-01-31,0,0,0,0,0,1,,https://www.cnbc.com/2023/01/31/workday-lays-off-employees-but-will-grow-head-count.html
+Workday,WDAY,2025-02-05,1,0,0,1,0,1,"[SPECIFIC] ...ce, as the human capital management firm invests heavily in artificial intelligence to counter a softer macroeconomic environment. Shares of th...",https://www.cnbc.com/2025/02/05/workday-to-cut-1750-jobs-in-ai-push.html
+Western Digital,WDC,2022-11-22,0,0,0,0,0,0,,https://www.bizjournals.com/sanjose/news/2022/11/22/western-digital-latest-valley-company-with-layoffs.html
+Western Digital,WDC,2023-05-24,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/sk4mliohh
+Westwing,WEW.DE,2022-09-29,0,0,0,0,0,0,,Internal memo
+Wex,WEX,2024-06-18,0,0,0,0,0,0,,https://www.pressherald.com/2024/06/18/wex-is-laying-off-375-employees-worldwide/
+Wix,WIX,2022-08-09,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/b1icqik0c
+Wix,WIX,2023-02-15,0,0,0,0,0,1,,https://www.calcalistech.com/ctechnews/article/s1lsqn5as
+WiseTech,WTC.AX,2025-07-23,0,0,0,0,0,0,,https://www.reuters.com/world/asia-pacific/australias-wisetech-cut-some-jobs-ai-driven-efficiency-push-2025-07-23/
+XP,XP,2023-01-17,0,0,0,0,0,0,,https://braziljournal.com/xp-cortes-podem-chegar-a-10-da-empresa/
+Xero,XRX,2023-03-09,0,0,0,0,0,0,,https://www.stuff.co.nz/business/300826021/xero-plans-to-cut-up-to-800-jobs
+Xerox,XRX,2024-01-03,0,0,0,0,0,1,,https://www.cnbc.com/2024/01/03/xerox-layoffs-company-to-cut-15percent-of-workforce.html
+Block,XYZ,2023-10-04,0,0,0,0,0,1,,https://www.afr.com/technology/afterpay-s-block-begins-layoffs-after-stock-crashes-20231004-p5e9pe
+Block,XYZ,2025-03-25,3,1,1,1,0,1,"[CAUSAL] ...ail denies that the layoffs are for financial reasons or to replace workers with AI. Rather, he said that Block is cutting the roles owing to s...",https://techcrunch.com/2025/03/25/read-the-email-jack-dorsey-sent-when-he-cut-931-of-blocks-staff/
+Yelp,YELP,2020-04-09,0,0,0,0,0,1,,https://layoffs.fyi/2020/04/14/yelp-laid-off-1000-employees-and-furloughed-another-1100/
+Yext,YEXT,2023-01-23,0,0,0,0,0,0,,https://www.marketwatch.com/story/yext-to-lay-off-8-of-staff-01674510853
+Yext,YEXT,2024-06-05,0,0,0,0,0,0,,https://www.investing.com/news/economy-news/yext-announces-12-workforce-reduction-to-boost-profitability-93CH-3471417
+Zillow,Z,2021-11-02,0,0,0,0,0,0,,https://www.geekwire.com/2021/zillow-shutter-home-buying-business-lay-off-2k-employees-big-real-estate-bet-falters/
+Zillow,Z,2022-10-26,2,0,1,1,0,1,[STRATEGIC] ...the needle. Tickets are limited. REGISTER NOW Most Popular Anthropic took down thousands of GitHub repos trying to yank its leak...,https://techcrunch.com/2022/10/26/zillow-layoff-300-employees/
+Zillow,Z,2023-11-07,0,0,0,0,0,1,,https://www.realestatenews.com/2023/11/07/zillow-confirms-layoffs-affecting-a-small-number-of-roles
+Zillow,Z,2025-01-10,0,0,0,0,0,0,,https://www.geekwire.com/2025/zillow-makes-job-cuts-after-reorganizing-agent-software-and-advertising-teams/
+Zalando,ZAL.DE,2023-02-21,0,0,0,0,0,0,,https://www.reuters.com/business/retail-consumer/online-fashion-retailer-zalando-cutting-hundreds-jobs-2023-02-21/
+Zebra Technologies,ZBRA,2023-08-28,0,0,0,0,0,1,,https://www.chicagobusiness.com/technology/zebra-technologies-cuts-700-jobs-or-7-percent-bar-code-maker-workforce
+Zebra Technologies,ZBRA,2025-12-12,0,0,0,0,0,0,,https://www.therobotreport.com/zebra-technologies-winding-down-fetch-based-mobile-robot-group/
+ZipRecruiter,ZIP,2023-05-31,0,0,0,0,0,0,,https://www.sec.gov/ix?doc=/Archives/edgar/data/1617553/000161755323000028/zip-20230531.htm
+ZipRecruiter,ZIP,2025-09-16,1,0,0,1,0,1,"[SPECIFIC] ...uiter shuts Israeli R&D center, laying off 80 employees The AI-driven recruitment firm faces rising costs amid challenging...",https://www.calcalistech.com/ctechnews/article/pwjukv20s
+Zoom,ZM,2023-02-07,0,0,0,0,0,1,,https://www.cnbc.com/2023/02/07/zoom-to-lay-off-1300-employees-or-about-15percent-of-its-workforce.html
+Zoom,ZM,2024-02-01,1,0,0,1,1,1,"[SPECIFIC] ...ywide, and added that it will continue to hire for roles in artificial intelligence, sales, product and across operations in 2024. The cuts at...",https://www.cnbc.com/2024/02/01/zoom-layoffs-company-cuts-150-employees-2percent-of-workforce.html
+Zscaler,ZS,2023-03-02,0,0,0,0,0,1,,https://www.crn.com/news/security/zscaler-discloses-layoffs-for-3-percent-of-employees
