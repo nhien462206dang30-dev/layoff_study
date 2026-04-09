@@ -482,6 +482,9 @@ To verify that the event study design is clean — i.e., that the market is not 
 
 **Reverse causality:** The event study framework assumes layoff decisions are exogenous to concurrent stock price movements. In practice, sustained stock price declines can themselves motivate management to cut costs through layoffs — a form of reverse causality that this design does not address. This is a methodological limitation shared by most event studies, not unique to this one.
 
+**Incomplete Exclusion of Confounding Events**: Due to limitations in the data collection pipeline, this study does not systematically exclude layoff events that coincide with quarterly earnings announcements. Tech companies frequently announce layoffs concurrently during their earnings calls. In these instances, the short-window CAR may predominantly reflect the market's reaction to EPS beats or misses, rather than the isolated pricing of the layoff decision itself. Failing to control for such confounding events likely introduces substantial noise into the short-horizon event study.
+
+**Potential Selection Bias in Sample Screening**: When constructing the "mature company sample," this study excluded distressed firms facing delisting risks or those trading persistently below $1 during the layoff period, primarily due to data availability constraints. Although this elevates the baseline corporate quality of the sample, applying an ex-post performance-based exclusion rule may introduce a degree of survivorship bias, thereby slightly biasing the full-sample average abnormal returns upward. Future improvements should address this by applying filtering conditions strictly based on ex-ante metrics, such as pre-event market capitalization.
 ---
 
 ## VIII. Execution Pipeline
