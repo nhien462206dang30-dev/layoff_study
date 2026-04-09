@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>回归分析结果报告</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1, h2 { color: #2c3e50; }
+        h3 { color: #3498db; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .stats { background-color: #e8f4f8; }
+        .signif-*** { color: #c0392b; font-weight: bold; }
+        .signif-** { color: #e74c3c; font-weight: bold; }
+        .signif-* { color: #e67e22; font-weight: bold; }
+        .summary-box { 
+            background-color: #f8f9fa; 
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>回归分析结果报告</h1>
+    <p>生成时间: 2026-04-03 17:23:21</p>
+    <p>样本大小: 249 个观测值</p>
+
+    <div class="summary-box">
+        <h3>核心发现摘要</h3>
+        <ul>
+            <li>AI提及对CAR的影响: CAPM模型 = 0.0326, FF4模型 = 0.0344</li>
+            <li>裁员比例对CAR的影响: CAPM模型 = -0.0264, FF4模型 = -0.0456</li>
+            <li>模型解释力: CAPM模型 R² = 0.0112, FF4模型 R² = 0.0121</li>
+        </ul>
+    </div>
+
+    <h2>1. 模型统计量汇总</h2>
+    <table border="1" class="dataframe stats">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Model</th>
+      <th>N</th>
+      <th>R2</th>
+      <th>Adj_R2</th>
+      <th>F_Statistic</th>
+      <th>F_p_value</th>
+      <th>AIC</th>
+      <th>BIC</th>
+      <th>Log_Likelihood</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CAPM</td>
+      <td>249</td>
+      <td>0.011249</td>
+      <td>-0.021709</td>
+      <td>0.542048</td>
+      <td>0.824135</td>
+      <td>6.697667</td>
+      <td>38.354743</td>
+      <td>5.651166</td>
+    </tr>
+    <tr>
+      <td>FF4</td>
+      <td>249</td>
+      <td>0.012131</td>
+      <td>-0.020798</td>
+      <td>0.628679</td>
+      <td>0.753361</td>
+      <td>-15.567505</td>
+      <td>16.089571</td>
+      <td>16.783753</td>
+    </tr>
+  </tbody>
+</table>
+
+    <h2>2. CAPM模型回归系数</h2>
+    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>variable</th>
+      <th>coefficient</th>
+      <th>std_err</th>
+      <th>t_value</th>
+      <th>p_value</th>
+      <th>significance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Intercept</td>
+      <td>0.100269</td>
+      <td>0.057455</td>
+      <td>1.745179</td>
+      <td>0.080954</td>
+      <td>*</td>
+    </tr>
+    <tr>
+      <td>C(year)[T.2023]</td>
+      <td>0.002469</td>
+      <td>0.046263</td>
+      <td>0.053376</td>
+      <td>0.957432</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>C(year)[T.2024]</td>
+      <td>0.016289</td>
+      <td>0.050995</td>
+      <td>0.319421</td>
+      <td>0.749407</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>C(year)[T.2025]</td>
+      <td>-0.016209</td>
+      <td>0.055516</td>
+      <td>-0.291968</td>
+      <td>0.770311</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>C(year)[T.2026]</td>
+      <td>0.023947</td>
+      <td>0.052783</td>
+      <td>0.453694</td>
+      <td>0.650049</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>layoff_pct</td>
+      <td>-0.026397</td>
+      <td>0.251978</td>
+      <td>-0.104760</td>
+      <td>0.916566</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ai_mentioned</td>
+      <td>0.032627</td>
+      <td>0.030121</td>
+      <td>1.083200</td>
+      <td>0.278720</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>log_funds_raised</td>
+      <td>-0.004975</td>
+      <td>0.003787</td>
+      <td>-1.313803</td>
+      <td>0.188912</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>prior_6m_return</td>
+      <td>-0.040749</td>
+      <td>0.074836</td>
+      <td>-0.544510</td>
+      <td>0.586091</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+    <h2>3. FF4模型回归系数</h2>
+    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>variable</th>
+      <th>coefficient</th>
+      <th>std_err</th>
+      <th>t_value</th>
+      <th>p_value</th>
+      <th>significance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Intercept</td>
+      <td>0.100896</td>
+      <td>0.054294</td>
+      <td>1.858335</td>
+      <td>0.063121</td>
+      <td>*</td>
+    </tr>
+    <tr>
+      <td>C(year)[T.2023]</td>
+      <td>-0.002400</td>
+      <td>0.043254</td>
+      <td>-0.055492</td>
+      <td>0.955747</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>C(year)[T.2024]</td>
+      <td>0.016921</td>
+      <td>0.049922</td>
+      <td>0.338959</td>
+      <td>0.734641</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>C(year)[T.2025]</td>
+      <td>-0.021133</td>
+      <td>0.052421</td>
+      <td>-0.403145</td>
+      <td>0.686841</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>C(year)[T.2026]</td>
+      <td>0.030976</td>
+      <td>0.051864</td>
+      <td>0.597259</td>
+      <td>0.550334</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>layoff_pct</td>
+      <td>-0.045646</td>
+      <td>0.246741</td>
+      <td>-0.184996</td>
+      <td>0.853232</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ai_mentioned</td>
+      <td>0.034415</td>
+      <td>0.028827</td>
+      <td>1.193862</td>
+      <td>0.232532</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>log_funds_raised</td>
+      <td>-0.004595</td>
+      <td>0.003544</td>
+      <td>-1.296612</td>
+      <td>0.194765</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>prior_6m_return</td>
+      <td>-0.022857</td>
+      <td>0.069265</td>
+      <td>-0.329995</td>
+      <td>0.741404</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+    <h2>4. 核心变量系数对比</h2>
+    <table>
+        <tr>
+            <th>变量</th>
+            <th>描述</th>
+            <th>CAPM系数</th>
+            <th>FF4系数</th>
+        </tr>
+
+        <tr>
+            <td>Intercept</td>
+            <td>常数项</td>
+            <td class="signif-*">0.1003*<br><small>(0.0575)</small></td>
+            <td class="signif-*">0.1009*<br><small>(0.0543)</small></td>
+        </tr>
+
+        <tr>
+            <td>layoff_pct</td>
+            <td>裁员比例（百分比）</td>
+            <td class="signif-">-0.0264<br><small>(0.2520)</small></td>
+            <td class="signif-">-0.0456<br><small>(0.2467)</small></td>
+        </tr>
+
+        <tr>
+            <td>ai_mentioned</td>
+            <td>AI提及（1=提及，0=未提及）</td>
+            <td class="signif-">0.0326<br><small>(0.0301)</small></td>
+            <td class="signif-">0.0344<br><small>(0.0288)</small></td>
+        </tr>
+
+        <tr>
+            <td>log_funds_raised</td>
+            <td>融资总额的对数</td>
+            <td class="signif-">-0.0050<br><small>(0.0038)</small></td>
+            <td class="signif-">-0.0046<br><small>(0.0035)</small></td>
+        </tr>
+
+        <tr>
+            <td>prior_6m_return</td>
+            <td>前6个月股票收益率</td>
+            <td class="signif-">-0.0407<br><small>(0.0748)</small></td>
+            <td class="signif-">-0.0229<br><small>(0.0693)</small></td>
+        </tr>
+
+    </table>
+
+    <h2>5. 回归样本描述性统计</h2>
+    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CAR_CAPM_short_term</th>
+      <th>CAR_FF4_short_term</th>
+      <th>layoff_pct</th>
+      <th>ai_mentioned</th>
+      <th>log_funds_raised</th>
+      <th>prior_6m_return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>249.000000</td>
+      <td>249.000000</td>
+      <td>249.000000</td>
+      <td>249.000000</td>
+      <td>249.000000</td>
+      <td>249.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.103832</td>
+      <td>0.097966</td>
+      <td>0.128273</td>
+      <td>0.582329</td>
+      <td>5.369627</td>
+      <td>-0.282980</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.238362</td>
+      <td>0.228041</td>
+      <td>0.142137</td>
+      <td>0.494169</td>
+      <td>2.465171</td>
+      <td>0.351462</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-0.976623</td>
+      <td>-1.004382</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>-2.387315</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.047550</td>
+      <td>0.040800</td>
+      <td>0.050000</td>
+      <td>0.000000</td>
+      <td>4.753590</td>
+      <td>-0.516266</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.102180</td>
+      <td>0.099083</td>
+      <td>0.100000</td>
+      <td>1.000000</td>
+      <td>6.061457</td>
+      <td>-0.246670</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.176861</td>
+      <td>0.180628</td>
+      <td>0.150000</td>
+      <td>1.000000</td>
+      <td>7.003065</td>
+      <td>-0.036273</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>0.794171</td>
+      <td>0.752653</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>10.165852</td>
+      <td>0.841482</td>
+    </tr>
+  </tbody>
+</table>
+
+    <h2>6. 显著性说明</h2>
+    <p>显著性标记: *** p < 0.01, ** p < 0.05, * p < 0.10</p>
+
+    <h2>7. 回归模型详情</h2>
+    <h3>CAPM模型公式:</h3>
+    <p>CAR_CAPM_short_term = α + β₁×layoff_pct + β₂×ai_mentioned + β₃×log_funds_raised + β₄×prior_6m_return + Year_Fixed_Effects + ε</p>
+
+    <h3>FF4模型公式:</h3>
+    <p>CAR_FF4_short_term = α + β₁×layoff_pct + β₂×ai_mentioned + β₃×log_funds_raised + β₄×prior_6m_return + Year_Fixed_Effects + ε</p>
+
+    <p><em>注: 两个模型均使用HC3异方差稳健标准误，并包含年度固定效应。</em></p>
+</body>
+</html>

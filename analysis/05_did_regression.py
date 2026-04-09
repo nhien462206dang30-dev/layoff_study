@@ -430,6 +430,27 @@ def prepare_reg_data(car_updated: pd.DataFrame) -> pd.DataFrame:
 
     df['intl'] = (df['listing_region'] == 'INTL').astype(int)
 
+    # ── Merge additional controls from 裁员影响模型 ──
+    BASE = '/Users/irmina/Documents/Claude/layoff_study'
+
+    # prior_6m_return: cumulative stock return over [-136,-11] trading days before event
+    p6m_path = os.path.join(BASE, 'data/processed/prior_6m_return.csv')
+    if os.path.exists(p6m_path):
+        p6m = pd.read_csv(p6m_path, parse_dates=['announcement_date'])
+        df['announcement_date'] = pd.to_datetime(df['announcement_date'])
+        df = df.merge(p6m, on=['ticker', 'announcement_date'], how='left')
+    else:
+        df['prior_6m_return'] = np.nan
+
+    # funds_raised: total funding ($ millions) from 裁员影响模型; log-transformed
+    fr_path = os.path.join(BASE, 'data/processed/funds_raised.csv')
+    if os.path.exists(fr_path):
+        fr = pd.read_csv(fr_path)[['ticker', 'funds_raised', 'log_funds_raised']]
+        df = df.merge(fr, on='ticker', how='left')
+    else:
+        df['funds_raised'] = np.nan
+        df['log_funds_raised'] = np.nan
+
     # Winsorize CARs at 1%/99%
     for col in ['CAR_1_1', 'CAR_0_20', 'CAR_5_30', 'CAR_5_60']:
         if col in df.columns:
@@ -498,9 +519,11 @@ def run_did(df: pd.DataFrame):
         m1, n1 = run_ols(y_col, x1, df)
         if m1: print_model(f'DID (no controls) — CAR{wlabel}', m1, n1, x1)
 
-        # Spec 2: DID + controls
+        # Spec 2: DID + controls (includes prior_6m_return and log_funds_raised
+        # from 裁员影响模型; N drops where these are unavailable)
         x2 = ['ai_mentioned','post_chatgpt','ai_x_post',
-               'log_count','layoff_pct_n','beta_mkt_ff4','intl']
+               'log_count','layoff_pct_n','beta_mkt_ff4','intl',
+               'prior_6m_return','log_funds_raised']
         m2, n2 = run_ols(y_col, x2, df)
         if m2: print_model(f'DID + controls — CAR{wlabel}', m2, n2, x2)
 
@@ -555,7 +578,8 @@ def run_cross_section(df: pd.DataFrame):
         df_c['ai_x_post'] = df_c['ai_mentioned'] * df_c['post_chatgpt']
 
         x_full = ['ai_mentioned','post_chatgpt','ai_x_post',
-                  'log_count','layoff_pct_n','beta_mkt_ff4','intl']
+                  'log_count','layoff_pct_n','beta_mkt_ff4','intl',
+                  'prior_6m_return','log_funds_raised']
         m, n = run_ols(y_col, x_full, df_c)
         if m:
             print_model(f'Cross-section (full controls) — CAR{wlabel}', m, n, x_full)
@@ -669,7 +693,39 @@ def main():
     df_reg = prepare_reg_data(car_updated)
     print_summary_stats(car_updated)
 
+    # PRIMARY SPEC: US-only DID (US FF4 factors are misspecified for INTL stocks)
+    print('\n' + '='*65)
+    print('PRIMARY SPECIFICATION: US-listed stocks only')
+    print('='*65)
+    df_reg_us = df_reg[df_reg['listing_region'] == 'US'].copy()
+    did_results_us = run_did(df_reg_us)
+    did_results_us['sample'] = 'US only (PRIMARY)'
+    did_results_us.to_csv(os.path.join(OUT_DIR, 'did_results_us_primary.csv'), index=False)
+    print(f'\n  US-only DID saved → did_results_us_primary.csv ({len(df_reg_us)} events)')
+
+    # CORE TECH SUBSAMPLE: US-listed, tech-sector companies only
+    print('\n' + '='*65)
+    print('SUBSAMPLE: Core tech sectors, US-listed only')
+    print('='*65)
+    CORE_TECH_INDUSTRIES = {
+        'Hardware', 'Security', 'Data', 'Infrastructure', 'Marketing',
+        'Media', 'Support', 'AI', 'Crypto', 'Product', 'Education',
+        'Recruiting', 'HR', 'Other',
+    }
+    df_reg_tech = df_reg_us[df_reg_us['industry'].isin(CORE_TECH_INDUSTRIES)].copy()
+    df_reg_nontech = df_reg_us[~df_reg_us['industry'].isin(CORE_TECH_INDUSTRIES)].copy()
+    did_results_tech = run_did(df_reg_tech)
+    did_results_tech['sample'] = 'Core tech, US only'
+    did_results_tech.to_csv(os.path.join(OUT_DIR, 'did_results_core_tech.csv'), index=False)
+    print(f'\n  Core tech DID saved → did_results_core_tech.csv ({len(df_reg_tech)} events)')
+    print(f'  Non-tech: {len(df_reg_nontech)} events')
+
+    # FULL SAMPLE: for comparison / appendix
+    print('\n' + '='*65)
+    print('APPENDIX: Full sample (includes INTL — factor model misspecification)')
+    print('='*65)
     did_results   = run_did(df_reg)
+    did_results['sample'] = 'Full sample'
     xsec_results  = run_cross_section(df_reg)
 
     # Save regression tables

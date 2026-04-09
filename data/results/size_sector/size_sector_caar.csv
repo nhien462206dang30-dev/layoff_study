@@ -1,0 +1,43 @@
+label,N,CAAR_pct,t,p,sig,window,size_group,sector
+"High R² (top 25%)
+≈ large/liquid × Core tech",56,-0.07875010676552865,-0.09865719692783821,0.9217691474384633,,"CAR[-1,+1]","High R² (top 25%)
+≈ large/liquid",Core tech
+"High R² (top 25%)
+≈ large/liquid × Non-tech",52,-2.233751343907384,-1.2419637595461632,0.21993109980045125,,"CAR[-1,+1]","High R² (top 25%)
+≈ large/liquid",Non-tech
+Mid R² (25–75%) × Core tech,87,-1.107496300086388,-1.1040593460389545,0.27264698444594976,,"CAR[-1,+1]",Mid R² (25–75%),Core tech
+Mid R² (25–75%) × Non-tech,127,-1.075871448359977,-1.4201001417402657,0.15804815128000801,,"CAR[-1,+1]",Mid R² (25–75%),Non-tech
+"Low R² (bot 25%)
+≈ small/idiosyncratic × Core tech",39,-2.1529152337615614,-1.5817498455729073,0.12199541106779155,,"CAR[-1,+1]","Low R² (bot 25%)
+≈ small/idiosyncratic",Core tech
+"Low R² (bot 25%)
+≈ small/idiosyncratic × Non-tech",68,0.3720873299503581,0.20280314798016352,0.839903512786613,,"CAR[-1,+1]","Low R² (bot 25%)
+≈ small/idiosyncratic",Non-tech
+"High R² (top 25%)
+≈ large/liquid × Core tech",56,3.104152859934738,1.4435455931727457,0.1545389055953896,,"CAR[0,+20]","High R² (top 25%)
+≈ large/liquid",Core tech
+"High R² (top 25%)
+≈ large/liquid × Non-tech",52,-1.631710112412317,-0.8022069916773499,0.42615561565793203,,"CAR[0,+20]","High R² (top 25%)
+≈ large/liquid",Non-tech
+Mid R² (25–75%) × Core tech,87,-0.6132483972629459,-0.2914322298220903,0.7714225405335327,,"CAR[0,+20]",Mid R² (25–75%),Core tech
+Mid R² (25–75%) × Non-tech,127,1.3763126368817922,0.9755131312495231,0.3311749538184714,,"CAR[0,+20]",Mid R² (25–75%),Non-tech
+"Low R² (bot 25%)
+≈ small/idiosyncratic × Core tech",39,7.27815789791233,1.7092897853817164,0.09555333173670284,*,"CAR[0,+20]","Low R² (bot 25%)
+≈ small/idiosyncratic",Core tech
+"Low R² (bot 25%)
+≈ small/idiosyncratic × Non-tech",68,0.9338702004206534,0.3030577440297749,0.76278485040124,,"CAR[0,+20]","Low R² (bot 25%)
+≈ small/idiosyncratic",Non-tech
+"High R² (top 25%)
+≈ large/liquid × Core tech",56,7.393528382900719,1.943017389947886,0.057139505034296906,*,"CAR[-5,+60]","High R² (top 25%)
+≈ large/liquid",Core tech
+"High R² (top 25%)
+≈ large/liquid × Non-tech",52,3.4375982839087222,1.01464784688538,0.31506333191832925,,"CAR[-5,+60]","High R² (top 25%)
+≈ large/liquid",Non-tech
+Mid R² (25–75%) × Core tech,87,1.6376889142226878,0.3875768871084413,0.6992867622625485,,"CAR[-5,+60]",Mid R² (25–75%),Core tech
+Mid R² (25–75%) × Non-tech,127,3.9498159668929653,1.5549804788786503,0.12245895723049505,,"CAR[-5,+60]",Mid R² (25–75%),Non-tech
+"Low R² (bot 25%)
+≈ small/idiosyncratic × Core tech",39,10.499891782988243,1.9633616374797893,0.05695305497512018,*,"CAR[-5,+60]","Low R² (bot 25%)
+≈ small/idiosyncratic",Core tech
+"Low R² (bot 25%)
+≈ small/idiosyncratic × Non-tech",68,7.942895389640406,1.6122193649867873,0.11161523046181418,,"CAR[-5,+60]","Low R² (bot 25%)
+≈ small/idiosyncratic",Non-tech

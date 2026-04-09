@@ -570,6 +570,38 @@ def plot_caap_ai(results_ai, results_nonai, save_path):
     print(f'  Saved: {save_path}')
 
 
+def plot_caap_tech_vs_nontech(results_tech, results_nontech, save_path):
+    """Plot 4: Core tech vs non-tech sectors, US only, FF4."""
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    days_t, caar_t, lo_t, hi_t = compute_daily_caar(results_tech)
+    days_n, caar_n, lo_n, hi_n = compute_daily_caar(results_nontech)
+
+    ax.plot(days_n, caar_n, color='#4dac26', linewidth=1.8,
+            label=f'Non-tech sectors (N={len(results_nontech)})')
+    ax.fill_between(days_n, lo_n, hi_n, color='#4dac26', alpha=0.12)
+
+    ax.plot(days_t, caar_t, color='#7b2d8b', linewidth=1.8,
+            label=f'Core tech (N={len(results_tech)})')
+    ax.fill_between(days_t, lo_t, hi_t, color='#7b2d8b', alpha=0.12)
+
+    ax.axvline(x=0, color='black', linestyle='--', linewidth=0.8, alpha=0.6)
+    ax.axhline(y=0, color='grey', linestyle='-', linewidth=0.5, alpha=0.5)
+
+    ax.set_xlabel('Event Day (relative to announcement)', fontsize=12)
+    ax.set_ylabel('CAAR (%)', fontsize=12)
+    ax.set_title('CAAR: Core Tech vs Non-Tech Sectors, US Only (FF4 Model)', fontsize=13)
+    ax.legend(frameon=True, fontsize=10)
+    ax.grid(True, alpha=0.3)
+    ax.set_facecolor('white')
+    fig.patch.set_facecolor('white')
+
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=300, bbox_inches='tight', facecolor='white')
+    plt.close()
+    print(f'  Saved: {save_path}')
+
+
 def build_per_event_table(results_capm, results_ff4):
     """Build per-event CAR table (Step 5)."""
     # Index ff4 results by (ticker, announcement_date)
@@ -640,9 +672,37 @@ def main():
     def subsample(results, condition):
         return [r for r in results if condition(r)]
 
+    # Core tech industry classification (based on layoffs.fyi taxonomy).
+    # "Other" is included because it is the catch-all for software companies
+    # that do not fit a named vertical (commonly pure-play SaaS, enterprise software).
+    CORE_TECH_INDUSTRIES = {
+        'Hardware', 'Security', 'Data', 'Infrastructure', 'Marketing',
+        'Media', 'Support', 'AI', 'Crypto', 'Product', 'Education',
+        'Recruiting', 'HR', 'Other',
+    }
+
+    # Condition A: tickers from 裁员影响模型 hand-curated sample (post-IPO mature firms,
+    # double-verified via Yahoo+OpenFIGI). 130 of 152 tickers have stock data here;
+    # 22 missing are international (6) or distressed/OTC firms excluded on quality grounds.
+    _cond_a_path = os.path.join(BASE, 'data/processed/condition_a_tickers.csv')
+    if os.path.exists(_cond_a_path):
+        COND_A_TICKERS = set(pd.read_csv(_cond_a_path)['ticker'].tolist())
+        print(f'  Condition A: {len(COND_A_TICKERS)} tickers loaded from {_cond_a_path}')
+    else:
+        COND_A_TICKERS = set()
+        print(f'  WARNING: condition_a_tickers.csv not found at {_cond_a_path}')
+
+    # PRIMARY SPEC: US-listed stocks only (US FF4 factors are misspecified for
+    # international stocks; US-only is the clean causal identification sample).
+    # Full sample is reported as a secondary/appendix check.
     subsamples = {
+        'US only (PRIMARY)': lambda r: r['listing_region'] == 'US',
+        'Condition A (FF4)': lambda r, _t=COND_A_TICKERS: r['ticker'] in _t and r['listing_region'] == 'US',
         'Full sample': lambda r: True,
-        'US only': lambda r: r['listing_region'] == 'US',
+        'Core tech, US only': lambda r: r['listing_region'] == 'US' and r['industry'] in CORE_TECH_INDUSTRIES,
+        'Non-tech, US only': lambda r: r['listing_region'] == 'US' and r['industry'] not in CORE_TECH_INDUSTRIES,
+        'US only, Post-GenAI (>=2023)': lambda r: r['listing_region'] == 'US' and r['announcement_date'].year >= 2023,
+        'US only, Pre-GenAI (<=2022)': lambda r: r['listing_region'] == 'US' and r['announcement_date'].year <= 2022,
         'Post-GenAI (>=2023)': lambda r: r['announcement_date'].year >= 2023,
         'Pre-GenAI (<=2022)': lambda r: r['announcement_date'].year <= 2022,
     }
@@ -707,19 +767,27 @@ def main():
     plot_caap_full(results_capm, results_ff4,
                    os.path.join(RESULTS_DIR, 'caap_full_sample.png'))
 
-    # Plot 2: Pre vs Post GenAI (FF4)
-    pre = subsample(results_ff4, lambda r: r['announcement_date'].year <= 2022)
-    post = subsample(results_ff4, lambda r: r['announcement_date'].year >= 2023)
+    # Plot 2: Pre vs Post GenAI — PRIMARY SPEC: US only
+    pre = subsample(results_ff4, lambda r: r['listing_region'] == 'US' and r['announcement_date'].year <= 2022)
+    post = subsample(results_ff4, lambda r: r['listing_region'] == 'US' and r['announcement_date'].year >= 2023)
     plot_caap_pre_post(pre, post,
                        os.path.join(RESULTS_DIR, 'caap_pre_vs_post_genai.png'))
 
-    # Plot 3: AI vs non-AI (Post-GenAI only, FF4)
+    # Plot 3: AI vs non-AI (Post-GenAI only, US only, FF4) — PRIMARY SPEC
     post_ai = subsample(results_ff4,
-                        lambda r: r['announcement_date'].year >= 2023 and r['ai_mentioned'] == 1)
+                        lambda r: r['listing_region'] == 'US' and r['announcement_date'].year >= 2023 and r['ai_mentioned'] == 1)
     post_nonai = subsample(results_ff4,
-                           lambda r: r['announcement_date'].year >= 2023 and r['ai_mentioned'] == 0)
+                           lambda r: r['listing_region'] == 'US' and r['announcement_date'].year >= 2023 and r['ai_mentioned'] == 0)
     plot_caap_ai(post_ai, post_nonai,
                  os.path.join(RESULTS_DIR, 'caap_ai_vs_nonai.png'))
+
+    # Plot 4: Core tech vs non-tech, US only, FF4
+    us_tech = subsample(results_ff4,
+                        lambda r: r['listing_region'] == 'US' and r['industry'] in CORE_TECH_INDUSTRIES)
+    us_nontech = subsample(results_ff4,
+                           lambda r: r['listing_region'] == 'US' and r['industry'] not in CORE_TECH_INDUSTRIES)
+    plot_caap_tech_vs_nontech(us_tech, us_nontech,
+                              os.path.join(RESULTS_DIR, 'caap_tech_vs_nontech.png'))
 
     # ── Final summary ──
     print('\n' + '=' * 72)

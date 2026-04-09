@@ -1,0 +1,4 @@
+This file was created using the CRSP 202602 database. 
+The T-bill return is the simple daily rate that compounds to the 1-month T-bill rate over the number of trading days. The 1-month T-bill rate data until May 2024 are from Ibbotson Associates. Starting from June 2024, the 1-month T-bill rate is from the ICE BofA US 1-Month Treasury Bill Index.
+		
+Copyright 2026 Eugene F. Fama and Kenneth R. French

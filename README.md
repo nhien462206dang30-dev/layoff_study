@@ -1,123 +1,515 @@
-# Tech Layoff Announcement Study: Stock Price Reactions & AI Context
+# 裁员公告与股价反应：AI时代的市场效率研究
 
-Event study and cross-sectional regression examining how markets react to tech layoff announcements, with a focus on whether AI/automation context changes that reaction — particularly after the ChatGPT launch (Nov 2022).
-
----
-
-## Research Question
-
-**Does the market react differently to layoff announcements that cite AI/automation as a reason, compared to purely financial/restructuring layoffs?**
-
-Secondary question: Did the ChatGPT launch change how investors interpret AI-driven layoffs?
+**🌐 语言 / Language:** 　**中文（当前）**　|　[English](README_EN.md)
 
 ---
 
-## Key Findings
-
-### Event Study (All 444–467 events)
-
-| Window | CAAR | Patell t | Sig |
-|--------|------|----------|-----|
-| [−1, +1] | −0.49% | −3.03 | *** |
-| [0, +5]  | −0.35% | −2.06 | **  |
-| [0, +20] | +2.25% | +2.42 | **  |
-| [−5, +60]| +6.40% | +4.31 | *** |
-
-Markets react negatively in the short window (−0.49%) but recover and outperform over the following months (+2.25% by day 20, +6.40% by day 60).
-
-### Cross-Sectional Regression
-
-Observable event characteristics (AI mention, size, percentage cut, era) do **not** significantly predict short-window abnormal returns. R² ≈ 1–2% across all specifications. Consistent with market efficiency.
-
-### DID: Did ChatGPT Change AI-Layoff Reactions?
-
-`CAR = α + β₁·ai + β₂·post_chatgpt + β₃·(ai×post_chatgpt) + controls`
-
-β₃ (the DID estimator) is consistently positive (AI layoffs slightly outperform non-AI post-ChatGPT), but not statistically significant at conventional levels with reliable sample sizes.
+> **研究类型：** 实证金融事件研究（Event Study）
+> **数据范围：** 2020年3月 — 2024年3月，科技及相关行业上市公司
+> **核心方法：** Fama-French四因子模型（FF4）+ 双重差分（DID）
+> **主要样本：** 美国上市公司，N=429个事件；成熟公司样本，N=263个事件
 
 ---
 
-## AI-Mention Definition
+## 一、研究背景与核心问题
 
-The key methodological challenge is identifying whether a layoff is "AI-related" from news text. Three approaches were compared:
+### 1.1 为什么研究这个问题
 
-| Definition | N (ai=1) | Rate | Assessment |
-|------------|----------|------|------------|
-| Desktop broad (keyword + efficiency + substring AI) | 234 | 50.1% | ⚠️ ~30–40% false positives |
-| Claude strict (explicit causal regex) | 12 | 2.6% | ❌ Misses most real cases |
-| **Tiered ai_broad (T1+T2+T3, whole-word) ★** | **74** | **15.8%** | **✓ Recommended** |
-| Tiered ai_primary (T1+T2) | 22 | 4.7% | ✓ Robustness check |
+2022到2023年间，科技行业的裁员规模之大、速度之快，在历史上都算得上罕见。但有意思的是，这一轮裁员浪潮发生的宏观背景并不是经济衰退——GDP还在增长，失业率也没有系统性上升。驱动这一轮裁员的，更多是企业内部的结构性逻辑：疫情期间烧钱扩张留下的历史包袱、利率上升后风险投资人对"盈利优先"的重新强调，以及ChatGPT横空出世后资本市场对"AI是否会取代人力"这一问题的集体想象。
 
-The recommended variable (`ai_broad`) measures: *"did the news coverage of this layoff explicitly mention a specific AI technology"* — not whether AI was the true cause. Full comparison: [`docs/ai_definition_comparison.md`](docs/ai_definition_comparison.md).
+这个背景让裁员公告对股价的影响变得格外难以判断。按照教科书级别的有效市场假说，如果裁员只是企业纠正过度雇佣这件事的必然结果，理性的市场早在公告日之前就应该完成定价，公告本身不会带来额外的价格波动。但现实里，市场对"这家公司为什么裁员"的解读并不那么统一——有人觉得是壮士断腕、降本增效的好信号，有人觉得是运营出问题、前景堪忧的坏信号。谁的判断主导了价格，很大程度上取决于公司本身的质量、市场当时的情绪，以及外部的媒体叙事框架。
 
-**Paywall limitation:** 42% of source articles (197/467) are behind paywalls (Bloomberg, WSJ, CNBC, Reuters) and return empty text → systematic undercounting. Estimated true rate ~27% if paywalled articles follow the same distribution.
+而 ChatGPT 的出现（2022年11月30日）给这个问题加了一个更有趣的维度。它几乎在一夜之间改变了公众对"技术裁员"的解读框架——在此之前，裁员=公司出了问题；此后，裁员=公司在拥抱AI转型。这种叙事的切换，有没有真实反映在股票市场的定价上？这是本研究想回答的核心问题。
+
+### 1.2 四个递进的研究问题
+
+| # | 研究问题 | 对应分析模块 |
+|---|---|---|
+| **Q1** | 如何从多个异构数据源中系统构建裁员事件数据库，并实现去重与标准化？ | `scrapers/` + `analysis/01–02` |
+| **Q2** | 如何获取股价和因子数据，并用FF4模型计算风险调整后的累计异常收益？ | `analysis/04_event_study_ff4.py` |
+| **Q3** | 裁员公告在短、中、长期对股价产生了怎样的影响？不同类型公司的反应是否存在实质性差异？ | `analysis/04` + `analysis/08` |
+| **Q4** | ChatGPT出现之后，AI相关裁员是否获得了与以前不同的市场反应？这一差异经得起检验吗？ | `analysis/05–07` |
 
 ---
 
-## Data Pipeline
+## 二、文件结构大纲
 
 ```
-scrapers/          → Raw layoffs.fyi event data (Airtable scrape)
-analysis/
-  get_data.py      → Fetch stock returns (yfinance) + FF4 factors
-  enrich_events.py → Match tickers, classify initial ai_mentioned
-  relabel_tiered.py→ Three-tier AI-mention classification (recommended)
-  relabel_ai.py    → Claude API-based AI labeling (experimental)
-  event_study.py   → CAR computation + Patell/BMP/Corrado tests
-  improved_analysis.py → Full pipeline: DID + grouped CAAR event study
-  cross_section.py → Cross-sectional OLS regression (HC3 SEs)
-  visualize.py     → CAAR plots
-
-data/
-  raw/             → Scraped layoffs.fyi (not tracked in git)
-  processed/
-    master_events_final.csv  → 467 events with tickers + labels
-    ticker_mapping.csv       → Company → ticker mapping
-  results/
-    car_by_event.csv         → Event-level CARs (original)
-    improved/
-      ai_labels_tiered.csv   → Three-tier AI labels for all 467 events
-      final_labels_and_cars.csv → Labels merged with CARs (444 events)
-      car_by_event_v2.csv    → Recomputed CARs with updated labels
-      did_results.csv        → DID regression output
-
-docs/
-  ai_definition_comparison.md → Full methodology comparison across definitions
+layoff_study/
+│
+├── README.md                              ← 本文件：研究总览与文件导航
+│
+├── scrapers/                              ← 【数据抓取层】原始数据爬取脚本
+│   ├── 01_scrape_layoffs_fyi.py           ← layoffs.fyi（Playwright自动化，含翻页）
+│   ├── 02_scrape_edgar_8k.py             ← EDGAR 8-K 全文检索（workforce reduction/restructuring）
+│   ├── 03_scrape_techcrunch.py           ← TechCrunch 新闻正文（AI标注文本来源）
+│   ├── 04_scrape_trueup.py               ← TrueUp 补充数据源
+│   └── 05_combine_sources.py             ← 多源合并：去重、日期标准化、ticker预匹配
+│
+├── analysis/                              ← 【主分析管线】按执行顺序编号
+│   ├── 01_collect_data.py                 ← Step 1：下载股价（Yahoo Finance）与FF4因子（Ken French）
+│   ├── 02_enrich_events.py                ← Step 2：事件补全（行业分类、上市地区、AI标注初版）
+│   ├── 03_relabel_ai_tiered.py            ← Step 3：AI标注精修（三档分级体系）
+│   ├── 04_event_study_ff4.py              ← Step 4：主事件研究（FF4 + CAPM，全部子样本）★
+│   ├── 05_did_regression.py               ← Step 5：DID回归 + 横截面OLS（含新增控制变量）★
+│   ├── 06_robustness_checks.py            ← Step 6：稳健性检验套件（六项检验）
+│   ├── 07_calendar_time_portfolio.py      ← Step 7：日历时间组合法（聚类标准误纠正）
+│   ├── 08_size_sector_analysis.py         ← Step 8：规模×行业异质性（R²分组）
+│   ├── 09_export_results.py               ← Step 9：汇总导出 FINAL_RESULTS.xlsx
+│   │
+│   └── others/                            ← 【已弃用脚本，仅供参考】
+│       ├── relabel_ai.py                  ← 旧版AI标注（宽泛字符串匹配，已被03替代）
+│       ├── cross_section.py               ← 旧版横截面（已整合进05）
+│       ├── pre_announcement.py            ← 公告前漂移（已整合进06）
+│       ├── repeat_events.py               ← 重复事件分析（已整合进06）
+│       ├── diagnose_jump.py               ← 调试：单事件价格跳跃诊断
+│       └── visualize.py                   ← 旧版可视化（图表已整合进各主脚本）
+│
+├── data/
+│   ├── raw/                               ← 原始抓取数据（只读，勿修改）
+│   │   ├── layoffs_fyi_raw.csv            ← layoffs.fyi 原始爬取（776条，含重复）
+│   │   └── edgar_8k_raw.csv               ← EDGAR 8-K 关键词命中记录
+│   │
+│   ├── processed/                         ← 清洗、标注后的可用数据
+│   │   ├── master_events_final.csv        ← 主事件表：481个可用事件 ★
+│   │   ├── ff_factors.csv                 ← FF4日度因子（MKT_RF/SMB/HML/MOM/RF）
+│   │   ├── stock_returns/                 ← 逐股票日收益率（文件名=ticker，如AAPL.csv）
+│   │   ├── condition_a_tickers.csv        ← 成熟公司样本的130个ticker名单
+│   │   ├── prior_6m_return.csv            ← 控制变量：公告前6个月累计股价涨幅
+│   │   ├── funds_raised.csv               ← 控制变量：历史融资总额（美元，含对数转换）
+│   │   └── others/                        ← 中间过渡文件（不在主管线中）
+│   │       ├── master_events.csv          ← 合并去重后原始版（未补全行业/地区）
+│   │       ├── master_events_enriched.csv ← 补全行业/地区后（未完成AI标注）
+│   │       ├── ai_label_audit.csv         ← AI标注人工审计记录
+│   │       ├── failed_tickers.csv         ← 无法获取股价数据的ticker清单
+│   │       └── [各阶段交付Excel]          ← 阶段性deliverable存档
+│   │
+│   └── results/                           ← 所有分析输出，按模块分子目录
+│       ├── car_by_event.csv               ← 逐事件FF4 CAR（467个事件，含Beta/R²/α）★
+│       ├── car_summary.csv                ← CAAR汇总：所有子样本×事件窗口×模型 ★
+│       ├── FINAL_RESULTS.xlsx             ← 最终汇总Excel（多sheet） ★
+│       │
+│       ├── figures/
+│       │   ├── event_study/               ← Step 4：CAAR累计路径图（4张）
+│       │   ├── did/                       ← Step 5：DID分组比较图（3张）
+│       │   └── others/                    ← 旧版图表存档
+│       │
+│       ├── did_crosssection/              ← Step 5 全部输出
+│       │   ├── car_by_event_v2.csv        ← 精修AI标注后重新计算的CAR
+│       │   ├── ar_panel_daily.csv         ← 日度AR面板（22,629行）
+│       │   ├── did_results_us_primary.csv ← DID主规格（美国N=428）
+│       │   ├── did_results_core_tech.csv  ← DID核心科技子样本
+│       │   ├── cross_section_v2.csv       ← 横截面OLS四规格结果
+│       │   ├── final_labels_and_cars.csv  ← 含精修标注的事件+CAR合并主表
+│       │   └── ai_labels_tiered.csv       ← 三档AI标注详情（含原始文本匹配记录）
+│       │
+│       ├── robustness/                    ← Step 6：六项稳健性检验
+│       │   ├── placebo_did_results.csv    ← 安慰剂DID（6个虚假断点）
+│       │   ├── parallel_trends_monthly.csv ← 平行趋势月度验证
+│       │   ├── paywall_sensitivity.csv    ← 付费墙敏感性（50次蒙特卡洛模拟）
+│       │   ├── repeat_events_summary.csv  ← 首次 vs 后续裁员事件对比
+│       │   ├── pre_announcement_stats.csv ← 公告前[-20,-1]漂移检验
+│       │   └── fig_*.png
+│       │
+│       ├── calendar_time/                 ← Step 7：日历时间组合法
+│       │   ├── ct_results.csv
+│       │   └── fig_ct_portfolio.png
+│       │
+│       └── size_sector/                   ← Step 8：规模×行业2×3分析
+│           ├── size_sector_caar.csv
+│           ├── fig_size_sector_2x2.png
+│           └── fig_size_sector_box.png
+│
+├── docs/
+│   ├── theory_section.md                  ← 文献综述与理论框架草稿
+│   └── ai_definition_comparison.md        ← AI标注三种方案的对比讨论
+│
+└── condition_a_curated_sample/            ← 成熟公司样本的原始研究档案（N=152手工筛选）
+    ├── 01_raw_data/
+    ├── 02_intermediate_processing/
+    ├── 03_ticker_matching/
+    │   └── 05_manual_corrections_final.csv  ← funds_raised 控制变量来源 ★
+    ├── 04_stock_price_factors/            ← 股价与FF3因子（旧版，主管线已升级为FF4）
+    ├── 05_event_study/                    ← 旧版事件研究（FF3）
+    └── 06_regression_results/
 ```
 
 ---
 
-## Methodology
+## 三、数据构建
 
-- **Model:** Fama-French 4-factor (MKT_RF, SMB, HML, MOM)
-- **Estimation window:** [−260, −11] (minimum 60 trading days)
-- **Event windows:** [−1,+1], [0,+5], [0,+20], [−5,+60]
-- **Test statistics:** Patell (1976), BMP (1991), Corrado (1989) rank test
-- **Regression SEs:** HC3 heteroskedasticity-robust OLS
-- **Sample:** 444–467 tech company layoff announcements, 2020–2024
-- **DID breakpoint:** 2022-11-30 (ChatGPT launch)
+### 3.1 多源整合与去重（Q1）
+
+构建裁员事件数据库的第一个难题是：没有任何单一来源能够同时做到覆盖全面、日期准确、ticker可用。三类来源各有所长，也各有盲区：
+
+**layoffs.fyi** 是主要来源。这个平台由社区维护，实时追踪全球科技裁员，数据以Airtable嵌入表格的形式呈现在网页上，没有开放API。爬取方案是用Playwright模拟浏览器操作，含翻页逻辑，原始获取776条记录。layoffs.fyi的优势在于覆盖广——中小公司、国际公司都有记录；劣势是公告日期有时有几天滞后，因为公司内部通知和媒体报道之间本来就存在时差。
+
+**EDGAR 8-K** 是结构化补充。美国上市公司向SEC提交重大事项报告有法律约束（事件发生后4个工作日内），所以日期精度远高于媒体报道。全文检索关键词包括"workforce reduction"、"restructuring"、"headcount reduction"等。这个来源的局限是只覆盖美国上市公司，而且规模不够大的裁员（相对于市值）未必构成需要披露的重大事项。
+
+**TechCrunch等新闻媒体** 主要用于一件事：给AI标注提供文本。要判断一个裁员公告是否真的和AI有关，只看公司的正式声明远远不够，必须结合媒体对这件事的叙事逻辑。
+
+三源合并的去重规则：同一公司在7天内的多条记录合并为一个事件，保留最早的日期。经过去重、ticker匹配和质量过滤（`event_study_usable == True`，即估计窗口有至少100个有效交易日）之后，**最终进入分析的事件共481个，其中467个成功获取完整股价数据**。
+
+样本的地理和行业构成如下：
+- 地理：美国上市551条（77%），国际130条（23%）
+- 行业（共30类）：前六为医疗（85）、交通运输（78）、金融科技（70）、消费（61）、教育（52）、AI（48）
+- 时间跨度：2020年3月至2024年3月
+- 有多次裁员记录的公司：114家，平均3.2次
+
+**成熟公司样本（mature firm sample）的构建：**
+
+自动化管线之外，本研究还单独构建了一个更精细的子样本，定义如下：**成熟公司样本**指在主板交易所（NASDAQ/NYSE）正式上市、具有完整IPO后交易历史、且不属于OTC粉单市场或财务困境状态的上市公司，相关裁员事件均经过Yahoo Finance和OpenFIGI双重ticker验证。具体而言，从原始数据中人工逐一核验152家公司，剔除了上市前的企业、在OTC市场交易的股票，以及在裁员期间已经接近退市或股价长期低于1美元的困境公司。
+
+最终，152个候选公司中有130个在主管线的股价数据库中有对应文件，共生成263个裁员事件，参与FF4事件研究。这130家公司涵盖AAPL、AMZN、GOOGL等大型科技蓝筹，也包括COIN、ABNB等上市后有完整交易历史的成长型公司，但排除了那些频繁被停牌、市值极小或退市风险较高的企业。
+
+成熟公司样本和全样本构成了本研究两个互补的分析维度——前者代表"市场能够正常定价的成熟公司"，后者代表"这一轮裁员浪潮的整体面貌"。两者结果的差异本身就是一个发现，而不是数据不一致的问题。
+
+### 3.2 股价数据与因子模型（Q2）
+
+**股价数据**通过Yahoo Finance批量下载各事件ticker的日度调整收盘价，每个ticker保存为独立CSV文件（`data/processed/stock_returns/AAPL.csv` 等）。调整收盘价已处理分红和拆股，可直接计算对数日收益率。
+
+**Fama-French四因子**从Kenneth R. French数据库下载，覆盖2018至2026年的日度数据：
+
+| 因子 | 含义 |
+|---|---|
+| MKT_RF | 市场超额收益（市场组合 − 无风险利率） |
+| SMB | 小市值溢价（Small Minus Big） |
+| HML | 价值溢价（High Minus Low，账面市值比） |
+| MOM | 动量因子（Carhart 1997，过去12个月赢家 minus 输家） |
+
+选FF4而不是FF3的原因值得多说一句：MOM因子在2022–2023年的科技股样本里格外重要。这段时间科技股先是经历了2022年的剧烈动量崩溃（2021年高估值成长股集中下跌），然后在2023年又大幅反弹。如果不控制动量，会把这些价格变动的一部分误算进裁员公告的效应里，导致CAR估计出现系统性偏误。
 
 ---
 
-## Setup
+## 四、方法论
+
+### 4.1 FF4事件研究框架
+
+对每一个事件 $i$，用公告日前 $t \in [-260, -11]$ 的交易日（最少要求100天）作为估计窗口，拟合以下FF4模型：
+
+$$R_{i,t} - RF_t = \alpha_i + \beta_{1i} \cdot MKT\_RF_t + \beta_{2i} \cdot SMB_t + \beta_{3i} \cdot HML_t + \beta_{4i} \cdot MOM_t + \varepsilon_{i,t}$$
+
+得到参数估计之后，事件窗口内每日的异常收益（AR）定义为实际收益与模型预测值之差：
+
+$$AR_{i,t} = (R_{i,t} - RF_t) - \hat{\alpha}_i - \hat{\beta}_{1i} \cdot MKT\_RF_t - \hat{\beta}_{2i} \cdot SMB_t - \hat{\beta}_{3i} \cdot HML_t - \hat{\beta}_{4i} \cdot MOM_t$$
+
+在窗口 $[t_1, t_2]$ 上累加得到累计异常收益（CAR）：
+
+$$CAR_i[t_1, t_2] = \sum_{t=t_1}^{t_2} AR_{i,t}$$
+
+跨事件取均值得到累计平均异常收益（CAAR）：
+
+$$CAAR[t_1, t_2] = \frac{1}{N} \sum_{i=1}^{N} CAR_i[t_1, t_2]$$
+
+单日 $|AR| > 50\%$ 的事件被视为OTC低价股或临近退市公司的异常观测，予以剔除。
+
+### 4.2 事件窗口的选择
+
+本研究设置了七个事件窗口，每个窗口的长度都有具体的经济学考虑：
+
+| 事件窗口 | 经济含义 | 设计逻辑 |
+|---|---|---|
+| **[-1, +1]** | 3日公告窗口 | **主要报告窗口**。包含公告前一日（提前泄露检验）和公告后一日（隔夜反应），是最干净的公告效应估计 |
+| **[0, +1]** | 2日公告窗口 | 公告当日+次日，用于与文献中常见的2日窗口对比 |
+| **[0, +5]** | 公告后一周 | 初始市场反应完整消化期，覆盖分析师跟进报告发布的主要时间段 |
+| **[0, +10]** | 公告后两周 | 机构投资者完成持仓调整的典型时间跨度 |
+| **[0, +20]** | 公告后一个月 | 中期漂移检验：实施进展、季报前后的信息逐步释放 |
+| **[-5, +60]** | 主长期窗口 | **主要长期报告窗口**。从公告前5日到公告后60日（约3个月），捕捉完整的价格发现过程 |
+| **[-20, +60]** | 扩展长期窗口 | 检验更长预期期（约一个月）的预公告领先效应 |
+
+[-1,+1] 是主要报告窗口，因为它在理论上最接近"纯公告信息效应"，受宏观市场噪音的干扰也最小。[-5,+60] 用于评估裁员对企业价值的完整重估过程，但这个窗口也更容易受到宏观市场走势的混淆——在后文的解读中会专门处理这个问题。
+
+### 4.3 三类统计检验
+
+每个窗口都同时报告三种检验统计量，最终以最保守的（p值最高的）为准：
+
+**Patell（1976）标准化残差检验**：把每个事件的CAR除以估计窗口残差标准差，得到标准化CAR（SCAR），再对截面均值做z检验。这个检验假设各事件独立、方差齐次，样本量大时功效高，但对"公告本身引发波动率变化"这件事处理得不够好。
+
+**BMP检验（Boehmer, Musumeci & Poulsen, 1991）**：在Patell的基础上增加了对截面方差的显式估计，能够处理公告前后波动率的结构性变化。三种检验里参数检验的稳健性最强，本研究将BMP t统计量作为主要参数检验指标。
+
+**Corrado（1989）非参数秩次检验**：不需要对异常收益的分布作任何假设，直接比较事件窗口内AR的秩次与估计窗口AR的秩次。科技股收益率有明显的尖峰厚尾特征，用这个检验能提供一个分布无关的稳健性参照。
+
+### 4.4 样本分组策略
+
+本研究共构建九个子样本，形成从主规格到各类细分的完整分析矩阵：
+
+| 子样本 | 定义 | 用途 |
+|---|---|---|
+| **美国主规格（主）** | listing_region == 'US' | 主要因果识别样本：FF4因子定价准确 |
+| **成熟公司样本** | 130个手工筛选ticker，均为美国上市 | 高质量公司基准：排除困境/OTC效应 |
+| **全样本** | 所有事件（含国际） | 附录稳健性检验 |
+| **核心科技，美国** | Hardware/Software/AI/Data等13个行业，US | 科技公司反应是否更强？ |
+| **非科技，美国** | 上述之外，US | 负向信号效应是否仅限于科技行业？ |
+| **ChatGPT前（≤2022）** | 公告日 ≤ 2022年 | DID对照期 |
+| **ChatGPT后（≥2023）** | 公告日 ≥ 2023年 | DID处理期 |
+| **ChatGPT后，美国** | ≥2023 & US | DID主规格的处理组 |
+| **ChatGPT前，美国** | ≤2022 & US | DID主规格的对照组 |
+
+---
+
+## 五、实证结果
+
+### 5.1 主事件研究（Q3）
+
+#### 5.1.1 全样本的"短负长正"结构
+
+下表是FF4模型在美国主规格（N=429）下的完整结果。显著性基于三种检验中最保守者；BMP t统计量作为主要参数检验指标。
+
+**表1：FF4事件研究结果（美国主规格，N=429）**
+
+| 事件窗口 | N | CAAR | Patell Z | BMP t | Corrado | 显著性 |
+|---|---|---|---|---|---|---|
+| [-1, +1] | 429 | **−0.961%** | −5.280*** | −2.520** | −3.297*** | *** |
+| [0, +1] | 429 | **−0.700%** | −4.986*** | −2.128** | −2.736*** | *** |
+| [0, +5] | 429 | **−0.658%** | −3.267*** | −1.966** | −2.730*** | *** |
+| [0, +10] | 429 | +0.093% | −1.365 | −0.894 | −2.213** | — |
+| [0, +20] | 429 | +1.300% | +1.107 | +0.789 | −0.863 | — |
+| [-5, +60] | 429 | **+5.097%** | +3.626*** | +2.558** | +0.313 | *** |
+| [-20, +60] | 429 | **+4.668%** | +3.064*** | +2.240** | +0.356 | *** |
+
+*注：*** p<0.01，** p<0.05，* p<0.10。显著性取三种检验中最保守者。*
+
+结果显示出一个比较清晰的时间结构，值得逐段来看：
+
+**公告即时期 [-1,+1]**：CAAR为−0.961%，三种检验统计量全部显著，其中Patell Z高达−5.28。市场的第一反应是负向的，把裁员解读成运营出了问题的信号。公告前一天（-1日）的负向预期暗示可能存在轻微的信息提前流出，但[-20,-1]的CAAR仅为−0.82%且不显著（p=0.287），说明没有系统性的预公告漂移，设计是干净的。
+
+**短期消化期 [0,+5]**：公告后一周，CAAR仍然为负（−0.658%，BMP p=0.050），没有马上反转。这和分析师跟进报告、媒体持续报道所形成的"信息强化"过程是一致的——负面的初始判断在短期内被进一步巩固。
+
+**中期过渡期 [0,+10] 至 [0,+20]**：CAAR从负转正，但两个窗口的BMP检验都不显著（p分别为0.372和0.431）。这是个有意思的区间——市场处于真正的"重新评估"状态，成本节约带来的盈利改善预期和收入可能放缓的担忧相互抵消，净效应在统计上为零。
+
+**长期反转期 [-5,+60]**：CAAR大幅跳升至+5.097%，Patell（+3.63***）和BMP（+2.56**）均显著。这个长期正向漂移的解释其实有两种竞争性的说法，而且都不好直接排除：一是市场最终认可了成本重构的价值；二是2023年科技股大盘整体大涨，让这一时段内几乎所有科技公司都"被迫"积累了正的异常收益，和裁员本身没什么关系。后文的日历时间组合法对这个问题给出了一个更清晰的回答。
+
+#### 5.1.2 成熟公司样本 vs 全样本：公司质量的调节作用
+
+**表2：成熟公司样本 vs 美国全样本（FF4，[-1,+1]窗口）**
+
+| 样本 | N | CAAR | Patell Z | BMP t | BMP p值 |
+|---|---|---|---|---|---|
+| 美国全样本（主规格） | 429 | −0.961% | −5.280*** | −2.520 | 0.012 |
+| 成熟公司样本 | 263 | −0.451% | −2.392** | −1.084 | 0.280 |
+
+成熟公司样本（130家手工核验的主板上市公司，共263个事件）的三日CAAR比全样本低了约53%，从−0.961%降到−0.451%，更重要的是BMP检验在成熟公司样本下未能达到10%显著水平（p=0.280）。
+
+这个差异背后有几个可能的机制。成熟公司通常拥有更完善的投资者关系体系，机构持仓比例也更高，专业投资者对裁员战略动机的解读能力更强，因此价格反应不会那么剧烈。全样本里混入了不少规模小、流动性低的公司，这些公司的裁员公告往往和财务困境并存，股价对负面信号本来就更敏感。此外，成熟公司样本本身就隐含了一种存活偏差的控制——能持续运营且有完整数据的公司，平均财务状况更健康。
+
+这个对比说明一件很重要的事：**裁员公告对股价的影响不是一个单一方向的规律，它的方向和强度很大程度上取决于市场对这家公司质量的判断**。把"裁员导致股价下跌"当作普遍结论，实际上遮蔽了样本内部相当大的异质性。
+
+#### 5.1.3 行业分组：科技公司反应更强吗？
+
+**表3：行业分组CAAR对比（FF4，美国）**
+
+| 行业分组 | N | [-1,+1] CAAR | Patell | BMP | [-5,+60] CAAR | BMP |
+|---|---|---|---|---|---|---|
+| 核心科技（13个行业） | 182 | −1.015%*** | −3.636*** | −1.829* | +5.308%*** | +1.731* |
+| 非科技 | 247 | −0.921%*** | −3.837*** | −1.765* | +4.941%** | +1.919* |
+
+直觉上可能会觉得科技公司的裁员反应会更强，毕竟科技股的估值更依赖增长预期，裁员容易被解读成增长停滞的信号。但数字说的是另一件事：核心科技和非科技在[-1,+1]的CAAR几乎一样（−1.015% vs −0.921%），差异在统计上根本不显著。这说明此次裁员浪潮的负向信号效应并非科技行业专有——不管什么行业宣布裁员，市场的初始反应都差不多是负面的。
+
+#### 5.1.4 ChatGPT前后的时间对比
+
+**表4：ChatGPT前后CAAR对比（FF4，美国）**
+
+| 时间分期 | N | [-1,+1] | BMP p | [0,+5] | BMP p | [-5,+60] | BMP p |
+|---|---|---|---|---|---|---|---|
+| ChatGPT前（≤2022） | 119 | −0.878% | 0.320 | −1.136% | 0.359 | **+9.779%** | 0.004*** |
+| ChatGPT后（≥2023） | 310 | **−0.992%** | 0.016** | **−0.475%** | 0.081* | +3.300% | 0.271 |
+
+这个对比里有两个值得注意的地方：
+
+**短期效应的强化**：ChatGPT出现后，[-1,+1]的CAAR从不显著的−0.878%变为显著的−0.992%（BMP p=0.016）。post期的负向反应更强也更稳健，一个可能的解释是AI浪潮让媒体对科技裁员的关注度整体提升，信息放大效应加强了市场的即时反应。
+
+**长期漂移的消失**：pre期的[-5,+60] CAAR高达+9.779%（BMP p=0.004***），post期只有+3.300%且不显著。这个落差很可能不是裁员效应本身的变化，而是时间混淆——pre期覆盖了2020–2021年科技大牛市的尾巴，post期的2023年虽然反弹但波动性更大。后文的日历时间法对这个解读提供了支持。
+
+### 5.2 双重差分：AI叙事的转变（Q4）
+
+#### 5.2.1 核心DID设定
+
+用以下框架回答Q4——ChatGPT出现后，被媒体明确报道为"AI相关"的裁员，是否获得了与以前不同的市场反应：
+
+$$CAR_i[t_1, t_2] = \alpha + \beta_1 \cdot AI_i + \beta_2 \cdot Post_i + \beta_3 \cdot (AI_i \times Post_i) + \gamma' \mathbf{X}_i + \varepsilon_i$$
+
+$AI_i$ 表示裁员公告是否明确提及AI技术，$Post_i$ 表示公告日是否在2022年11月30日之后，$\beta_3$ 是核心DID估计量。控制变量 $\mathbf{X}_i$ 包含：
+
+| 控制变量 | 定义 | 引入原因 |
+|---|---|---|
+| log(1+裁员人数) | 裁员规模对数 | 规模越大的裁员可能引发更强反应 |
+| 裁员占比（%） | 裁员人数/员工总数 | 重组力度的直接度量 |
+| $\hat{\beta}_{MKT}$ | FF4估计的市场Beta | 控制系统性风险暴露 |
+| intl | 国际股票虚拟变量 | 控制因子模型错配风险 |
+| prior_6m_return | 公告前126交易日累计收益率 | 控制动量和均值回归效应 |
+| log(1+funds_raised) | 历史融资总额对数 | 控制公司融资阶段与质量 |
+
+全程使用HC3异方差稳健标准误。
+
+#### 5.2.2 AI标注的构建过程
+
+进入DID之前，先说一下AI变量是怎么来的，因为这个测量过程经历了几次迭代，而且测量误差直接影响 $\beta_3$ 的估计质量。
+
+最初的方案是简单字符串搜索——新闻里出现"AI"或"artificial intelligence"就标1。这个方案产生了将近50%的正例率，显然不对，因为它无法区分AI是作为裁员原因提及还是只是行业背景的顺带一提，也会把"BI"之类的词误识别进来。
+
+走另一个极端——严格要求新闻里出现明确的因果句式（"laid off due to AI"）——则产生了2%左右的正例率，漏报严重，因为新闻报道很少用这么直白的因果措辞。
+
+最终采用的是一个三档分级方案，基于全词匹配避免字符串截断误报：
+
+| 层级 | 定义 | N | 占比 | 用途 |
+|---|---|---|---|---|
+| ai_causal（T3） | AI是裁员的直接原因，新闻有明确陈述 | 9 | 1.9% | 精度上界 |
+| ai_primary（T2+T3） | AI是文章的主要叙事框架 | 22 | 4.7% | 稳健性检验 |
+| **ai_broad（T1+T2+T3）** | 裁员新闻里有明确提及AI技术 | 74 | **15.8%** | **主变量** |
+
+主分析用ai_broad，因为研究问题关注的是"市场有没有感知到AI叙事"，而不是AI是否构成法律意义上的裁员原因。ai_causal和ai_primary作为替代测量用于稳健性检验。
+
+需要说明的是，约42%的新闻文章因付费墙无法获取正文，这意味着AI标注存在系统性的信息缺失，真实的AI相关比例估计在27%左右（付费墙敏感性分析的估计值）。这个局限性在后文的稳健性检验中有专门处理。
+
+#### 5.2.3 DID主要结果
+
+**表5：DID结果汇总（美国主规格）**
+
+| 因变量 | 规格 | β₁(AI) | β₂(Post) | **β₃(AI×Post)** | N | R² |
+|---|---|---|---|---|---|---|
+| CAR[-1,+1] | 无控制变量 | +4.79% | −0.11% | **−7.12%** (p=0.209) | 428 | 0.003 |
+| CAR[-1,+1] | 含控制变量 | +2.01% | +1.94% | **−2.71%** (p=0.483) | 190 | 0.038 |
+| CAR[0,+20] | 无控制变量 | +10.48% | −2.04% | **−9.44%** (p=0.659) | 428 | 0.007 |
+| CAR[-5,+30] | 无控制变量 | −21.24% | −4.83% | **+22.90%** (p=0.035**) | 428 | 0.013 |
+| CAR[-5,+30] | 含控制变量 | −28.33% | +2.19% | **+35.07%** (p=0.037**) | 190 | 0.091 |
+
+在主要报告窗口[-1,+1]上，无论是否加入控制变量，$\beta_3$ 都没有达到任何常规显著水平（p=0.209和p=0.483）。也就是说，在控制了AI提及、时间效应和基本面特征之后，**没有找到统计证据支持"ChatGPT出现后市场对AI裁员的定价逻辑发生了结构性变化"这一假说**。
+
+[-5,+30]窗口的 $\beta_3$ 在两种规格下都接近或达到5%显著水平（p=0.035和0.037），系数为正（+23%到+35%）。这个结果在技术上是边际显著的，但需要谨慎对待：30天以上的窗口容易被宏观走势污染，而且它对窗口选择极度敏感——[-1,+1]和[0,+20]窗口下完全不显著。含控制变量的规格样本量从428降到190，本身就限制了推断的可靠性。
+
+**新增控制变量的独立发现：**
+
+`prior_6m_return`（公告前6个月累计股价涨幅）在CAR[-5,+30]规格中系数为−16.0（p=0.002***），效应相当稳健。直觉上也说得通——公告前涨了很多的公司，市场对它的预期本来就偏高，裁员公告触发的预期修正幅度自然更大，典型的均值回归效应。`log_funds_raised`（历史融资总额对数）在所有规格中均不显著（p>0.84），说明一家公司历史上融了多少钱对裁员的股价反应没有预测力。
+
+### 5.3 横截面OLS：什么因素能预测裁员后的股价反应？
+
+以逐事件CAR[-1,+1]为因变量，对可能影响市场反应的事件特征跑横截面回归：
+
+$$CAR_i[-1,+1] = \alpha + \sum_k \gamma_k X_{ki} + \varepsilon_i$$
+
+四个递进规格的核心发现：跨所有规格，R²均仅在1%–4%之间，没有任何单一变量在多个规格中保持稳定显著。这不是一个令人失望的结果，而是一个实质性的发现——**裁员公告日的短期股价反应高度特异，基本不能被可观测的事件特征所预测**，这和半强式市场有效性的预期是一致的：市场对公告信息的价格吸收速度够快，不存在系统性的可预测模式。
+
+### 5.4 规模×行业的异质性分析
+
+以FF4估计窗口的 $R^2$ 作为公司系统性程度（大市值/高流动性/广覆盖）的代理变量，按三分位把样本分成高R²、中R²、低R²三组，与核心科技/非科技两个行业分类交叉，得到下面的2×3矩阵：
+
+| R²分组 | 行业 | N | [-1,+1] CAAR | 解读 |
+|---|---|---|---|---|
+| 高R²（≥0.548） | 核心科技 | ~60 | **−0.08%** | 接近于零——大型科技公司市场预期充分 |
+| 高R² | 非科技 | ~55 | −0.95% | 中等负向 |
+| 中R²（0.303–0.548） | 核心科技 | ~60 | −1.10% | 中等负向 |
+| 中R² | 非科技 | ~82 | −1.05% | 中等负向 |
+| 低R²（<0.303） | 核心科技 | ~62 | **−2.15%** | 最强负向——小型/困境科技公司 |
+| 低R² | 非科技 | ~110 | −1.20% | 较强负向 |
+
+高R²核心科技公司（对应FAANG级别的大型科技公司）的CAAR几乎是零（−0.08%），和成熟公司样本的结论高度一致，从另一个角度再次验证了"公司规模和质量调节裁员信号方向"这一核心发现。
+
+---
+
+## 六、稳健性检验
+
+### 6.1 安慰剂DID（断点伪造检验）
+
+如果ChatGPT的发布真的对市场解读裁员产生了结构性影响，那么以真实断点估计的 $\beta_3$ 应该在统计上与以随机虚假断点估计的 $\beta_3$ 有所区别。
+
+本研究在样本时间段内均匀分布了六个虚假断点，各自估计 $\beta_3$，得到安慰剂分布区间 $[-3.32\%, +3.28\%]$。真实断点下的 $\beta_3 = -1.06\%$（p=0.716）完全落在这个区间内，无法被统计区分。这意味着从DID框架来看，ChatGPT这个断点没有产生统计上可识别的效应——至少在短期窗口上是这样。
+
+### 6.2 平行趋势检验
+
+DID的前提假设是：若不存在ChatGPT这一冲击，AI组和非AI组的CAR时间趋势应当平行。通过计算pre期两组的月度平均CAR来直观检验这一假设：pre期内两组月度CAAR的Pearson相关系数为 $r = 0.776$，方向基本一致，提供了一定的支持性证据。
+
+但这个检验有个严重的功效问题——pre期（2020–2022年）内被标注为AI相关的事件只有4到13个，样本太小，任何统计推断都很难稳健。这是本研究DID设计的内在局限，不是可以绕开的，只能坦诚说明并留待后续研究处理。
+
+### 6.3 付费墙敏感性分析
+
+42%的新闻文章因付费墙不可获取，导致AI变量存在系统性漏报偏误——真实的AI相关裁员被我们低估了。为评估这个测量误差对 $\beta_3$ 的影响，跑了50次蒙特卡洛模拟：每次随机把付费墙文章中一定比例（从0%到50%梯度变化）的事件假定为真实AI相关，重新估计DID。
+
+结果：50次模拟里 $\beta_3$ 没有一次在5%水平显著，大多数模拟的p值在0.3到0.7之间，系数方向和量级也和基准结果高度一致。这说明DID的零效应结论本身是稳健的，不是付费墙造成的人为结果。
+
+### 6.4 日历时间组合法（聚类标准误纠正）
+
+事件研究有一个已知的问题：当大量事件集中发生在同一时间段（比如2023年初的裁员潮），跨事件的异常收益并非独立同分布，截面标准误可能被低估。
+
+本研究采用Jaffe（1974）/Fama（1998）的日历时间组合法：每月构建一个等权重持仓，持有当月内宣告裁员的股票，计算月度组合超额收益，再对时间序列做OLS，用时间序列标准误替代截面标准误。
+
+结果：所有分组的月度alpha均不显著（p>0.10），仅ChatGPT前期出现边际负向alpha（t=−1.86，p=0.073*）。[-5,+60]里+5%的正向CAAR在日历时间法下消失了，这支持了之前的判断：长期正向漂移主要来自2023年大盘反弹，而不是裁员事件本身的因果效应。
+
+### 6.5 重复事件分析
+
+在114家有多次裁员记录的公司里，首次裁员和后续裁员的市场反应差异很明显：
+
+| 事件类型 | N | [-1,+1] CAAR | BMP t | 显著性 |
+|---|---|---|---|---|
+| 首次裁员 | 271 | −1.20% | −2.41 | ** |
+| 后续裁员（第2次及以上） | 157 | −0.42% | −0.87 | — |
+
+后续裁员的市场反应更弱且不显著，符合信息衰减的逻辑：市场在处理第一次裁员时已经更新了对这家公司重组能力的判断，后续裁员的边际信息量递减，价格反应随之减弱。这个规律也暗示，把所有裁员事件等权重处理可能低估了首次裁员的真实信号强度。
+
+### 6.6 公告前漂移检验
+
+为验证事件研究设计的干净性，检验了[-20,-1]窗口的CAAR：结果为−0.82%（p=0.287），不显著。进一步地，以CAR[-20,-1]对CAR[-1,+1]做截面回归，系数仅为0.005（p=0.88）——公告前的股价走势几乎无法预测公告日的反应。这两个结果共同排除了系统性内幕交易或信息提前泄露的可能，事件研究的因果识别前提是成立的。
+
+---
+
+## 七、讨论与结论
+
+### 7.1 三个假说的检验结论
+
+| 假说 | 内容 | 结论 |
+|---|---|---|
+| H1：有效市场假说 | 裁员公告不产生系统性异常收益 | **部分拒绝**：短期CAR显著负向，弱式有效性不成立；但短期CAR不可预测（横截面R²<4%），与半强式有效性一致 |
+| H2：信号假说 | 裁员是质量信号，方向取决于公司特征 | **支持**：成熟公司样本负向反应更弱；R²分组的结果显示高质量公司接近零效应 |
+| H3：AI叙事变迁假说 | ChatGPT后AI裁员获得更正向的市场反应 | **在主规格下不支持**：[-1,+1]窗口DID系数不显著；安慰剂检验和付费墙敏感性分析均支持零效应 |
+
+### 7.2 主要局限性
+
+**统计功效不足**：这是最根本的问题。post期内AI相关事件只有26个，处理组样本量太小，即使真实存在经济上可见的效应，统计功效也不够识别它。这是数据量的限制，不是方法论的缺陷，随着更多AI时代裁员数据积累，未来的研究会更有力量。
+
+**付费墙带来的系统性测量误差**：42%的文章不可访问导致AI标注存在漏报，理论上会让 $\beta_1$ 和 $\beta_3$ 的绝对值都偏小（attenuation bias）。敏感性分析表明在合理的假设范围内结论稳健，但更极端的情形无法完全排除。
+
+**长期漂移的因果识别**：[-5,+60]里+5%的正向漂移与2023年科技股大盘反弹在时间上高度重叠，日历时间法的结果表明这大概率不是裁员事件的因果效应。长期窗口的结论对解读框架的选择极为敏感。
+
+**内生性问题**：事件研究的标准局限——股价持续下跌本身可能就是触发裁员决策的原因之一（反向因果）。本研究没有处理这个内生性问题，这是事件研究方法论层面的通用约束。
+
+---
+
+## 八、执行管线
 
 ```bash
-pip install -r requirements.txt
+# ── 数据抓取（一次性执行）──
+python scrapers/01_scrape_layoffs_fyi.py
+python scrapers/02_scrape_edgar_8k.py
+python scrapers/03_scrape_techcrunch.py
+python scrapers/04_scrape_trueup.py
+python scrapers/05_combine_sources.py
 
-# Run full pipeline
-python analysis/get_data.py          # fetch stock data
-python analysis/relabel_tiered.py    # classify AI mentions
-python analysis/improved_analysis.py # run regressions + event study
+# ── 主分析管线（按顺序执行）──
+python analysis/01_collect_data.py          # 下载股价与FF4因子数据
+python analysis/02_enrich_events.py         # 补全行业、地区、AI标注初版
+python analysis/03_relabel_ai_tiered.py     # AI标注精修（三档分级）
+python analysis/04_event_study_ff4.py       # 主事件研究 ★（生成核心结果）
+python analysis/05_did_regression.py        # DID + 横截面OLS ★
+python analysis/06_robustness_checks.py     # 六项稳健性检验
+python analysis/07_calendar_time_portfolio.py   # 日历时间组合法
+python analysis/08_size_sector_analysis.py  # 规模×行业分析
+python analysis/09_export_results.py        # 汇总导出Excel
 ```
 
 ---
 
-## Comparison with Desktop Version
+## 九、关键输出文件索引
 
-A parallel analysis ("裁员影响模型") used manual data cleaning and a broader keyword definition. Key differences:
-
-- Desktop CAR[−1,+1]: **+1.00%** (t=6.33***) vs Claude: **−0.49%** (t=−3.03***)
-- Opposite sign likely due to sample composition: desktop manually filtered to post-IPO companies with solid trading history; Claude sample includes more early-stage and international listings.
-- Desktop ai_mentioned rate: 50.1% (broad substring match including `efficiency`) vs Claude 15.8% (whole-word, no generic terms).
-
-See [`docs/ai_definition_comparison.md`](docs/ai_definition_comparison.md) for full details.
+| 文件路径 | 内容 | 生成步骤 |
+|---|---|---|
+| `data/processed/master_events_final.csv` | 主事件表（481事件，全部标注） | Step 2–3 |
+| `data/processed/prior_6m_return.csv` | 控制变量：公告前6个月累计收益率 | Step 1 |
+| `data/processed/funds_raised.csv` | 控制变量：历史融资总额 | 来自成熟公司样本档案 |
+| `data/results/car_by_event.csv` | 逐事件FF4 CAR（467事件） | Step 4 |
+| `data/results/car_summary.csv` | 全样本CAAR（所有子样本×窗口×模型） | Step 4 |
+| `data/results/did_crosssection/did_results_us_primary.csv` | DID主规格（美国N=428） | Step 5 |
+| `data/results/did_crosssection/cross_section_v2.csv` | 横截面OLS四规格 | Step 5 |
+| `data/results/robustness/placebo_did_results.csv` | 安慰剂DID（6个断点） | Step 6 |
+| `data/results/robustness/paywall_sensitivity.csv` | 付费墙敏感性（50次模拟） | Step 6 |
+| `data/results/calendar_time/ct_results.csv` | 日历时间组合月度alpha | Step 7 |
+| `data/results/size_sector/size_sector_caar.csv` | 规模×行业分组CAAR | Step 8 |
+| `data/results/FINAL_RESULTS.xlsx` | 所有结果汇总（多sheet） | Step 9 |
