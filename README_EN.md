@@ -157,13 +157,21 @@ A brief snapshot of the sample composition:
 - Time span: March 2020 through March 2024
 - Firms with multiple layoff records: 114, averaging 3.2 events each
 
-**Constructing the Mature Firm Sample:**
+**Why all industries, not just tech?**
+
+The primary data sources — layoffs.fyi, EDGAR 8-K filings, and TechCrunch — naturally skew toward technology companies. One could restrict the sample to tech firms only. We chose not to, for two reasons. First, even within this dataset, pure-tech companies are a minority: across 30 industry categories, sectors like Healthcare (85 events), Transportation (78), and Finance (70) are all well-represented, and collectively non-tech industries account for the majority of events. Restricting to tech would cut the sample by more than half and substantially reduce statistical power. Second, including all industries allows for a more informative cross-industry screening: if layoff announcement effects are genuinely AI- or efficiency-driven, we would expect that pattern to be concentrated in tech, which can then be verified by comparing tech vs. non-tech subsamples. If instead the effect appears uniformly across all sectors, that is itself informative — it suggests the market is responding to something more generic, like the macroeconomic signal of labor market slack, rather than an AI transformation narrative. That said, because the study is ultimately motivated by tech-sector behavior (the topic is prominently labeled as a "tech layoff" phenomenon in the sources we track), tech-sector analysis remains central, and a dedicated Core Tech subsample is analyzed alongside the full sample.
+
+**Subsample 1 — Mature Firm Sample:**
 
 Alongside the automated pipeline, a second, more carefully curated subsample was assembled independently. The **Mature Firm Sample** is defined as companies that (i) are listed on a major exchange (NASDAQ or NYSE), (ii) have a complete, uninterrupted trading history post-IPO, and (iii) are not trading on OTC or pink sheets, and show no signs of financial distress (e.g., extended periods of sub-$1 stock prices, active delisting proceedings). Ticker assignments were cross-verified using both Yahoo Finance and OpenFIGI.
 
-Starting from 152 candidate companies identified through manual review of the original data, 22 were excluded — six because they were international listings for which U.S. FF4 factors would be misspecified, and sixteen because they were OTC or distressed firms whose stock behavior would distort the results. The remaining 130 companies — spanning established names like AAPL and AMZN as well as growth-stage but post-IPO companies like COIN and ABNB — generated 263 layoff events that enter the FF4 event study.
+Starting from 152 candidate companies identified through manual review of the original data, 22 were excluded — six because they were international listings for which U.S. FF4 factors would be misspecified, and sixteen because they were OTC or distressed firms whose stock behavior would distort the results. The remaining 130 companies — spanning established names like AAPL and AMZN as well as growth-stage but post-IPO companies like COIN and ABNB — generated **263 layoff events** that enter the FF4 event study.
 
-The Mature Firm Sample and the full pipeline sample are designed to be complementary, not competing. The former represents "companies the market can price efficiently under normal conditions"; the latter captures the broader cross-section of what this layoff wave actually looked like. Differences in their results are themselves informative, not a sign of inconsistency.
+**Subsample 2 — Core Tech Sample (N = 182):**
+
+Given the study's grounding in the tech layoff tracker narrative, a separate Core Tech subsample was constructed from the full U.S.-listed sample. This subsample retains only events from firms classified in core technology-adjacent industries: Hardware, Software/Data, Security, Infrastructure, AI, Crypto, Media, and related digital-product sectors. The resulting 182 events form a tighter, more thematically focused sample for the DID analysis, and serve as a robustness check against the possibility that non-tech sector dynamics are diluting or masking AI-specific announcement effects.
+
+The three samples — full pipeline, Mature Firm, and Core Tech — are designed to be complementary. The full pipeline captures the complete cross-section of the layoff wave; the Mature Firm sample controls for firm quality; and the Core Tech sample keeps the analysis anchored to the phenomenon the study set out to investigate.
 
 ### 3.2 Stock Price Data and the Factor Model (Q2)
 
