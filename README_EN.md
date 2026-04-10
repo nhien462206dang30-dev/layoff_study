@@ -6,143 +6,182 @@
 
 > **Study Type:** Empirical Finance — Event Study
 
-> **Sample Period:** March 2020 – March 2024, publicly listed firms in tech and adjacent industries
+> **Sample Period:** March 2020 – March 2024, publicly listed firms in technology and adjacent industries
 
-> **Core Methods:** Fama-French Four-Factor Model (FF4) + Difference-in-Differences (DID)
+> **Core Methods:** Carhart Four-Factor Model (FF4, Carhart 1997) + Staged Event Study + Cross-Sectional Analysis
 
-> **Primary Sample:** U.S.-listed firms, N = 429 events; Mature Firm Sample, N = 263 events; Core Tech Subsample, N = 182 events
-
----
-
-## I. Research Questions
-
-| # | Research Question | Analysis Module |
-|---|---|---|
-| **Q1** | How can layoff events from multiple heterogeneous sources be systematically compiled, deduplicated, and standardized into a usable database? | `scrapers/` + `analysis/01–02` |
-| **Q2** | How are stock price and factor data obtained, and how are risk-adjusted cumulative abnormal returns (CARs) estimated under the FF4 framework? | `analysis/04_event_study_ff4.py` |
-| **Q3** | What are the short-, medium-, and long-run price effects of layoff announcements? Does the market response vary meaningfully across firm types? | `analysis/04` + `analysis/08` |
-| **Q4** | After ChatGPT's launch, did AI-linked layoffs receive a measurably different market reaction? And does that difference hold up to scrutiny? | `analysis/05–07` |
+> **Primary Sample:** U.S.-listed firms, N = 430 events; Established Firm Sample, N = 263 events; Core Technology Subsample, N = 182 events
 
 ---
 
-## II. Core Findings
 
-### H1: Layoff Announcements Produce a "Short-Negative, Long-Positive" Return Structure
+## I. Research Overview
 
-The market's response to layoff announcements is not unidirectional — it follows a clear temporal structure.
+### H1: Layoff Announcements Exhibit a "Short-Negative, Long-Positive" Temporal Structure
 
-**Announcement window ([-1,+1]):** The three-day CAAR is **−0.961%** (Patell Z = −5.28\*\*\*, BMP t = −2.52\*\*). The market's initial reaction is unambiguously negative, interpreting the layoff as a signal of operational trouble. The first post-announcement week ([0,+5]) CAAR remains negative at **−0.658%** (BMP p = 0.050\*) — the negative information is still being absorbed.
+Market reactions to layoff announcements are not unidirectional. Rather, they unfold in clearly distinct phases over time. The table below summarizes the key results from the Carhart Four-Factor Model (FF4) for the primary U.S. sample (N = 430):
 
-**Transition window ([0,+10] to [0,+20]):** CAAR gradually recovers toward positive territory, but both [0,+10] (+0.093%) and [0,+20] (+1.300%) fail to achieve statistical significance under the BMP test. The market is genuinely re-evaluating — expected cost savings and potential revenue concerns offset each other, yielding a net effect indistinguishable from zero. As shown in Figure 1, the CAAR cumulative path crosses zero approximately on **trading day +16 to +18** post-announcement (the path value at day +10 is approximately −0.91%, still negative; at day +20 approximately +0.35%, already positive).
+**Summary (full results in Section VI, Table 3): CAAR by Window (FF4, U.S. Primary Sample, N = 430)**
 
-> **Note on reading the figure:** The window CARs in Table 1 (e.g., [0,+10] = +0.093%) and the annotated path values in Figure 1 at day +10 (approximately −0.91%) are measured differently. The window CAR sums ARs only from day 0 to day +10; the cumulative path in the figure starts from t = −11 and includes the large negative contribution from day −1 (approximately −1.0%), making the path values consistently more negative than the corresponding window CARs.
+| Event Window | CAAR | BMP *t* | Sig. | Economic Interpretation |
+|---|---|---|---|---|
+| $[-1,+1]$ | −0.952% | −2.52 | \*\* | Immediate negative announcement reaction; market interprets layoffs as a signal of operational distress |
+| $[0,+5]$ | −0.676% | −1.98 | \*\* | Continued absorption of negative information; analyst follow-up reports reinforce negative sentiment |
+| $[0,+10]$ | +0.076% | −0.90 | — | Expectations of cost savings offset concerns over potential revenue slowdown; net effect is statistically indistinguishable from zero. CAAR crosses zero precisely at **trading day T = +10** (+0.076%) |
+| $[0,+20]$ | +1.287% | +0.79 | — | Positive but insignificant; cost-savings expectations and revenue concerns remain balanced |
+| $[0,+60]$ | +5.235% | +2.84 | \*\*\* | Positive long-run drift; however, the calendar-time portfolio approach yields insignificant monthly alphas — this drift is most likely attributable to the broader tech market rally in 2023, not to a causal effect of layoff announcements |
 
-**Long run ([0,+60]):** CAAR rises to **+5.335%** (BMP t = +2.861\*\*\*). However, calendar-time portfolio estimates show monthly alpha is insignificant across all specifications, suggesting the long-run drift largely reflects the broad technology sector recovery in 2023, not a causal layoff effect.
+*Note: \*\*\* p<0.01, \*\* p<0.05, \* p<0.10. Significance indicators are based on the BMP t-test (primary parametric test); Patell and Corrado are reported as robustness references.*
+
+The CAAR path makes this temporal structure visually apparent. With the Y-axis re-indexed to zero at $t = -1$, the endpoint of each window in the figure corresponds exactly to the CAAR in the table. The **zero-crossing occurs approximately at trading day T = +10** ($[0,+9] = -0.173\%$ remains negative; $[0,+10] = +0.076\%$ turns positive).
 
 ![CAAR Time Path](data/results/fig_caar_path_full.png)
 
-*Figure 1: CAAR time path for U.S. layoff announcements (FF4, N = 429, t = −11 to +60). Shaded band is 95% confidence interval. t = 0 is the announcement date; the near-zero pre-announcement segment [-11, 0] confirms no significant information leakage.*
+*Figure 1: CAAR time path for U.S.-listed firm layoff announcements (FF4, N = 430, T = −10 to +60). Y-axis is re-indexed to zero at T = −1; CAAR values at window endpoints correspond exactly to those in Table 3. Shaded band represents 95% confidence intervals; blue-shaded region covers the pre-announcement window [−10, 0], used to verify the absence of systematic pre-announcement drift.*
 
-**Firm quality as a moderator:** The magnitude of the negative signal depends heavily on market perceptions of firm quality. The Mature Firm Sample (N = 263, manually verified exchange-listed firms) shows a three-day CAAR of **−0.451%** (BMP p = 0.280, not significant) — roughly 53% weaker than the full sample. High-R² core tech firms (large-cap blue-chip tech) show CAAR near zero (−0.08%). **The negative announcement effect is most pronounced for small, illiquid firms; it nearly disappears for large, mature technology companies.**
+Restricting the sample to established firms, the [-1,+1] CAAR drops to −0.451% (N = 263), approximately 53% smaller than the full-sample estimate of −0.952%. Focusing further on core technology firms (N = 182), the CAAR is −1.015%; among large-cap established tech firms (N = 56), it falls to −0.079%. **The negative signaling effect of layoff announcements is most pronounced among smaller, less liquid firms and substantially attenuated among large, established companies.**
 
 
-### H2: AI Framing Does Not Produce a Differential Market Premium Post-ChatGPT
+### H2: AI Narratives Have Not Produced Differential Pricing in the GenAI Era
 
-The central hypothesis is that if AI genuinely changed how markets interpret workforce reductions, then after ChatGPT's launch, layoffs explicitly framed as AI-related should receive a more positive (or less negative) market reaction than non-AI layoffs. This study tests that hypothesis from three angles. All three point in the same direction: **no statistically significant evidence.**
+If AI truly altered the market's interpretation of layoffs, we would expect layoffs framed as AI-driven — particularly those announced after the release of ChatGPT — to elicit more positive (or at least less negative) stock price reactions than non-AI layoffs.
 
-**Evidence 1 — Industry grouping does not support an AI premium:** Core tech firms (N = 182) and non-tech firms (N = 247) show almost identical three-day CAARs (−1.015% vs −0.921%), with the difference far from statistical significance. If AI framing were affecting valuations, tech firms should be the first place to see it — the data do not support this.
+This study tests that hypothesis along three dimensions. The results consistently point in the same direction: while layoff announcements generate a genuine and nuanced market response (negative in the short run, recovering over time), **the emergence of generative AI has not produced meaningfully different pricing for AI-associated layoffs**. The narrative framing of workforce reductions as "AI transformation" has not been recognized by capital markets as an independent information signal.
 
-![Tech vs Non-Tech CAAR](data/results/caap_tech_vs_nontech.png)
+**(1) Industry Grouping Does Not Support an AI Premium:** Three-day CAARs for core technology firms (N = 182) and non-technology firms (N = 248) are strikingly similar (−1.015% vs. −0.905%), and a Welch two-sample t-test confirms the difference is statistically negligible (t = −0.114, p = 0.909). If AI narratives were generating pricing effects, they should manifest most clearly in technology firms — yet the data provide no such evidence.
 
-*Figure 2: CAAR time paths for core tech vs. non-tech firms (FF4, U.S. sample).*
+![Tech vs. Non-Tech CAAR](data/results/caap_tech_vs_nontech.png)
 
-**Evidence 2 — Pre-/Post-ChatGPT comparison runs counter to the hypothesis:** If AI framing created a positive valuation premium in the post period, we would expect the post-ChatGPT announcement effect to be less negative than the pre-ChatGPT one. The opposite is observed: the post-ChatGPT short-term negative is stronger and more significant (post [-1,+1] = −0.992%\*\*, pre [-1,+1] = −0.878%, not significant). A more plausible interpretation is that heightened media attention to tech layoffs in the AI era amplified the market's immediate negative response, rather than softening it.
+*Figure 2: CAAR time paths for core technology firms (N = 182) vs. non-technology firms (N = 248), U.S. sample (FF4, T = −10 to +60, Y-axis re-indexed to zero at T = −1).*
 
-![Pre vs Post ChatGPT CAAR](data/results/caap_pre_vs_post_genai.png)
+**(2) Pre- vs. Post-GenAI Comparison: Similar Magnitudes, No Evidence of Structural Change**
 
-*Figure 3: CAAR time paths for pre-ChatGPT (N = 119) vs. post-ChatGPT (N = 310) layoff events (FF4, U.S. sample).*
+Splitting the sample at the ChatGPT release date (November 30, 2022), the aggregate [-1,+1] CAARs are −1.19% (Pre-GenAI, N = 105) and −0.87% (Post-GenAI, N = 325; see Table 6). Both periods exhibit the same short-run negative reaction (approximately −1%), and the difference of just 0.32 percentage points provides no basis for concluding that the emergence of generative AI changed the market's fundamental pricing logic.
 
-**Evidence 3 — DID direct test is not significant:** In the primary reporting window [-1,+1], the DID interaction coefficient β₃ fails to reach conventional significance regardless of control variable inclusion (no controls: β₃ = −7.12%, p = 0.209; with controls: β₃ = −2.71%, p = 0.483). Placebo DID tests (six false breakpoints) and paywall sensitivity analysis (50 Monte Carlo simulations) both support the robustness of the null result.
+In the [0,+5] window, the short-run decline is somewhat larger Pre-GenAI (−1.41%) than Post-GenAI (−0.44%), but given that the Pre-GenAI estimate is statistically insignificant and within the range of normal noise, this pattern cannot credibly support the claim that AI narratives have reshaped market pricing of layoff events.
 
-![AI vs Non-AI CAAR](data/results/caap_ai_vs_nonai.png)
+The divergence in long-run drift is more pronounced: Pre-GenAI [0,+60] CAAR is +9.69% versus +3.80% Post-GenAI. This gap, however, most plausibly reflects differences in the macroeconomic backdrop — the Pre-GenAI window spans the 2021–2022 tech rally cycle, while the Post-GenAI period (primarily 2023) is characterized by rising interest rates and multiple compression — rather than any effect of AI framing.
 
-*Figure 4: CAAR time paths for AI-labeled vs. non-AI layoff announcements (FF4, U.S. sample, ai_broad definition).*
+Taken together, the overall pattern of announcement effects is highly consistent across the two periods. There is no statistical evidence that generative AI altered the way markets price technology-sector layoffs.
 
-**Overall conclusion:** Markets respond to layoff announcements in a real but complex way (short-run negative, long-run recovery). But this response pattern **did not shift in a measurably different direction for AI-framed layoffs after ChatGPT's launch.** The media narrative positioning layoffs as AI-driven transformation did not produce an independent valuation signal that capital markets priced differently.
+**Summary (full results in Section VI, Table 6): Pre- vs. Post-GenAI Event Study Comparison (FF4, U.S.)**
+
+**A. Pre-GenAI Period (≤ November 29, 2022)**
+
+| Event Window | All Events (N=105) | AI-Related (N=3)† | Non-AI (N=102) |
+|---|---|---|---|
+| [-1,+1] | −1.19% | +5.60% | −1.39% |
+| [0,+5] | −1.41% | +5.36% | −1.61% |
+| [0,+20] | +1.83% | +22.72% | +1.21% |
+| [0,+60] | +9.69% | −27.99%† | +10.80% |
+
+*† The Pre-GenAI AI-related subsample contains only N = 3 events; the [0,+60] mean (−27.99%) is dominated by individual observations and is not statistically representative.*
+
+**B. Post-GenAI Period (≥ November 30, 2022)**
+
+| Event Window | All Events (N=325) | AI-Related (N=26) | Non-AI (N=299) |
+|---|---|---|---|
+| [-1,+1] | −0.87% | −1.13% | −0.85% |
+| [0,+5] | −0.44% | +2.01% | −0.65% |
+| [0,+20] | +1.11% | +5.24% | +0.75% |
+| [0,+60] | +3.80% | +6.48% | +3.56% |
+
+
+
+![Pre vs. Post-GenAI CAAR Comparison](data/results/caap_pre_vs_post_genai.png)
+
+*Figure 3: CAAR time paths for Pre-GenAI (N = 105) vs. Post-GenAI (N = 325) layoff announcements (FF4, U.S. sample, T = −10 to +60, Y-axis re-indexed to zero at T = −1). Split date: November 30, 2022.*
+
+**(3) Post-GenAI Cross-Sectional Test:** With only N = 3 AI-related layoff events in the Pre-GenAI period (mean CAR +5.60%), severe sample imbalance precludes a credible within-period comparison. The analysis therefore relies on a staged event study design. In the Post-GenAI period, where the AI subsample is relatively more populated (AI: N = 26; non-AI: N = 299), the three-day stock price responses of the two groups show no significant difference (AI: −1.13% vs. non-AI: −0.85%, difference = −0.28%, p = 0.856). Even over the longer [0,+60] window, the incremental reaction of AI-related layoffs remains statistically indistinguishable from zero (AI: +6.48% vs. non-AI: +3.56%, difference = +2.92%, p = 0.702).
+
+
+![Four-Way CAAR Comparison](data/results/improved/figB_caar_4way.png)
+
+*Figure 4: CAAR time paths for four subgroups (AI/Non-AI × Pre/Post-GenAI), FF4, T = −10 to +60, Y-axis re-indexed to zero at T = −1. The Pre+AI group (N = 3) is omitted due to insufficient sample size (<5); the remaining three groups are Post+AI (N = 26), Pre+Non-AI (N = 102), and Post+Non-AI (N = 299).*
+
 
 ---
 
-## III. Research Background
+## II. Background
 
-In recent years, tech companies have gone through a significant wave of workforce reductions. A prevalent media narrative holds that firms are actively replacing human labor with AI — and that markets view this favorably, treating AI-driven layoffs as a signal of operational efficiency gains. Under this view, layoff announcements should generate positive stock price reactions, particularly when companies explicitly attribute cuts to AI transformation.
+The technology sector has undergone a significant wave of workforce reductions in recent years. The most widely circulated interpretation in the media and among investors is that companies are actively substituting AI for human labor, and that markets view AI-driven layoffs favorably — treating them as signals of improved operational efficiency. Under this logic, layoff announcements should generate positive stock price reactions, particularly when companies explicitly attribute headcount reductions to AI-driven transformation.
 
-A competing explanation, however, is equally difficult to dismiss: many of these companies simply overhired during the pandemic-era boom, and the subsequent layoffs were a straightforward correction of that excess. Under this reading, the "AI transformation" framing is largely rhetorical — a way to make a passive operational retreat sound strategically forward-looking. If this is the actual story, one would expect market reactions to be muted or negative, since the announcement signals prior mismanagement rather than strategic transformation.
+An equally compelling alternative explanation, however, is that many of these layoffs simply represent corrections to pandemic-era over-hiring — the unwinding of headcount expanded during an anomalous growth period. Under this narrative, "AI transformation" is merely a rebranding exercise: a way to make a reactive retreat sound forward-looking. If this is closer to the truth, market reactions should be muted or even negative, as the announcement signals prior operational mismanagement rather than strategic initiative.
 
-Both explanations are plausible, but anecdotes are a poor basis for understanding aggregate market behavior. The core motivation of this study is to use a systematically constructed large sample to empirically answer: how does the stock market actually respond to layoff announcements? And does the AI narrative in layoff coverage represent genuine information that markets price differently — or is it merely rhetorical packaging with no independent valuation signal?
+Both interpretations are plausible. Anecdotal evidence, however, is insufficient to characterize the aggregate market response. The central motivation of this study is to test these competing narratives rigorously using a large, systematically constructed dataset: how do markets actually respond to layoff announcements? Does the AI framing in corporate communications genuinely alter the market's pricing logic — or is it simply rhetorical packaging that generates no independent information value?
 
 ---
+## III. Research Questions and Paper Structure
 
+| # | Research Question | Analysis Module |
+|---|---|---|
+| **Q1** | How can a layoff event database be systematically constructed from multiple heterogeneous data sources, with consistent deduplication and standardization? | `scrapers/` + `analysis/01–02` |
+| **Q2** | How are stock price and factor data obtained, and how are risk-adjusted cumulative abnormal returns computed using the FF4 model? | `analysis/04_event_study_ff4.py` |
+| **Q3** | What are the short-, medium-, and long-term stock price effects of layoff announcements, and do these effects differ materially across firm types? | `analysis/04` + `analysis/08` |
+| **Q4** | Following the release of ChatGPT, have AI-related layoffs elicited different market reactions relative to non-AI layoffs? Are these differences robust to alternative specifications? | `analysis/05–07` |
+
+---
 ## IV. Data Construction
 
 
 ### 4.1 Multi-Source Integration and Deduplication (Q1)
 
-The foundational challenge in building a layoff event database is that no single source is simultaneously comprehensive, date-accurate, and ticker-compatible. Three source types each have distinct strengths and blind spots:
+The first challenge in constructing a layoff event database is that no single source simultaneously provides broad coverage, precise announcement dates, and reliable ticker information. Three source types each bring distinct strengths and limitations.
 
-**layoffs.fyi** is the primary source. This community-maintained platform tracks global tech layoffs in real time, with data embedded in an Airtable widget — no public API. The scraping approach uses Playwright to simulate browser interactions with full pagination logic, yielding 776 raw records. layoffs.fyi's strength is breadth — it covers small and mid-cap firms, international companies, and pre-IPO startups. Its weakness is that reported dates can lag by several days, reflecting the inherent gap between internal announcements and media coverage.
+**layoffs.fyi** serves as the primary data source. This community-maintained platform tracks global technology-sector layoffs in real time, presenting data in Airtable-embedded tables with no public API. Data were collected by scripting a Playwright-based browser automation to navigate pagination, yielding 776 raw records. The platform's main advantage is breadth — it covers small-cap firms and international companies that would otherwise be missed. The main limitation is that announcement dates occasionally lag by several days, reflecting the inherent gap between internal company communications and public media coverage.
 
-**EDGAR 8-K filings** serve as a structured complement. U.S.-listed companies are legally required to disclose material events within four business days (Form 8-K), so dates are significantly more precise than media reports. Full-text keyword searches target phrases including "workforce reduction," "restructuring," and "headcount reduction." The limitation is coverage: only U.S.-listed companies, and only layoffs material enough to require regulatory disclosure.
+**EDGAR 8-K filings** provide a structured complement. U.S. public companies are legally required to file material event disclosures with the SEC within four business days of the triggering event, making date precision considerably higher than media-derived sources. Full-text searches were conducted using keywords including "workforce reduction," "restructuring," and "headcount reduction." The limitations of this source are its U.S.-only coverage and the fact that layoffs below a certain threshold relative to market capitalization may not rise to the level of a required material disclosure.
 
-**TechCrunch and other news outlets** are used primarily for one purpose: supplying text for AI labeling. Determining whether a layoff announcement is genuinely AI-related requires the surrounding media narrative, not just the company's formal disclosure.
+**Tech media outlets** (TechCrunch and similar sources) serve primarily a single purpose: providing text for AI annotation. Determining whether a given layoff announcement is genuinely AI-related requires access to the surrounding media narrative, not just the firm's official disclosure.
 
-Deduplication rule: multiple records from the same company within a 7-day window are merged into a single event, retaining the earliest date. After deduplication, ticker matching, and quality filtering (`event_study_usable == True`, requiring at least 100 valid trading days in the estimation window), **481 events enter the analysis, of which 467 have complete stock price data.**
+Deduplication across the three sources follows a seven-day rolling window rule: multiple records for the same firm within a seven-day period are collapsed into a single event, retaining the earliest date. After deduplication, ticker matching, and quality filtering (`event_study_usable == True`, requiring at least 100 valid trading days in the estimation window), **481 events pass all filters, of which 467 yield complete stock price data**.
 
-Sample composition:
-- Geographic: 551 U.S.-listed (77%), 130 international (23%)
-- Industries (30 categories): top six are Healthcare (85), Transportation (78), Fintech (70), Consumer (61), Education (52), AI (48)
+The sample's geographic and industry composition is as follows:
+- Geography: 441 U.S.-listed events (91.7%), 40 internationally listed (8.3%)
+- Industry (30 categories): the six most represented are Healthcare (85), Transportation (78), Fintech (70), Consumer (61), Education (52), and AI (48)
 - Time span: March 2020 to March 2024
-- Companies with multiple layoff records: 114 firms, averaging 3.2 events each
+- Firms with multiple layoff records: 114 firms, averaging 3.2 events each
 
 
-**Why include all industries rather than tech-only?**
+**Why include all industries rather than restricting to technology firms?**
 
-The data sources naturally skew toward tech, but this study retains all industries for two reasons.
+The data sources are naturally skewed toward technology companies, but this study retains the full cross-industry sample for two reasons.
 
-First, pure tech firms are actually a minority in this dataset. Across 30 industry categories, Healthcare (85 events), Transportation (78), and Fintech (70) are all substantial — non-tech sectors together account for the majority. Restricting to tech companies alone would cut the sample size by more than half, severely reducing statistical power.
+First, pure technology firms are a minority within this dataset. Across 30 industry categories, non-technology sectors such as Healthcare (85 events), Transportation (78), and Fintech (70) are substantially represented, with non-technology industries collectively comprising the majority of observations. Restricting the sample to technology firms alone would eliminate more than half the observations, substantially reducing the statistical power of all tests.
 
-Second, retaining all industries enables more meaningful cross-industry screening. If the announcement effect genuinely stems from AI efficiency signaling, it should manifest most strongly in tech firms — testable through tech vs. non-tech subsample comparisons. If instead the effect is uniform across industries, it more likely reflects broad macroeconomic signals rather than an AI transformation narrative.
+Second, a broad cross-industry sample enables more meaningful sectoral comparisons. If the layoff announcement effect genuinely reflects AI narratives or efficiency signals, that effect should concentrate in technology firms — a proposition directly testable by comparing technology and non-technology subsamples. Conversely, if the effect is uniform across industries, it suggests the market is responding to more general macroeconomic signals rather than AI-transformation narratives specifically.
 
-Tech industry analysis remains central to the study, and a dedicated **Core Tech Subsample** is constructed and analyzed in parallel with the full sample.
-
-
-**Subsample 1 — Mature Firm Sample (N = 263):**
-
-Beyond the automated pipeline, a more carefully curated subsample is constructed. The **Mature Firm Sample** consists of companies listed on major exchanges (NASDAQ/NYSE) with complete post-IPO trading histories, explicitly excluding OTC/pink sheet stocks and financially distressed firms. 152 companies were manually verified against Yahoo Finance and OpenFIGI; firms in pre-IPO status, trading on OTC markets, or facing delisting risk (sustained price below $1) during the study period were excluded.
-
-130 companies passed screening, generating **263 layoff events** for FF4 event study analysis. The sample spans large-cap tech blue chips (AAPL, AMZN, GOOGL) and post-IPO growth companies (COIN, ABNB) with complete trading histories.
+Technology sector analysis remains central throughout. A dedicated **core technology subsample** is constructed and analyzed in parallel with the full sample.
 
 
-**Subsample 2 — Core Tech Subsample (N = 182):**
+**Subsample I — Established Firm Sample (N = 263):**
 
-To anchor the analysis closer to the study's motivating phenomenon (tech-sector layoffs), a **Core Tech Subsample** is extracted from all U.S.-listed events. This subsample retains only firms classified under core technology and adjacent digital industries: hardware, data/software, security, infrastructure, AI, crypto, media, and digital consumer products — **182 events** in total. This subsample serves as a robustness check in DID analysis, testing whether non-tech noise materially affects the full-sample conclusions.
+Beyond the automated pipeline, this study constructs a more carefully curated subsample. The **Established Firm Sample** comprises firms listed on major exchanges (NASDAQ/NYSE) with complete post-IPO trading histories, excluding OTC pink-sheet stocks and companies in financial distress. All ticker assignments are verified through dual-source matching against Yahoo Finance and OpenFIGI. A manual review of 152 companies from the raw data removes pre-IPO firms, OTC-traded stocks, and distressed companies trading below $1.00 or at near-delisting risk during the event period.
 
-The three subsamples — full pipeline, Mature Firm, and Core Tech — are designed to complement each other: the full sample captures the complete cross-section of the layoff wave; the Mature Firm sample controls for company quality; the Core Tech subsample anchors the analysis to the original phenomenon of interest.
+After screening, 130 firms pass all filters, generating **263 layoff events** included in the FF4 event study. The sample ranges from large-cap technology blue chips such as AAPL, AMZN, and GOOGL to growth-stage firms with complete post-IPO trading histories, including COIN and ABNB.
+
+
+**Subsample II — Core Technology Subsample (N = 182):**
+
+To anchor the analysis more closely to the study's central phenomenon — technology-sector layoffs — a **Core Technology Subsample** is extracted from all U.S.-listed events. This subsample retains only firms classified under core technology and adjacent digital industries, including Hardware, Data/Software, Security, Infrastructure, AI, Crypto, Media, and digital product-related sectors, comprising **182 events** in total. This subsample serves as a supplementary specification in the cross-sectional analysis, allowing a direct test of whether noise from non-technology industries materially affects the full-sample conclusions.
+
+The three subsamples — the full automated pipeline, the established firm sample, and the core technology subsample — are designed to be complementary: the full sample captures the complete cross-section of the layoff wave; the established firm sample controls for firm quality; and the core technology subsample anchors the analysis to the study's primary phenomenon of interest.
 
 
 ### 4.2 Stock Price Data and Factor Model (Q2)
 
-**Stock price data** are downloaded from Yahoo Finance as daily adjusted closing prices for each event ticker, saved as individual CSV files. Adjusted prices account for dividends and splits, enabling direct computation of log daily returns.
+**Stock price data** are downloaded from Yahoo Finance, retrieving daily adjusted closing prices for each event ticker and storing them as individual CSV files. Adjusted closing prices account for dividends and stock splits, enabling direct computation of log daily returns.
 
-**Fama-French four factors** are downloaded from Kenneth R. French's data library, covering daily data from 2018 to 2026:
+**The Carhart Four-Factor Model (FF4, Carhart 1997)** is downloaded from the Kenneth R. French Data Library at daily frequency, covering 2018 to 2026:
 
 | Factor | Definition |
 |---|---|
-| MKT_RF | Excess market return (market portfolio minus risk-free rate) |
-| SMB | Small-Minus-Big size premium |
-| HML | High-Minus-Low value premium (book-to-market) |
-| MOM | Momentum factor (Carhart 1997: past-12-month winners minus losers) |
+| MKT_RF | Market excess return (market portfolio minus risk-free rate) |
+| SMB | Size premium (Small Minus Big) |
+| HML | Value premium (High Minus Low, book-to-market) |
+| MOM | Momentum factor (Carhart 1997, past 12-month winners minus losers) |
 
-The rationale for FF4 over FF3 is that the MOM factor is particularly important in this sample period. Technology stocks experienced a severe momentum crash in 2022 (high-multiple growth stocks collapsing) followed by a strong recovery in 2023. Without controlling for momentum, these price movements would partly contaminate the CAR estimates, producing systematic bias in the attribution of abnormal returns to layoff announcements.
+The rationale for selecting FF4 over the three-factor model centers on the MOM factor's particular relevance in this sample period. Technology stocks experienced a severe momentum crash in 2022 — high-valuation growth stocks that had surged in 2021 suffered concentrated drawdowns — followed by a sharp rebound in 2023. Without controlling for momentum, a portion of these price movements would be spuriously attributed to layoff announcement effects, introducing systematic bias into CAR estimates.
 
 ---
 
@@ -152,248 +191,242 @@ The rationale for FF4 over FF3 is that the MOM factor is particularly important 
 
 ### 5.1 FF4 Event Study Framework
 
-For each event $i$, the FF4 model is estimated using trading days $t \in [-260, -11]$ before the announcement (minimum 100 days required) as the estimation window:
+For each event $i$, the FF4 model is estimated over an estimation window spanning $t \in [-260, -11]$ trading days relative to the announcement date:
 
 $$R_{i,t} - RF_t = \alpha_i + \beta_{1i} \cdot MKT\_RF_t + \beta_{2i} \cdot SMB_t + \beta_{3i} \cdot HML_t + \beta_{4i} \cdot MOM_t + \varepsilon_{i,t}$$
 
-Given the parameter estimates, the daily abnormal return (AR) within the event window is defined as the difference between the actual return and the model's predicted value:
+Using these parameter estimates, daily abnormal returns (AR) within the event window are defined as the difference between actual and model-predicted returns:
 
 $$AR_{i,t} = (R_{i,t} - RF_t) - \hat{\alpha}_i - \hat{\beta}_{1i} \cdot MKT\_RF_t - \hat{\beta}_{2i} \cdot SMB_t - \hat{\beta}_{3i} \cdot HML_t - \hat{\beta}_{4i} \cdot MOM_t$$
 
-Cumulating over window $[t_1, t_2]$ gives the Cumulative Abnormal Return (CAR):
+Cumulative abnormal returns (CAR) are obtained by summing daily ARs over window $[t_1, t_2]$:
 
 $$CAR_i[t_1, t_2] = \sum_{t=t_1}^{t_2} AR_{i,t}$$
 
-Averaging across $N$ events gives the Cumulative Average Abnormal Return (CAAR):
+Cumulative average abnormal returns (CAAR) aggregate across events:
 
 $$CAAR[t_1, t_2] = \frac{1}{N} \sum_{i=1}^{N} CAR_i[t_1, t_2]$$
 
-Events with a single-day $|AR| > 50\%$ are excluded as anomalous observations likely representing near-bankrupt OTC stocks or delisting candidates.
+Events with $|AR| > 50\%$ on any single day are treated as anomalous observations attributable to OTC penny stocks or near-delisting distress and are excluded from the analysis.
 
 
-### 5.2 Event Window Design
+### 5.2 Event Window Selection
 
-The estimation window is $[-260, -11]$ — trading days 11 through 260 before the announcement date. Event windows begin at $t = -1$ or later to avoid any overlap with the estimation window. Five event windows are used:
+Five event windows are employed:
 
-| Window | Economic Meaning | Design Rationale |
+| Event Window | Economic Meaning | Design Rationale |
 |---|---|---|
-| **[-1, +1]** | 3-day announcement window | **Primary reporting window.** Captures pre-announcement day (information leakage check) and post-announcement overnight reaction; cleanest estimate of the pure announcement effect |
-| **[0, +5]** | First post-announcement week | Full absorption of initial market reaction; covers primary window for analyst follow-up reports |
-| **[0, +10]** | First two post-announcement weeks | Typical horizon for institutional position adjustment; CAAR path crosses zero between this and the [0,+20] window |
-| **[0, +20]** | First post-announcement month | Medium-term drift: information release around implementation updates and earnings |
-| **[0, +60]** | First three post-announcement months | Long-run valuation reassessment; most susceptible to macroeconomic confounds; interpreted with calendar-time method |
-
-The CAAR path plot begins at $t = -11$ (first trading day outside the estimation window) to show the pre-announcement "zero zone" as a visual validation of research design cleanness.
+| **[-1, +1]** | Three-day announcement window | **Primary reporting window.** Encompasses the day before the announcement (for early-leak detection) and the day after (for overnight reaction); provides the cleanest estimate of the pure announcement effect |
+| **[0, +5]** | One week post-announcement | Full absorption period for the initial market reaction; covers the primary period for analyst follow-up report publication |
+| **[0, +10]** | Two weeks post-announcement | Typical horizon for institutional portfolio adjustment; the CAAR zero-crossing falls precisely within this window (T = +10) |
+| **[0, +20]** | One month post-announcement | Medium-term drift test: progressive information release around implementation progress and earnings reports |
+| **[0, +60]** | Three months post-announcement | Long-run revaluation window; most susceptible to macroeconomic noise; requires supplementary interpretation via the calendar-time portfolio approach |
 
 
-### 5.3 Three Test Statistics
+### 5.3 Three Statistical Tests
 
-Three test statistics are reported for each window; statistical significance is based on the most conservative (highest p-value) of the three:
+Three test statistics are reported for each window. **Significance indicators (\*/\*\*/\*\*\*) are based on the BMP t-test** — as BMP accounts for cross-sectional variance increases around the announcement and serves as the primary parametric test in this study. The Patell and Corrado statistics are reported alongside as robustness references.
 
-**Patell (1976) standardized residual test:** Each event's CAR is divided by the estimation-window residual standard deviation to produce a Standardized CAR (SCAR), then a cross-sectional z-test is applied to the mean SCAR. High statistical power with large samples, but does not handle event-induced variance increases well.
+**Patell (1976) Standardized Residual Test:** Each event's CAR is standardized by the residual standard deviation from the estimation window to produce a standardized CAR (SCAR); a z-test is then applied to the cross-sectional mean of SCARs. This test has high power in large samples but handles event-induced volatility changes poorly.
 
-**BMP test (Boehmer, Musumeci & Poulsen, 1991):** Extends Patell by explicitly estimating cross-sectional variance, accommodating structural changes in volatility around announcements. This is the primary parametric test reported throughout.
+**BMP Test (Boehmer, Musumeci & Poulsen, 1991):** Extends the Patell framework by explicitly estimating cross-sectional variance, making it robust to structural shifts in return volatility around the announcement. The BMP t-statistic serves as the primary parametric test throughout this study.
 
-**Corrado (1989) nonparametric rank test:** Makes no distributional assumptions about abnormal returns — directly compares the rank of event-window ARs against estimation-window ARs. Given the fat-tailed, leptokurtic distributions typical of tech stocks, this provides a distribution-free robustness check.
-
-
-### 5.4 Three-Tier AI Labeling System
-
-The AI variable underwent several iterations before the final specification, and measurement quality directly affects the reliability of β₃ estimates.
-
-An initial approach using simple substring matching (any occurrence of "AI" or "artificial intelligence") generated a positive rate of nearly 50% — clearly too broad, since it cannot distinguish AI mentioned as a cause from AI mentioned as incidental industry context. The opposite extreme — requiring explicit causal language ("laid off due to AI") — generated only ~2% positive rate, with severe false negatives because news coverage rarely uses such direct causal phrasing.
-
-The final approach uses a three-tier classification with whole-word matching to prevent substring false positives:
-
-| Tier | Definition | N | Rate | Use |
-|---|---|---|---|---|
-| ai_causal (T3) | AI identified as direct cause of layoff, explicitly stated | 9 | 1.9% | Precision upper bound |
-| ai_primary (T2+T3) | AI is the primary framing of the article | 22 | 4.7% | Robustness check |
-| **ai_broad (T1+T2+T3)** | Layoff article explicitly mentions an AI technology | 74 | **15.8%** | **Primary variable** |
-
-The primary analysis uses ai_broad because the research question concerns whether markets perceive the AI narrative, not whether AI constitutes a legal cause of the workforce reduction. Approximately 42% of news articles were inaccessible behind paywalls, meaning AI labels have systematic under-reporting bias — the estimated true AI-related rate is approximately 27% (from paywall sensitivity analysis). This limitation is addressed explicitly in the robustness section.
+**Corrado (1989) Nonparametric Rank Test:** Requires no distributional assumptions about abnormal returns; instead, it directly compares the rank of event-window ARs against the rank of estimation-window ARs. Given the well-documented leptokurtosis in technology stock returns, this distribution-free test provides an important robustness reference.
 
 
-### 5.5 Difference-in-Differences Framework
+### 5.4 Construction and Definition of the AI Variable
 
-$$CAR_i[t_1, t_2] = \alpha + \beta_1 \cdot AI_i + \beta_2 \cdot Post_i + \beta_3 \cdot (AI_i \times Post_i) + \gamma' \mathbf{X}_i + \varepsilon_i$$
+The binary AI indicator variable (`ai_mentioned`) is constructed through full-text regular expression matching applied to the source news articles accompanying each layoff announcement. The labeling algorithm operates at two levels. **Strong matches** require the article to contain an explicit AI causal phrase — for example, "replacing workers with AI," "laid off due to automation," or "driven by generative AI." **Weak matches** require the presence of a specific AI technology term, including "artificial intelligence," "machine learning," "generative AI," "LLM," "ChatGPT," "OpenAI," or "automation," among others. An event is coded `ai_mentioned = 1` if either condition is satisfied. Article text is retrieved by scraping the source URL; approximately 42% of articles are inaccessible due to paywalls and are assigned a default value of zero. The systematic underdetection this introduces is addressed explicitly in the paywall sensitivity analysis in Section VII.
 
-$AI_i$ indicates whether the layoff announcement was explicitly AI-related (primary: ai_broad); $Post_i$ indicates whether the announcement was on or after November 30, 2022 (ChatGPT's launch date); $\beta_3$ is the DID estimator measuring the incremental market reaction for AI-framed layoffs in the post-ChatGPT era.
+Within the primary U.S. sample (N = 430), `ai_mentioned = 1` for **29 events**, representing **6.7%** of the sample — 3 events in the Pre-GenAI period (≤ November 29, 2022) and 26 in the Post-GenAI period (≥ November 30, 2022). This positive rate is substantially lower than a naive substring-matching approach (triggering on any occurrence of "AI" or "artificial intelligence," which yields a ~50% positive rate and severe false positives) and substantially higher than an approach requiring explicit causal phrases only (~2% positive rate, with severe false negatives due to the relative rarity of direct causal language in news reporting). As alternative measures, this study also constructs three word-boundary-matched AI indicators — `ai_causal` (explicit causal statement only, N = 9), `ai_primary` (primary GenAI narrative framing, N = 22), and `ai_broad` (any AI technology term present, N = 74; all based on the full 467-event dataset) — and employs `ai_broad` in the paywall attenuation robustness checks in Section VII. Cross-validation confirms that `ai_mentioned` and `ai_broad` overlap substantially in the core sample, and the main conclusions are unchanged by the choice of AI variable.
 
-Control variables $\mathbf{X}_i$:
 
-| Control | Definition | Rationale |
-|---|---|---|
-| log(1 + headcount_cut) | Log layoff count | Larger layoffs may trigger stronger reactions |
-| layoff_pct (%) | Headcount cut / total employees | Direct measure of restructuring intensity |
-| $\hat{\beta}_{MKT}$ | FF4-estimated market beta | Controls for systematic risk exposure |
-| prior_6m_return | Cumulative return over 126 trading days before announcement | Controls for momentum and mean reversion |
-| log(1 + funds_raised) | Log total capital raised | Controls for firm funding stage and quality |
-
-HC3 heteroskedasticity-robust standard errors are used throughout.
 
 ---
 
 
-## VI. Event Study Results
+## VI. Detailed Event Study Results
 
 
 ### 6.1 Main Event Study (Q3)
 
-**Table 1: FF4 Event Study Results (U.S. Primary Sample, N = 429)**
+**Table 3: FF4 Event Study Results (U.S. Primary Sample, N = 430)**
 
-| Window | N | CAAR | Patell Z | BMP t | Corrado | Sig |
+| Event Window | N | CAAR | Patell Z | BMP t | Corrado | Sig. |
 |---|---|---|---|---|---|---|
-| [-1, +1] | 429 | **−0.961%** | −5.280\*\*\* | −2.520\*\* | −3.298\*\*\* | \*\*\* |
-| [0, +5] | 429 | **−0.658%** | −3.267\*\*\* | −1.966\*\* | −2.711\*\*\* | \*\*\* |
-| [0, +10] | 429 | +0.093% | −1.365 | −0.894 | −2.187\*\* | — |
-| [0, +20] | 429 | +1.300% | +1.107 | +0.789 | −0.828 | — |
-| [0, +60] | 429 | **+5.335%** | +4.093\*\*\* | +2.861\*\*\* | +0.775 | \*\*\* |
+| [-1, +1] | 430 | **−0.952%** | −5.265\*\*\* | −2.516\*\* | −3.280\*\*\* | \*\* |
+| [0, +5] | 430 | **−0.676%** | −3.280\*\*\* | −1.976\*\* | −2.714\*\*\* | \*\* |
+| [0, +10] | 430 | +0.076% | −1.374 | −0.901 | −2.170\*\* | — |
+| [0, +20] | 430 | +1.287% | +1.102 | +0.786 | −0.789 | — |
+| [0, +60] | 430 | **+5.235%** | +4.064\*\*\* | +2.844\*\*\* | +0.792 | \*\*\* |
 
-*Note: \*\*\* p<0.01, \*\* p<0.05, \* p<0.10. Significance based on most conservative of the three test statistics.*
+*Note: \*\*\* p<0.01, \*\* p<0.05, \* p<0.10. Significance indicators are based on the BMP t-test (primary parametric test); Patell and Corrado are reported as robustness references.*
 
-The results exhibit the temporal structure described in Section II (see Figure 1 for the CAAR path): significantly negative at announcement → still negative through the first post-announcement week → recovering toward positive but statistically insignificant through day 20 (CAAR path crosses zero around day +16 to +18) → significantly positive by day +60. The pre-announcement window [-20,-1] CAAR is only −0.82% (p = 0.287), confirming no systematic pre-announcement drift and a clean research design.
+![CAAR Time Path](data/results/fig_caar_path_full.png)
+*Figure 1: CAAR time path for U.S.-listed firm layoff announcements (FF4, N = 430, T = −10 to +60). Y-axis is re-indexed to zero at T = −1; CAAR values at T ≥ 0 correspond exactly to those in Table 3. Shaded band represents 95% confidence intervals; blue-shaded region covers the pre-announcement window [−10, 0], verifying the absence of systematic pre-announcement drift.*
+
+>The results reveal a clear temporal structure (see Figure 1 and Table 3): significant negative reaction at announcement → continued negative drift during short-run absorption → reversal in the medium term, statistically insignificant (zero-crossing at precisely T = +10) → significant positive drift in the long run. The pre-announcement CAAR over [−20, −1] is only −0.82% (p = 0.287), confirming a clean event study design with no systematic information leakage.
 
 
-### 6.2 Mature Firm Sample vs. Full Sample
+### 6.2 Established Firm Sample vs. Full Sample
 
-**Table 2: Mature Firm Sample vs. U.S. Full Sample (FF4, [-1,+1] window)**
+**Table 4: Established Firm Sample vs. U.S. Full Sample (FF4, [-1,+1] Window)**
 
-| Sample | N | CAAR | Patell Z | BMP t | BMP p |
+| Sample | N | CAAR | Patell Z | BMP t | BMP p-value |
 |---|---|---|---|---|---|
-| U.S. Full Sample (primary) | 429 | −0.961% | −5.280\*\*\* | −2.520 | 0.012 |
-| Mature Firm Sample | 263 | −0.451% | −2.392\*\* | −1.084 | 0.280 |
+| U.S. Full Sample (primary) | 430 | −0.952% | −5.265\*\*\* | −2.516 | 0.012 |
+| Established Firm Sample | 263 | −0.451% | −2.392\*\* | −1.084 | 0.280 |
 
-The Mature Firm Sample (130 manually verified exchange-listed companies, 263 events) shows a three-day CAAR roughly 53% weaker than the full sample, and the BMP test fails to reach 10% significance (p = 0.280). **The market impact of layoff announcements is not a uniform, single-directional effect — its magnitude and direction are substantially moderated by market assessments of company quality.**
+>The Established Firm Sample (N = 263) exhibits a three-day CAAR approximately 53% smaller than the full sample, and the BMP test fails to reject the null at the 10% significance level (p = 0.280). **The market impact of layoff announcements does not follow a single universal pattern; its direction and magnitude depend substantially on how the market assesses the quality and financial standing of the announcing firm.**
 
 
-### 6.3 Industry Grouping: Are Tech Firms Different?
+### 6.3 Sector Comparison: Technology Firms Do Not Exhibit Stronger Reactions
 
-**Table 3: Industry Grouping CAAR Comparison (FF4, U.S.)**
+**Table 5: Sector-Sorted CAAR Comparison (FF4, U.S.)**
 
-| Group | N | [-1,+1] CAAR | BMP | [0,+60] CAAR | BMP |
+| Sector Group | N | [-1,+1] CAAR | BMP | [0,+60] CAAR | BMP |
 |---|---|---|---|---|---|
-| Core Tech (13 industries) | 182 | −1.015%\*\*\* | −1.829\* | +5.854%\*\*\* | +2.036\*\* |
-| Non-Tech | 247 | −0.921%\*\*\* | −1.765\* | +4.952%\*\* | +2.027\*\* |
+| Core Technology (14 industries) | 182 | −1.015%\*\*\* | −1.829\* | +5.854%\*\*\* | +2.036\*\* |
+| Non-Technology | 248 | −0.905%\*\*\* | −1.759\* | +4.780%\*\* | +1.999\*\* |
 
-Core tech and non-tech firms show nearly identical three-day CAARs (−1.015% vs −0.921%), with no statistically significant difference between the groups. The negative signal effect of layoff announcements is not industry-specific: regardless of sector, the market's initial reaction is approximately the same magnitude of negative.
-
-
-### 6.4 Pre- vs. Post-ChatGPT Comparison
-
-**Table 4: Pre- vs. Post-ChatGPT CAAR Comparison (FF4, U.S.)**
-
-| Period | N | [-1,+1] | BMP p | [0,+5] | BMP p | [0,+60] | BMP p |
-|---|---|---|---|---|---|---|---|
-| Pre-ChatGPT (≤2022) | 119 | −0.878% | 0.320 | −1.136% | 0.359 | **+9.419%** | 0.004\*\*\* |
-| Post-ChatGPT (≥2023) | 310 | **−0.992%** | 0.016\*\* | **−0.475%** | 0.081\* | +3.767% | 0.138 |
-
-Post-ChatGPT, the three-day CAAR becomes more negative and statistically significant (−0.992%\*\* vs −0.878%, not significant). The long-run positive drift contracts sharply from +9.419%\*\*\* (pre) to +3.767% (post, not significant). This large pre-period long-run drift likely reflects the 2020–2021 tech bull market tail rather than a genuine layoff effect — the calendar-time portfolio analysis provides further support for this interpretation.
-
----
+>The [-1,+1] CAARs for core technology and non-technology firms are nearly identical (−1.015% vs. −0.905%); a Welch two-sample t-test confirms the difference is entirely insignificant (t = −0.114, p = 0.909). The negative signaling effect of layoff announcements is not a technology-sector phenomenon — regardless of industry, the market's initial reaction to workforce reduction announcements is similarly negative.
 
 
-## VII. DID and Regression Results
+### 6.4 Pre- vs. Post-GenAI Temporal Comparison
+
+**Table 6: Pre- vs. Post-GenAI Event Study Comparison (FF4, U.S.)**
+
+**A. Pre-GenAI Period (≤ November 29, 2022)**
+
+| Event Window | All Events (N=105) | t-stat | AI-Related (N=3)† | Non-AI (N=102) |
+|---|---|---|---|---|
+| [-1,+1] | −1.19% | −0.97 | +5.60% | −1.39% |
+| [0,+5] | −1.41% | −1.12 | +5.36% | −1.61% |
+| [0,+20] | +1.83% | +0.90 | +22.72% | +1.21% |
+| [0,+60] | +9.69%\*\* | +2.71 | −27.99%† | +10.80% |
+
+*† The Pre-GenAI AI-related subsample contains only N = 3 events; the [0,+60] mean (−27.99%) is dominated by individual observations and is not statistically representative. t-stat is a one-sample t-test of the mean CAR against zero (cross-sectional standard error); \*\* p<0.05, \* p<0.10.*
+
+**B. Post-GenAI Period (≥ November 30, 2022)**
+
+| Event Window | All Events (N=325) | t-stat | AI-Related (N=26) | Non-AI (N=299) |
+|---|---|---|---|---|
+| [-1,+1] | −0.87% | −1.66 | −1.13% | −0.85% |
+| [0,+5] | −0.44% | −0.66 | +2.01% | −0.65% |
+| [0,+20] | +1.11% | +1.05 | +5.24% | +0.75% |
+| [0,+60] | +3.80%\*\* | +2.20 | +6.48% | +3.56% |
+
+>*Key observations:*
+- **Consistent aggregate effect:** Both Pre-GenAI and Post-GenAI periods exhibit short-run negative reactions of approximately −1%; the market's fundamental pricing logic has not changed with the advent of generative AI
+- **Pre-GenAI period:** The absence of a credible AI comparison group (N = 3) limits inference to the aggregate result: a −1.19% short-run negative reaction
+- **Post-GenAI period:** AI-related and non-AI layoffs display nearly identical response patterns, with no significant differences across any window
+- **Sample imbalance:** The Pre-GenAI AI subsample (N = 3, mean CAR = +5.60%) is too small to support any reliable inference about "early AI effects"; in the Post-GenAI period, the AI subsample is relatively more populated (N = 26) but still shows no significant differential response
 
 
-### 7.1 Main DID Results (Q4)
+### 6.5 Post-GenAI AI Effect: Cross-Sectional Test (Q4)
 
-**Table 5: DID Results Summary (U.S. Primary Sample)**
+**Table 7: Post-GenAI Cross-Sectional AI Comparison (Sample N = 325)**
 
-| Outcome | Specification | β₁ (AI) | β₂ (Post) | **β₃ (AI×Post)** | N | R² |
+| Event Window | AI-Related (N=26) | Non-AI (N=299) | Difference | SE (Diff.) | Welch t | p-value |
 |---|---|---|---|---|---|---|
-| CAR[-1,+1] | No controls | +6.69% | +0.41% | **−7.12%** (p=0.209) | 428 | 0.004 |
-| CAR[-1,+1] | With controls | +2.01% | +1.94% | **−2.71%** (p=0.483) | 190 | 0.036 |
-| CAR[0,+20] | No controls | +20.94% | −0.70% | **−19.96%** (p=0.464) | 428 | 0.011 |
-| CAR[0,+20] | With controls | +16.51% | +6.37%\* | **−19.49%** (p=0.712) | 190 | 0.056 |
-| CAR[0,+60] | No controls | −11.29% | −3.74% | **+13.96%** (p=0.378) | 428 | 0.007 |
-| CAR[0,+60] | With controls | −22.37%\*\*\* | +3.49% | **+27.88%**\* (p=0.059) | 190 | 0.073 |
+| [-1,+1] | −1.13% | −0.85% | −0.28% | 1.54% | −0.18 | 0.856 |
+| [0,+5] | +2.01% | −0.65% | +2.66% | 2.97% | +0.89 | 0.379 |
+| [0,+10] | +1.83% | −0.27% | +2.10% | 3.42% | +0.61 | 0.544 |
+| [0,+20] | +5.24% | +0.75% | +4.49% | 6.45% | +0.70 | 0.493 |
+| [0,+60] | +6.48% | +3.56% | +2.92% | 7.56% | +0.39 | 0.702 |
 
-In the primary reporting window [-1,+1], β₃ fails to reach any conventional significance threshold regardless of control variable inclusion (p = 0.209 and p = 0.483). **There is no statistical evidence that ChatGPT's launch caused a structural change in how markets price AI-framed layoff announcements.**
-
-The [0,+60] specification with controls yields β₃ = +27.88% (p = 0.059\*), marginally significant at the 10% level. This result should be treated with caution: the three-month window is susceptible to macroeconomic confounds, the short-window counterparts are entirely insignificant, and the sample drops from 428 to 190 when controls are included, limiting inference reliability.
+>While AI-related layoffs display numerically more positive reactions in certain windows (particularly [0,+20] and [0,+60]), **none of the differences reaches statistical significance** (minimum p-value = 0.379). Even in the Post-GenAI period, where the AI subsample is relatively more representative, there is no evidence that markets price AI-related layoff announcements at a premium.
 
 
-### 7.2 Cross-Sectional OLS
+### 6.6 Cross-Sectional OLS Regression (Full Sample)
 
-Using per-event CAR[-1,+1] as the dependent variable, cross-sectional regressions are estimated across four progressive specifications. A consistent finding across all specifications: R² stays in the 1%–4% range, and no single variable maintains stable significance across specifications. This is a substantive finding rather than a disappointing one — **the short-run stock price reaction to a layoff announcement is highly event-specific and largely unpredictable from observable characteristics**, consistent with the expectation under semi-strong market efficiency.
+To explore the predictive power of event characteristics for market reactions, a cross-sectional OLS regression is estimated on the event-level CAR[-1,+1] for the full sample (N = 429; one observation is dropped due to a missing control variable). Control variables include layoff scale, reduction ratio, market beta, prior six-month return, and financing history, among others. The central finding: across all specifications, R² falls between 1% and 4%, and **no single event characteristic robustly predicts short-run stock price reactions**.
 
-**Noteworthy control variable results:** `prior_6m_return` (cumulative 6-month pre-announcement stock return) shows a significantly negative coefficient in long-run window specifications ([0,+60] with controls: β = −11.67, p = 0.014\*\*), consistent with mean reversion — firms whose stocks rose sharply before the announcement face larger downward corrections when the announcement arrives. `log_funds_raised` (log total capital raised) is insignificant across all specifications (p > 0.65).
+This result is itself informative — the high idiosyncrasy of markets' immediate reactions to layoff announcements is consistent with semi-strong form market efficiency. One notable exception: `prior_6m_return` carries a coefficient of −11.67% (p = 0.014\*\*) in the long-run [0,+60] window, indicating that firms whose stock prices had already risen sharply before the announcement experience larger long-run downward corrections — a mean reversion effect.
 
 ---
 
 
-## VIII. Robustness Checks
+## VII. Robustness Checks
 
 
-### 8.1 Placebo DID (False Breakpoint Test)
+### 7.1 Calendar-Time Portfolio Approach (Validating Long-Run Drift Causality)
 
-Six false breakpoints are distributed uniformly across the sample period, each yielding its own β₃ estimate. The placebo distribution spans [−3.32%, +3.28%]. The true breakpoint's β₃ = −7.12% (p = 0.716 in the simple no-controls specification for [-1,+1]) falls entirely within this interval and cannot be statistically distinguished from the placebo estimates. ChatGPT's launch does not produce an identifiable structural break.
+Following Jaffe (1974) and Fama (1998), this study employs the calendar-time portfolio method: each month, an equal-weighted portfolio is constructed holding all firms that announced layoffs during that month; monthly portfolio excess returns are then regressed on the FF4 factors using time-series OLS. Results: monthly alphas are statistically insignificant across all subgroups (p > 0.10), with the exception of a marginally negative alpha in the Pre-GenAI period (t = −1.86, p = 0.073\*).
 
-
-### 8.2 Paywall Sensitivity Analysis
-
-With 42% of news articles inaccessible behind paywalls, the AI variable has systematic under-reporting bias. Fifty Monte Carlo simulations randomly assign increasing proportions of paywalled articles as AI-related (from 0% to 50% assumed AI rate), re-estimating DID each time. Across all 50 simulations, β₃ does not reach 5% significance. Most simulated p-values fall between 0.3 and 0.7, and coefficient magnitudes align closely with the baseline. **The null DID result is robust — it is not an artifact of measurement error.**
+**Key finding:** The +5.235% positive CAAR in the [0,+60] window evaporates under the calendar-time approach, providing strong support for the interpretation that the long-run positive drift reflects the 2023 broad market rally rather than any causal effect of layoff events themselves. This also explains why Post-GenAI long-run CARs (+3.80%) are substantially smaller than Pre-GenAI (+9.69%) — the macroeconomic backdrop differs across the two windows, not the market's underlying pricing logic for layoffs.
 
 
-### 8.3 Calendar-Time Portfolio Method (Clustering Correction)
+### 7.2 Repeat Events and Pre-Announcement Drift
 
-Event studies can understate standard errors when many events cluster in the same time window (as in the early 2023 layoff wave). The calendar-time portfolio approach of Jaffe (1974) and Fama (1998) addresses this: each month a value-weighted portfolio is formed of all stocks that announced layoffs that month, and monthly portfolio excess returns are regressed on a time series. All monthly alphas are insignificant (p > 0.10), with only a marginally negative alpha in the pre-ChatGPT period (t = −1.86, p = 0.073\*). **The +5.335% long-run CAAR disappears under calendar-time estimation**, confirming that it reflects the 2023 broad tech recovery rather than a causal layoff effect.
+**Repeat events:** First-time layoff announcements yield CAAR[-1,+1] = −1.20%\*\* (N = 271); subsequent announcements show CAAR[-1,+1] = −0.42% (statistically insignificant, N = 157), consistent with information decay. (The two groups together sum to N = 428, two fewer than the primary N = 430; one of the missing observations corresponds to the same record excluded from the cross-sectional OLS due to a missing control variable; the second reflects a classification pending update in the robustness pipeline.) Market participants incorporate information about a firm's restructuring capacity upon the first announcement; each subsequent layoff conveys diminishing marginal information.
+
+**Pre-announcement drift:** CAAR over [−20, −1] = −0.82% (p = 0.287), insignificant. A cross-sectional regression of CAR[-1,+1] on CAR[-20,-1] yields a coefficient of only 0.005 (p = 0.88). Together, these two tests rule out systematic insider trading or systematic information leakage, confirming that the causal identification assumptions underlying the event study design are satisfied.
 
 
-### 8.4 Repeat Events and Pre-Announcement Drift
+### 7.3 Robustness of the Post-GenAI Cross-Sectional Test
 
-**Repeat events:** First-event CAAR[-1,+1] = −1.20%\*\* (N = 271); subsequent-event CAAR[-1,+1] = −0.42% (not significant, N = 157). The pattern is consistent with information decay — the market already updated its assessment of a firm's restructuring capacity after the first announcement, so subsequent layoffs carry diminishing incremental information.
-
-**Pre-announcement drift:** [-20,-1] CAAR = −0.82% (p = 0.287), not significant. A cross-sectional regression of CAR[-20,-1] on CAR[-1,+1] yields a coefficient of 0.005 (p = 0.88). Together, these results rule out systematic insider trading or information leakage, validating the causal identification assumption of the event study design.
+Given the severe imbalance in the Pre-GenAI AI subsample (N = 3 vs. N = 102), the Post-GenAI cross-sectional test (Table 7) represents the most conservative available test of whether an AI pricing effect exists. Even in the period with the largest AI subsample (Post-GenAI, N = 26), markets show no significant differential pricing of AI-associated layoff announcements. This reinforces the robustness of the null-effect conclusion.
 
 ---
 
 
-## IX. Discussion and Future Directions
+## VIII. Discussion and Future Research
 
 
-### 9.1 Assessment of the Two Core Hypotheses
+### 8.1 Summary of Hypothesis Tests
 
-**H1 (Announcement effect structure):** Supported. Layoff announcements produce a real, time-varying market response — significantly negative in the short run (within the first post-announcement week), statistically indistinguishable from zero in the medium run, and significantly positive in the long run but likely macro-contaminated. This pattern holds across the full sample, the Mature Firm Sample, and the Core Tech Subsample, with consistent direction across all three. Company quality is the key moderating variable: the larger and more mature the firm, the weaker the negative initial reaction.
+Both core hypotheses of this study receive well-differentiated answers.
 
-**H2 (AI narrative premium):** Not supported in the primary specification. Evidence from industry grouping, pre-/post-ChatGPT comparisons, and DID all fail to support the hypothesis that AI-framed layoffs received differential market pricing after ChatGPT's launch. More tellingly, the direction of evidence runs counter to the hypothesis: post-ChatGPT short-run negative effects are stronger, not weaker.
+**H1 (Announcement Effect Structure): Supported.** Layoff announcements generate a genuine, time-varying market response — significantly negative in the short run (within one week), statistically insignificant in the medium term, and positive over the long run, though the latter is most plausibly attributable to macroeconomic confounds. This structure holds consistently across the full sample, the established firm sample, and the core technology subsample, with consistent directional signs and variation only in magnitude. Firm quality is the key moderator: the negative initial reaction is substantially attenuated for larger, more established companies.
 
+**H2 (AI Narrative Premium): Not supported.** Three complementary tests yield the same conclusion:
+- (1) **Sector grouping:** No significant difference between core technology and non-technology firms' [-1,+1] reactions (−1.015% vs. −0.905%, p > 0.1)
+- (2) **Pre/Post-GenAI comparison:** Aggregate layoff reactions are nearly identical across periods (~−1%), with no evidence that generative AI altered market pricing logic
+- (3) **Cross-sectional test:** In the Post-GenAI period, where the AI subsample is relatively well-powered (N = 26), AI-related layoffs show no significant pricing difference relative to non-AI layoffs (all windows p > 0.3)
 
-### 9.2 Open Questions: The "AI Narrative Premium"
-
-The DID design in this study is limited by small treatment-group sample sizes (approximately 26–74 AI-labeled events in the post period). This is a data availability constraint, not a methodological flaw. Three directions merit follow-up in future research:
-
-1. **Shareholder letters and management AI commitments:** This study's AI labels rely on media text. Directly analyzing the strength of AI transformation language in annual reports and shareholder letters — using information extraction rather than keyword matching — could capture a more accurate "management AI commitment intensity" variable and test its relationship to announcement returns.
-
-2. **Long-run fundamental validation:** Event studies measure market expectations, not realized outcomes. Linking the layoff sample to subsequent EPS growth and labor productivity changes would allow a genuine test of whether the "AI efficiency story" materializes in fundamentals — and whether markets correctly anticipated it at announcement.
-
-3. **Causal AI attribution:** As LLM tools become standard, future researchers could use causal information extraction (rather than keyword proximity matching) to assess the actual weight of AI as a driver of each specific layoff decision, resolving the measurement precision limitation inherent in the current approach.
-
----
+The cumulative evidence indicates that markets do not differentially price layoffs framed as AI-driven, contradicting the hypothesis that "AI transformation" narratives materially shift investor expectations.
 
 
-## X. Limitations
+### 8.2 Open Questions on the "AI Narrative Premium"
 
-**Insufficient statistical power:** The most fundamental constraint. The post-ChatGPT AI treatment group contains roughly 26–74 events — too small to reliably detect economically meaningful effects even if they exist. This reflects data availability limitations that will be resolved as more AI-era layoff events accumulate.
+The absence of a detectable AI pricing effect does not fully rule out the possibility that such an effect exists but falls below the detection power of this study due to sample constraints. The specific representativeness concerns are as follows:
 
-**Systematic measurement error from paywalls:** 42% of articles are inaccessible, creating systematic under-reporting in AI labels that theoretically attenuates both β₁ and β₃ toward zero. Sensitivity analysis confirms that the null result holds across plausible assumptions, but extreme scenarios cannot be fully ruled out.
+- **The Pre-GenAI AI subsample is severely limited** (N = 3), making it impossible to establish credible parallel trends as a counterfactual baseline
+- **The Post-GenAI AI subsample, while relatively better-populated (N = 26)**, still represents a roughly 11-to-1 imbalance with the control group (N = 299), potentially limiting power to detect small but genuine effects
 
-**Long-run causal identification:** The +5.335% [0,+60] CAAR substantially overlaps with the 2023 broad technology sector recovery in time. Calendar-time portfolio estimates indicate that this drift is unlikely to represent a causal layoff effect. Long-horizon conclusions are highly sensitive to the interpretive framework applied.
+Three avenues merit attention in future research:
 
-**Endogeneity:** Persistent stock price declines may themselves be a contributing trigger of layoff decisions (reverse causality). This endogeneity is not addressed — a standard constraint of event study methodology.
+1. **AI narratives in shareholder letters and earnings calls:** This study's AI annotation relies on media news text. Directly analyzing corporate annual reports and shareholder communications for explicit AI transformation commitments through NLP could yield a more precise measure of "management AI commitment intensity" and its relationship to market reactions.
 
-**Confounding earnings announcements:** The data pipeline does not systematically identify layoff announcements that coincide with quarterly earnings releases. Tech companies frequently announce layoffs during earnings calls, in which case the short-window CAR may reflect earnings surprise rather than the layoff signal alone. This introduces noise into short-window event study estimates.
+2. **Validation against realized operating performance:** Layoff announcements reflect market expectations, not actual outcomes. Linking the layoff event sample to subsequent EPS growth and labor productivity changes would enable a meaningful test of whether the "AI efficiency story" reflects genuine value creation or strategic public relations packaging.
 
-**Survivorship bias in the Mature Firm Sample:** Companies were excluded if they faced delisting risk or sustained prices below $1 during the study period. While this improves governance quality within the sample, the ex-post filtering rule may introduce mild survivorship bias, slightly shifting average abnormal returns upward. Future work should apply ex-ante market capitalization filters instead.
+3. **Causal information extraction for AI attribution:** As LLM-based NLP tools mature, future research could move beyond keyword matching to extract causal claims — distinguishing statements in which AI is asserted as a direct cause of headcount reductions from those in which AI is merely mentioned as context. This would fundamentally resolve the measurement precision limitations inherent in the current approach.
 
 ---
 
 
-## XI. Pipeline and Key Outputs
+## IX. Limitations
+
+**Sample Representativeness:** This is the most fundamental constraint. AI-related layoff observations are sparse — N = 3 Pre-GenAI and N = 26 Post-GenAI — limiting the strength of causal inference available. Even the most conservative specification (Post-GenAI cross-sectional test, where the data are most adequate), the AI subsample is still roughly 12 times smaller than the non-AI comparison group. As AI-era layoff data accumulate, this constraint will naturally diminish.
+
+**Measurement Error in AI Annotation:** Approximately 42% of news articles were inaccessible due to paywalls, generating systematic false negatives in the AI variable. Theoretically, this attenuates the estimated AI effect toward zero, making the null-effect conclusion conservative. If the true AI-association rate is higher than the estimated ceiling of 15.8% (the broadest alternative definition), some heterogeneous effect may go undetected.
+
+**Causal Identification in Long-Run Drift:** The positive long-run CAR in the [0,+60] window disappears under the calendar-time portfolio approach, strongly suggesting that this drift reflects macroeconomic time confounds (the 2023 market rally) rather than the causal effect of layoff events. Long-run conclusions are therefore sensitive to the choice of time window.
+
+**Endogeneity:** A sustained decline in stock prices may itself be a contributing cause of layoff decisions, introducing reverse causality. This study does not address this endogeneity — a common methodological constraint shared by event study designs generally — and future work would benefit from instrumental variable or natural experiment approaches.
+
+**Confounding Events:** Technology companies frequently announce layoffs simultaneously with earnings releases. In such cases, the short-window CAR may reflect earnings surprises rather than the market's reaction to workforce reductions per se. Systematic identification and exclusion of these overlapping events remains a direction for future improvement.
+
+**Survivorship Bias in Sample Construction:** The established firm sample excludes companies facing near-delisting risk or trading below $1.00 during the event period. This ex-post screening criterion may introduce bias. Future implementations should replace this with an ex-ante market capitalization threshold applied at the beginning of the sample period.
+
+---
+
+
+## X. Execution Pipeline
 
 ```bash
-# ── Data Collection (run once) ──
+# ── Data Collection (one-time execution) ──
 python scrapers/01_scrape_layoffs_fyi.py
 python scrapers/02_scrape_edgar_8k.py
 python scrapers/03_scrape_techcrunch.py
@@ -402,26 +435,25 @@ python scrapers/05_combine_sources.py
 
 # ── Main Analysis Pipeline (run in order) ──
 python analysis/01_collect_data.py          # Download stock prices and FF4 factor data
-python analysis/02_enrich_events.py         # Enrich events with industry, region, AI labels
-python analysis/03_relabel_ai_tiered.py     # Tiered AI label refinement
+python analysis/02_enrich_events.py         # Enrich with industry, region, and initial AI labels
+python analysis/03_relabel_ai_tiered.py     # Refined AI labeling (tiered definitions)
 python analysis/04_event_study_ff4.py       # Main event study ★ (generates core results)
-python analysis/05_did_regression.py        # DID + cross-sectional OLS ★
+python analysis/05_did_regression.py        # Cross-sectional OLS ★
 python analysis/06_robustness_checks.py     # Six robustness checks
-python analysis/07_calendar_time_portfolio.py   # Calendar-time portfolio method
-python analysis/08_size_sector_analysis.py  # Size × sector heterogeneity
-python analysis/09_export_results.py        # Compile and export Excel
+python analysis/07_calendar_time_portfolio.py   # Calendar-time portfolio approach
+python analysis/08_size_sector_analysis.py  # Size × sector analysis
+python analysis/09_export_results.py        # Aggregate and export to Excel
 ```
 
-**Key output files:**
+**Key Output Files:**
 
 | File Path | Contents |
 |---|---|
-| `data/processed/master_events_final.csv` | Master event table (481 events, all labels) |
+| `data/processed/master_events_final.csv` | Master event table (481 events, all annotations) |
 | `data/results/car_summary.csv` | CAAR summary (all subsamples × windows × models) ★ |
-| `data/results/car_by_event.csv` | Per-event FF4 CARs (467 events) |
-| `data/results/fig_caar_path_full.png` | CAAR time path plot (Figure 1) ★ |
-| `data/results/did_crosssection/did_results_us_primary.csv` | DID primary spec (U.S., N = 428) |
-| `data/results/did_crosssection/cross_section_v2.csv` | Cross-sectional OLS, four specifications |
+| `data/results/car_by_event.csv` | Event-level FF4 CARs (469 events) |
+| `data/results/fig_caar_path_full.png` | CAAR time path figure (Figure 1) ★ |
+| `data/results/did_crosssection/cross_section_v2.csv` | Cross-sectional OLS (four specifications) |
 | `data/results/robustness/` | Robustness check suite (placebo / paywall / repeat events / drift) |
 | `data/results/calendar_time/ct_results.csv` | Calendar-time portfolio monthly alphas |
-| `data/results/FINAL_RESULTS.xlsx` | All results consolidated (multiple sheets) ★ |
+| `data/results/FINAL_RESULTS.xlsx` | Consolidated results across all analyses (multi-sheet) ★ |

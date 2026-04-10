@@ -137,7 +137,7 @@ def run_single_event(event_row, ff, model='ff4'):
     # Estimation window dates
     est_dates = trading_dates[est_start_loc:est_end_loc + 1]
     # Full event window dates [-20, +60]
-    evt_start_loc = t0_loc - 11  # start at day -11 (first day outside estimation window)
+    evt_start_loc = t0_loc - 10  # start at day -10 (T=-11 is last day of estimation window; avoid overlap)
     if evt_start_loc < 0:
         return None
     evt_dates = trading_dates[evt_start_loc:evt_end_loc + 1]
@@ -205,13 +205,13 @@ def run_single_event(event_row, ff, model='ff4'):
 
     # Map event-window dates to relative trading days
     # evt_dates starts at t0_loc - 11
-    rel_days = np.arange(-11, -11 + len(evt_data))
+    rel_days = np.arange(-10, -10 + len(evt_data))
     # But some days may be missing due to factor alignment, so recompute
     # Actually we need to be precise: the evt_dates we sliced are consecutive trading days
-    # from t0-20 to t0+60. After inner join with factors, some may drop.
+    # from t0-10 to t0+60. After inner join with factors, some may drop.
     # We need to map each remaining date to its relative day.
     all_trading = trading_dates[evt_start_loc:evt_end_loc + 1]
-    date_to_relday = {d: i - 11 for i, d in enumerate(all_trading)}
+    date_to_relday = {d: i - 10 for i, d in enumerate(all_trading)}
     rel_days = np.array([date_to_relday.get(d, np.nan) for d in evt_data.index])
 
     # ── Data quality filter: exclude penny stocks / bankrupt OTC stocks ──────
@@ -394,9 +394,8 @@ def aggregate_tests(results_list, window_name):
             return '*'
         return ''
 
-    # Use most significant p-value for stars column
-    p_vals = [p for p in [p_patell, p_bmp, p_corrado] if not np.isnan(p)]
-    min_p = min(p_vals) if p_vals else np.nan
+    # Significance stars based on BMP t-test (primary parametric test per Section 5.3)
+    min_p = p_bmp
 
     return {
         'N': N,
@@ -506,44 +505,69 @@ def plot_caap_full(results_capm, results_ff4, save_path):
     print(f'  Saved: {save_path}')
 
 
+def _reindex_at_minus1(days, caar, lo, hi):
+    """Shift all CAAR series so that Y=0 at t=-1 (pre-announcement baseline)."""
+    if -1 in days:
+        bl = caar[days.index(-1)]
+        caar = [c - bl for c in caar]
+        lo   = [l - bl for l in lo]
+        hi   = [h - bl for h in hi]
+    return caar, lo, hi
+
+
 def plot_caap_pre_post(results_pre, results_post, save_path):
-    """Plot 2: Pre vs Post GenAI."""
+    """Plot 2: Pre vs Post ChatGPT (date-based split: 2022-11-30).
+    Window [-10, +60], Y reindexed so t=-1 is 0.
+    """
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    days_pre, caar_pre, lo_pre, hi_pre = compute_daily_caar(results_pre)
-    days_post, caar_post, lo_post, hi_post = compute_daily_caar(results_post)
+    days_pre,  caar_pre,  lo_pre,  hi_pre  = compute_daily_caar(results_pre,  min_day=-10, max_day=60)
+    days_post, caar_post, lo_post, hi_post = compute_daily_caar(results_post, min_day=-10, max_day=60)
 
-    ax.plot(days_pre, caar_pre, color='#2166ac', linewidth=1.8,
-            label=f'Pre-GenAI, <=2022 (N={len(results_pre)})')
-    ax.fill_between(days_pre, lo_pre, hi_pre, color='#2166ac', alpha=0.12)
+    caar_pre,  lo_pre,  hi_pre  = _reindex_at_minus1(days_pre,  caar_pre,  lo_pre,  hi_pre)
+    caar_post, lo_post, hi_post = _reindex_at_minus1(days_post, caar_post, lo_post, hi_post)
+
+    ax.plot(days_pre,  caar_pre,  color='#2166ac', linewidth=1.8,
+            label=f'Pre-GenAI (<2022-11-30, N={len(results_pre)})')
+    ax.fill_between(days_pre,  lo_pre,  hi_pre,  color='#2166ac', alpha=0.12)
 
     ax.plot(days_post, caar_post, color='#b2182b', linewidth=1.8,
-            label=f'Post-GenAI, >=2023 (N={len(results_post)})')
+            label=f'Post-GenAI (>=2022-11-30, N={len(results_post)})')
     ax.fill_between(days_post, lo_post, hi_post, color='#b2182b', alpha=0.12)
 
     ax.axvline(x=0, color='black', linestyle='--', linewidth=0.8, alpha=0.6)
     ax.axhline(y=0, color='grey', linestyle='-', linewidth=0.5, alpha=0.5)
 
     ax.set_xlabel('Event Day (relative to announcement)', fontsize=12)
-    ax.set_ylabel('CAAR (%)', fontsize=12)
-    ax.set_title('CAAR: Pre-GenAI vs Post-GenAI Layoff Announcements (FF4 Model)', fontsize=13)
+    ax.set_ylabel('CAAR (%)\n(Reindexed: Y = 0 at t = -1)', fontsize=11)
+    ax.set_title('CAAR: Pre-GenAI vs Post-GenAI Layoff Announcements\n'
+                 'Breakpoint: 2022-11-30 | FF4 Model | US Listed', fontsize=12)
     ax.legend(frameon=True, fontsize=10)
     ax.grid(True, alpha=0.3)
     ax.set_facecolor('white')
     fig.patch.set_facecolor('white')
 
-    plt.tight_layout()
+    fig.text(0.5, 0.01,
+             'All series rebased to Y\u202f=\u202f0 at t\u202f=\u202f\u22121 (day before announcement). '
+             'Post-announcement values represent cumulative abnormal returns from t\u202f=\u202f0.',
+             ha='center', fontsize=8, color='#555555', fontstyle='italic')
+    plt.subplots_adjust(bottom=0.10)
     plt.savefig(save_path, dpi=300, bbox_inches='tight', facecolor='white')
     plt.close()
     print(f'  Saved: {save_path}')
 
 
 def plot_caap_ai(results_ai, results_nonai, save_path):
-    """Plot 3: AI-mentioned vs not, Post-GenAI only."""
+    """Plot 3: AI-mentioned vs not, Post-GenAI only.
+    Window [-10, +60], Y reindexed so t=-1 is 0.
+    """
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    days_ai, caar_ai, lo_ai, hi_ai = compute_daily_caar(results_ai)
-    days_na, caar_na, lo_na, hi_na = compute_daily_caar(results_nonai)
+    days_ai, caar_ai, lo_ai, hi_ai = compute_daily_caar(results_ai,     min_day=-10, max_day=60)
+    days_na, caar_na, lo_na, hi_na = compute_daily_caar(results_nonai,  min_day=-10, max_day=60)
+
+    caar_ai, lo_ai, hi_ai = _reindex_at_minus1(days_ai, caar_ai, lo_ai, hi_ai)
+    caar_na, lo_na, hi_na = _reindex_at_minus1(days_na, caar_na, lo_na, hi_na)
 
     ax.plot(days_na, caar_na, color='#2166ac', linewidth=1.8,
             label=f'AI not mentioned (N={len(results_nonai)})')
@@ -557,25 +581,35 @@ def plot_caap_ai(results_ai, results_nonai, save_path):
     ax.axhline(y=0, color='grey', linestyle='-', linewidth=0.5, alpha=0.5)
 
     ax.set_xlabel('Event Day (relative to announcement)', fontsize=12)
-    ax.set_ylabel('CAAR (%)', fontsize=12)
-    ax.set_title('CAAR: AI-Mentioned vs Non-AI Layoffs, Post-GenAI (FF4 Model)', fontsize=13)
+    ax.set_ylabel('CAAR (%)\n(Reindexed: Y = 0 at t = -1)', fontsize=11)
+    ax.set_title('CAAR: AI-Mentioned vs Non-AI Layoffs, Post-GenAI Period\n'
+                 'FF4 Model | US Listed | >=2022-11-30', fontsize=12)
     ax.legend(frameon=True, fontsize=10)
     ax.grid(True, alpha=0.3)
     ax.set_facecolor('white')
     fig.patch.set_facecolor('white')
 
-    plt.tight_layout()
+    fig.text(0.5, 0.01,
+             'All series rebased to Y\u202f=\u202f0 at t\u202f=\u202f\u22121 (day before announcement). '
+             'Post-announcement values represent cumulative abnormal returns from t\u202f=\u202f0.',
+             ha='center', fontsize=8, color='#555555', fontstyle='italic')
+    plt.subplots_adjust(bottom=0.10)
     plt.savefig(save_path, dpi=300, bbox_inches='tight', facecolor='white')
     plt.close()
     print(f'  Saved: {save_path}')
 
 
 def plot_caap_tech_vs_nontech(results_tech, results_nontech, save_path):
-    """Plot 4: Core tech vs non-tech sectors, US only, FF4."""
+    """Plot 4: Core tech vs non-tech sectors, US only, FF4.
+    Window [-10, +60], Y reindexed so t=-1 is 0.
+    """
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    days_t, caar_t, lo_t, hi_t = compute_daily_caar(results_tech)
-    days_n, caar_n, lo_n, hi_n = compute_daily_caar(results_nontech)
+    days_t, caar_t, lo_t, hi_t = compute_daily_caar(results_tech,    min_day=-10, max_day=60)
+    days_n, caar_n, lo_n, hi_n = compute_daily_caar(results_nontech, min_day=-10, max_day=60)
+
+    caar_t, lo_t, hi_t = _reindex_at_minus1(days_t, caar_t, lo_t, hi_t)
+    caar_n, lo_n, hi_n = _reindex_at_minus1(days_n, caar_n, lo_n, hi_n)
 
     ax.plot(days_n, caar_n, color='#4dac26', linewidth=1.8,
             label=f'Non-tech sectors (N={len(results_nontech)})')
@@ -589,14 +623,19 @@ def plot_caap_tech_vs_nontech(results_tech, results_nontech, save_path):
     ax.axhline(y=0, color='grey', linestyle='-', linewidth=0.5, alpha=0.5)
 
     ax.set_xlabel('Event Day (relative to announcement)', fontsize=12)
-    ax.set_ylabel('CAAR (%)', fontsize=12)
-    ax.set_title('CAAR: Core Tech vs Non-Tech Sectors, US Only (FF4 Model)', fontsize=13)
+    ax.set_ylabel('CAAR (%)\n(Reindexed: Y = 0 at t = -1)', fontsize=11)
+    ax.set_title('CAAR: Core Tech vs Non-Tech Sectors, US Only\n'
+                 'FF4 Model | t = -10 to +60', fontsize=12)
     ax.legend(frameon=True, fontsize=10)
     ax.grid(True, alpha=0.3)
     ax.set_facecolor('white')
     fig.patch.set_facecolor('white')
 
-    plt.tight_layout()
+    fig.text(0.5, 0.01,
+             'All series rebased to Y\u202f=\u202f0 at t\u202f=\u202f\u22121 (day before announcement). '
+             'Post-announcement values represent cumulative abnormal returns from t\u202f=\u202f0.',
+             ha='center', fontsize=8, color='#555555', fontstyle='italic')
+    plt.subplots_adjust(bottom=0.10)
     plt.savefig(save_path, dpi=300, bbox_inches='tight', facecolor='white')
     plt.close()
     print(f'  Saved: {save_path}')
@@ -643,20 +682,18 @@ def plot_caar_path(results_ff4, save_path, title='CAAR Time Path: Layoff Announc
                         arrowprops=dict(arrowstyle='->', color='#888888', lw=0.7))
 
     ax.set_xlabel('Trading Days Relative to Announcement (t = 0)', fontsize=12)
-    ax.set_ylabel('Cumulative Average Abnormal Return (%)\n(Reindexed: Y = 0 at t = −1)', fontsize=11)
+    ax.set_ylabel('CAAR (%)', fontsize=12)
     ax.set_title(title, fontsize=13)
     ax.legend(frameon=True, fontsize=9, loc='upper left')
     ax.grid(True, alpha=0.25)
     ax.set_facecolor('white')
     fig.patch.set_facecolor('white')
 
-    # Caption note at bottom
-    note = ('注：Y轴已在 t=−1 处归零，图中路径值等同于表1各窗口CAAR（均从第0天起累计）。'
-            'CAAR由负转正约在公告后第7–8个交易日（[0,+5]=−0.66%，[0,+10]=+0.09%）。')
-    fig.text(0.5, -0.02, note, ha='center', fontsize=8, color='#555555',
-             wrap=True, fontstyle='italic')
-
-    plt.tight_layout()
+    fig.text(0.5, 0.01,
+             'All series rebased to Y = 0 at t = \u22121 (day before announcement). '
+             'Post-announcement values represent cumulative abnormal returns from t = 0.',
+             ha='center', fontsize=8, color='#555555', fontstyle='italic')
+    plt.subplots_adjust(bottom=0.10)
     plt.savefig(save_path, dpi=300, bbox_inches='tight', facecolor='white')
     plt.close()
     print(f'  Saved: {save_path}')
@@ -827,9 +864,11 @@ def main():
     plot_caap_full(results_capm, results_ff4,
                    os.path.join(RESULTS_DIR, 'caap_full_sample.png'))
 
-    # Plot 2: Pre vs Post GenAI — PRIMARY SPEC: US only
-    pre = subsample(results_ff4, lambda r: r['listing_region'] == 'US' and r['announcement_date'].year <= 2022)
-    post = subsample(results_ff4, lambda r: r['listing_region'] == 'US' and r['announcement_date'].year >= 2023)
+    # Plot 2: Pre vs Post ChatGPT — date-based split (2022-11-30) consistent with DID
+    import datetime as _dt
+    _chatgpt = _dt.date(2022, 11, 30)
+    pre  = subsample(results_ff4, lambda r: r['listing_region'] == 'US' and r['announcement_date'].date() < _chatgpt)
+    post = subsample(results_ff4, lambda r: r['listing_region'] == 'US' and r['announcement_date'].date() >= _chatgpt)
     plot_caap_pre_post(pre, post,
                        os.path.join(RESULTS_DIR, 'caap_pre_vs_post_genai.png'))
 

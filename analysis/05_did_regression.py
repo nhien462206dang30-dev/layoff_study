@@ -35,14 +35,14 @@ os.makedirs(OUT_DIR, exist_ok=True)
 
 # Event study parameters (identical to original event_study.py)
 EST_START, EST_END = -260, -11
-CAAR_WINDOW = (-20, 30)       # t range for CAAR plot
+CAAR_WINDOW = (-10, 60)       # t range for CAAR plot (aligned with main event study)
 CHATGPT_DATE = pd.Timestamp('2022-11-30')
 
 BLUE, RED, GREEN, GREY = '#2166ac', '#b2182b', '#1a9850', '#636363'
 ORANGE = '#d94801'
 
 plt.rcParams.update({
-    'font.family': 'serif', 'font.size': 11,
+    'font.family': 'sans-serif', 'font.size': 11,
     'axes.spines.top': False, 'axes.spines.right': False,
     'axes.grid': True, 'grid.alpha': 0.3, 'grid.linestyle': '--',
 })
@@ -335,10 +335,10 @@ def plot_grouped_caar(ar_panel: pd.DataFrame, car_updated: pd.DataFrame):
 
     # --- Figure B: 4-way (ai × pre/post ChatGPT) ---
     groups = [
-        (1, 0, 'Pre-ChatGPT + AI',      RED,   '--'),
-        (1, 1, 'Post-ChatGPT + AI',     RED,   '-'),
-        (0, 0, 'Pre-ChatGPT + No AI',   BLUE,  '--'),
-        (0, 1, 'Post-ChatGPT + No AI',  BLUE,  '-'),
+        (1, 0, 'Pre-GenAI + AI',      RED,   '--'),
+        (1, 1, 'Post-GenAI + AI',     RED,   '-'),
+        (0, 0, 'Pre-GenAI + No AI',   BLUE,  '--'),
+        (0, 1, 'Post-GenAI + No AI',  BLUE,  '-'),
     ]
 
     fig, ax = plt.subplots(figsize=(10, 6))
@@ -351,17 +351,27 @@ def plot_grouped_caar(ar_panel: pd.DataFrame, car_updated: pd.DataFrame):
             print(f'  Skipping {label}: only {len(ids)} events')
             continue
         g = caar_stats(ar_panel, ar_panel['event_id'].isin(ids))
-        ax.plot(g['t'], g['CAAR_cum']*100, color=color, linewidth=2,
+        # Reindex: set Y=0 at t=-1 (pre-announcement baseline)
+        t_vals = g['t'].tolist()
+        cum_vals = (g['CAAR_cum'] * 100).tolist()
+        if -1 in t_vals:
+            bl = cum_vals[t_vals.index(-1)]
+            cum_vals = [v - bl for v in cum_vals]
+        ax.plot(t_vals, cum_vals, color=color, linewidth=2,
                 linestyle=ls, label=f'{label} (N={len(ids)})')
 
     ax.axvline(0, color='black', linewidth=1.2, linestyle='--', alpha=0.7)
     ax.axhline(0, color='grey',  linewidth=0.8, linestyle=':',  alpha=0.5)
-    ax.set_title('4-Way CAAR: AI Mention × ChatGPT Era\n'
-                 'Breakpoint: Nov 30 2022 (ChatGPT launch)', fontweight='bold')
+    ax.set_title('4-Way CAAR: AI Mention x ChatGPT Era\n'
+                 'Breakpoint: 2022-11-30 | FF4 Model | t = -10 to +60', fontsize=12)
     ax.set_xlabel('Trading days relative to announcement (t=0)')
-    ax.set_ylabel('Cumulative Average Abnormal Return (%)')
+    ax.set_ylabel('CAAR (%)\n(Reindexed: Y = 0 at t = -1)')
     ax.legend(fontsize=9)
-    fig.tight_layout()
+    fig.text(0.5, 0.01,
+             'All series rebased to Y\u202f=\u202f0 at t\u202f=\u202f\u22121 (day before announcement). '
+             'Post-announcement values represent cumulative abnormal returns from t\u202f=\u202f0.',
+             ha='center', fontsize=8, color='#555555', fontstyle='italic')
+    plt.subplots_adjust(bottom=0.10)
     path = os.path.join(OUT_DIR, 'figB_caar_4way.png')
     fig.savefig(path, dpi=300, bbox_inches='tight', facecolor='white')
     plt.close(fig)
@@ -627,10 +637,10 @@ def print_summary_stats(car_updated: pd.DataFrame):
     print(f"  {'Group':<30} {'CAR[-1,+1]':>12} {'CAR[0,+60]':>13} {'N':>6}")
     print(f"  {'─'*63}")
     for ai_val, post_val, label in [
-            (1, 0, 'AI=1, Pre-ChatGPT'),
-            (1, 1, 'AI=1, Post-ChatGPT'),
-            (0, 0, 'AI=0, Pre-ChatGPT'),
-            (0, 1, 'AI=0, Post-ChatGPT')]:
+            (1, 0, 'AI=1, Pre-GenAI'),
+            (1, 1, 'AI=1, Post-GenAI'),
+            (0, 0, 'AI=0, Pre-GenAI'),
+            (0, 1, 'AI=0, Post-GenAI')]:
         sub = df[(df['ai_mentioned']==ai_val) & (df['post_chatgpt']==post_val)]
         c1 = sub['CAR_1_1'].mean() if 'CAR_1_1' in sub.columns else np.nan
         c2 = sub['CAR_0_60'].mean() if 'CAR_0_60' in sub.columns else np.nan
