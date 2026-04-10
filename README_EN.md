@@ -14,7 +14,13 @@
 
 ---
 
+ This paper examines how stock markets respond to corporate layoff announcements made by publicly listed firms in the technology sector and adjacent industries between 2020 and 2024. The central question is whether the "AI transformation" narrative — the framing of workforce reductions as a strategic response to artificial intelligence — meaningfully alters how capital markets price these events.
 
+The study constructs a sample of 430 U.S.-listed layoff events using an automated multi-source data pipeline, and estimates risk-adjusted cumulative abnormal returns (CAAR) via the Carhart Four-Factor Model (FF4). Statistical inference draws on three complementary tests — Patell (1976), BMP (1991), and Corrado (1989) — to ensure robustness. Using the ChatGPT release date (November 30, 2022) as a structural breakpoint, the analysis tests for differential AI pricing along three dimensions: cross-industry comparison, Pre- vs. Post-GenAI event study, and a Post-GenAI cross-sectional Welch t-test.
+                                                                                                                                                     
+The results reveal a well-defined temporal structure in market reactions: a significant negative response in the three-day announcement window (CAAR = −0.95%, p<0.05), followed by gradual recovery, with CAAR crossing zero at trading day T = +10 and turning significantly positive by the three-month horizon (CAAR = +5.24%, p<0.01). Calendar-time portfolio analysis, however, indicates that this long-run drift most likely reflects the broad market rally of 2023 rather than any causal effect of layoff announcements. On the central question of AI pricing, the evidence is uniformly null: technology and non-technology firms exhibit nearly identical short-run reactions; the aggregate market response to layoffs is statistically indistinguishable across the Pre- and Post-GenAI periods; and AI-associated layoffs in the Post-GenAI period carry no significant pricing premium over their non-AI counterparts. The "AI transformation" narrative, it appears, carries no independent information value in capital markets.
+
+  
 ## I. Research Overview
 
 ### H1: Layoff Announcements Exhibit a "Short-Negative, Long-Positive" Temporal Structure
