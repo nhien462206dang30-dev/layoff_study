@@ -849,8 +849,16 @@ def main():
     plot_caap_tech_vs_nontech(us_tech, us_nontech,
                               os.path.join(RESULTS_DIR, 'caap_tech_vs_nontech.png'))
 
-    # Plot 5: CAAR time path -11 to +60 (primary path figure for README)
+    # Plot 5: CAAR time path -10 to +60 (primary path figure for README)
     us_ff4 = subsample(results_ff4, lambda r: r['listing_region'] == 'US')
+    # Save daily CAAR path to CSV so figure can be replotted without re-running
+    _days, _caar, _lo, _hi = compute_daily_caar(us_ff4, min_day=-10, max_day=60)
+    _bl = _caar[_days.index(-1)]
+    pd.DataFrame({'day': _days,
+                  'caar_pct': [c - _bl for c in _caar],
+                  'ci_lo': [l - _bl for l in _lo],
+                  'ci_hi': [h - _bl for h in _hi]
+                  }).to_csv(os.path.join(RESULTS_DIR, 'caar_path_daily.csv'), index=False)
     plot_caar_path(us_ff4,
                    os.path.join(RESULTS_DIR, 'fig_caar_path_full.png'),
                    title='CAAR Time Path: US Layoff Announcements (FF4, t = −10 to +60)')
