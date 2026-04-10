@@ -603,13 +603,22 @@ def plot_caap_tech_vs_nontech(results_tech, results_nontech, save_path):
 
 
 def plot_caar_path(results_ff4, save_path, title='CAAR Time Path: Layoff Announcements'):
-    """Plot CAAR cumulative path from day -11 to +60 (FF4, full sample).
+    """Plot CAAR cumulative path from day -10 to +60 (FF4, full sample).
 
-    The pre-announcement window [-11, 0] should sit near zero if there is no
-    information leakage. The post-announcement path shows the short-negative /
-    long-positive structure and the approximate zero-crossing point.
+    Y is reindexed so that the value at T=-1 is exactly 0. This means:
+    - For T >= 0, the path value equals the window CAAR [0, T] from car_summary
+    - The zero-crossing in the figure directly corresponds to the day where
+      window CARs transition from negative to positive (~day 7-8)
     """
-    days, caar, lo, hi = compute_daily_caar(results_ff4, min_day=-11, max_day=60)
+    days, caar, lo, hi = compute_daily_caar(results_ff4, min_day=-10, max_day=60)
+
+    # Reindex: set Y=0 at T=-1 so post-announcement path = window CARs [0,T]
+    if -1 in days:
+        idx_m1 = days.index(-1)
+        baseline = caar[idx_m1]
+        caar = [c - baseline for c in caar]
+        lo   = [l - baseline for l in lo]
+        hi   = [h - baseline for h in hi]
 
     fig, ax = plt.subplots(figsize=(12, 6))
 
@@ -620,11 +629,11 @@ def plot_caar_path(results_ff4, save_path, title='CAAR Time Path: Layoff Announc
     ax.axvline(x=0, color='black', linestyle='--', linewidth=0.9, alpha=0.7, label='Announcement (t=0)')
     ax.axhline(y=0, color='grey', linestyle='-', linewidth=0.6, alpha=0.6)
 
-    # Shade pre-announcement window to highlight no-leakage check
-    ax.axvspan(-11, 0, alpha=0.04, color='steelblue', label='Pre-announcement window [-11,0]')
+    # Shade pre-announcement window
+    ax.axvspan(-10, 0, alpha=0.04, color='steelblue', label='Pre-announcement window [-10,0]')
 
-    # Annotate key event windows
-    for day, label in [(-1, '[-1,+1]'), (5, '[0,+5]'), (10, '[0,+10]'), (20, '[0,+20]'), (60, '[0,+60]')]:
+    # Annotate key event windows (values now equal window CARs from Table 1)
+    for day, label in [(1, '[-1,+1]'), (5, '[0,+5]'), (10, '[0,+10]'), (20, '[0,+20]'), (60, '[0,+60]')]:
         if day in days:
             idx = days.index(day)
             ax.annotate(f'{label}\n{caar[idx]:.2f}%',
@@ -634,12 +643,18 @@ def plot_caar_path(results_ff4, save_path, title='CAAR Time Path: Layoff Announc
                         arrowprops=dict(arrowstyle='->', color='#888888', lw=0.7))
 
     ax.set_xlabel('Trading Days Relative to Announcement (t = 0)', fontsize=12)
-    ax.set_ylabel('Cumulative Average Abnormal Return (%)', fontsize=12)
+    ax.set_ylabel('Cumulative Average Abnormal Return (%)\n(Reindexed: Y = 0 at t = −1)', fontsize=11)
     ax.set_title(title, fontsize=13)
     ax.legend(frameon=True, fontsize=9, loc='upper left')
     ax.grid(True, alpha=0.25)
     ax.set_facecolor('white')
     fig.patch.set_facecolor('white')
+
+    # Caption note at bottom
+    note = ('注：Y轴已在 t=−1 处归零，图中路径值等同于表1各窗口CAAR（均从第0天起累计）。'
+            'CAAR由负转正约在公告后第7–8个交易日（[0,+5]=−0.66%，[0,+10]=+0.09%）。')
+    fig.text(0.5, -0.02, note, ha='center', fontsize=8, color='#555555',
+             wrap=True, fontstyle='italic')
 
     plt.tight_layout()
     plt.savefig(save_path, dpi=300, bbox_inches='tight', facecolor='white')
@@ -838,7 +853,7 @@ def main():
     us_ff4 = subsample(results_ff4, lambda r: r['listing_region'] == 'US')
     plot_caar_path(us_ff4,
                    os.path.join(RESULTS_DIR, 'fig_caar_path_full.png'),
-                   title='CAAR Time Path: US Layoff Announcements (FF4, t = −11 to +60)')
+                   title='CAAR Time Path: US Layoff Announcements (FF4, t = −10 to +60)')
 
     # ── Final summary ──
     print('\n' + '=' * 72)
