@@ -1,6 +1,6 @@
 # Layoff Announcements and Stock Price Reactions: Market Efficiency in the Age of AI
 
-**🌐 Language:** 　[中文](README.md)　|　**English (current)**
+**🌐 Language:** 　[中文](README_CN.md)　|　**English (current)**
 
 ---
 
