@@ -33,7 +33,9 @@ The market's response to layoff announcements is not unidirectional — it follo
 
 **Announcement window ([-1,+1]):** The three-day CAAR is **−0.961%** (Patell Z = −5.28\*\*\*, BMP t = −2.52\*\*). The market's initial reaction is unambiguously negative, interpreting the layoff as a signal of operational trouble. The first post-announcement week ([0,+5]) CAAR remains negative at **−0.658%** (BMP p = 0.050\*) — the negative information is still being absorbed.
 
-**Transition window ([0,+10] to [0,+20]):** Abnormal returns cross into positive territory, but both [0,+10] (+0.093%) and [0,+20] (+1.300%) fail to achieve statistical significance under the BMP test. The market is genuinely re-evaluating — expected cost savings and potential revenue concerns offset each other, yielding a net effect indistinguishable from zero. **The zero-crossing occurs approximately on trading day +7 to +8 post-announcement.**
+**Transition window ([0,+10] to [0,+20]):** CAAR gradually recovers toward positive territory, but both [0,+10] (+0.093%) and [0,+20] (+1.300%) fail to achieve statistical significance under the BMP test. The market is genuinely re-evaluating — expected cost savings and potential revenue concerns offset each other, yielding a net effect indistinguishable from zero. As shown in Figure 1, the CAAR cumulative path crosses zero approximately on **trading day +16 to +18** post-announcement (the path value at day +10 is approximately −0.91%, still negative; at day +20 approximately +0.35%, already positive).
+
+> **Note on reading the figure:** The window CARs in Table 1 (e.g., [0,+10] = +0.093%) and the annotated path values in Figure 1 at day +10 (approximately −0.91%) are measured differently. The window CAR sums ARs only from day 0 to day +10; the cumulative path in the figure starts from t = −11 and includes the large negative contribution from day −1 (approximately −1.0%), making the path values consistently more negative than the corresponding window CARs.
 
 **Long run ([0,+60]):** CAAR rises to **+5.335%** (BMP t = +2.861\*\*\*). However, calendar-time portfolio estimates show monthly alpha is insignificant across all specifications, suggesting the long-run drift largely reflects the broad technology sector recovery in 2023, not a causal layoff effect.
 
@@ -177,7 +179,7 @@ The estimation window is $[-260, -11]$ — trading days 11 through 260 before th
 |---|---|---|
 | **[-1, +1]** | 3-day announcement window | **Primary reporting window.** Captures pre-announcement day (information leakage check) and post-announcement overnight reaction; cleanest estimate of the pure announcement effect |
 | **[0, +5]** | First post-announcement week | Full absorption of initial market reaction; covers primary window for analyst follow-up reports |
-| **[0, +10]** | First two post-announcement weeks | Typical horizon for institutional position adjustment; expected to cover the zero-crossing zone |
+| **[0, +10]** | First two post-announcement weeks | Typical horizon for institutional position adjustment; CAAR path crosses zero between this and the [0,+20] window |
 | **[0, +20]** | First post-announcement month | Medium-term drift: information release around implementation updates and earnings |
 | **[0, +60]** | First three post-announcement months | Long-run valuation reassessment; most susceptible to macroeconomic confounds; interpreted with calendar-time method |
 
@@ -250,7 +252,7 @@ HC3 heteroskedasticity-robust standard errors are used throughout.
 
 *Note: \*\*\* p<0.01, \*\* p<0.05, \* p<0.10. Significance based on most conservative of the three test statistics.*
 
-The results exhibit the temporal structure described in Section II (see Figure 1 for the CAAR path): significantly negative at announcement → still negative through the first post-announcement week → reversal into positive territory but statistically insignificant through day 20 (zero-crossing around day +7 to +8) → significantly positive by day +60. The pre-announcement window [-20,-1] CAAR is only −0.82% (p = 0.287), confirming no systematic pre-announcement drift and a clean research design.
+The results exhibit the temporal structure described in Section II (see Figure 1 for the CAAR path): significantly negative at announcement → still negative through the first post-announcement week → recovering toward positive but statistically insignificant through day 20 (CAAR path crosses zero around day +16 to +18) → significantly positive by day +60. The pre-announcement window [-20,-1] CAAR is only −0.82% (p = 0.287), confirming no systematic pre-announcement drift and a clean research design.
 
 
 ### 6.2 Mature Firm Sample vs. Full Sample
