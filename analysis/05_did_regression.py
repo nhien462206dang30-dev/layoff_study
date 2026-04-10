@@ -216,12 +216,10 @@ def compute_event_ars(event_row: pd.Series, ff: pd.DataFrame):
         'n_est_obs':    n_est,
         'CAR_1_1':      car_window(-1,  1),
         'CAR_0_5':      car_window( 0,  5),
+        'CAR_0_10':     car_window( 0, 10),
         'CAR_0_20':     car_window( 0, 20),
-        'CAR_5_60':     car_window(-5, 30),   # note: [-5,+30] due to CAAR_WINDOW end
+        'CAR_0_60':     car_window( 0, 60),
     }
-    # Full [-5,+60] if available (need extended window)
-    mask_long = (ar_df['t'] >= -5) & (ar_df['t'] <= 30)
-    scalars['CAR_5_30'] = ar_df.loc[mask_long, 'AR'].sum() if mask_long.sum() > 0 else np.nan
 
     return ar_df, scalars
 
@@ -370,7 +368,7 @@ def plot_grouped_caar(ar_panel: pd.DataFrame, car_updated: pd.DataFrame):
     print(f'  Saved → {path}')
 
     # --- Figure C: DID mean-bar chart (CAR windows) ---
-    windows = [('CAR_1_1','[-1,+1]'), ('CAR_0_20','[0,+20]'), ('CAR_5_30','[-5,+30]')]
+    windows = [('CAR_1_1','[-1,+1]'), ('CAR_0_20','[0,+20]'), ('CAR_0_60','[0,+60]')]
     fig, axes = plt.subplots(1, 3, figsize=(14, 5))
 
     for ax, (col, wlabel) in zip(axes, windows):
@@ -452,7 +450,7 @@ def prepare_reg_data(car_updated: pd.DataFrame) -> pd.DataFrame:
         df['log_funds_raised'] = np.nan
 
     # Winsorize CARs at 1%/99%
-    for col in ['CAR_1_1', 'CAR_0_20', 'CAR_5_30', 'CAR_5_60']:
+    for col in ['CAR_1_1', 'CAR_0_5', 'CAR_0_10', 'CAR_0_20', 'CAR_0_60']:
         if col in df.columns:
             s = pd.to_numeric(df[col], errors='coerce')
             lo, hi = s.quantile(0.01), s.quantile(0.99)
@@ -509,7 +507,7 @@ def run_did(df: pd.DataFrame):
 
     results = []
     for y_col, wlabel in [('CAR_1_1','[-1,+1]'), ('CAR_0_20','[0,+20]'),
-                           ('CAR_5_30','[-5,+30]')]:
+                           ('CAR_0_60','[0,+60]')]:
         if y_col not in df.columns:
             continue
         df[y_col] = pd.to_numeric(df[y_col], errors='coerce') * 100  # to %
@@ -519,8 +517,7 @@ def run_did(df: pd.DataFrame):
         m1, n1 = run_ols(y_col, x1, df)
         if m1: print_model(f'DID (no controls) — CAR{wlabel}', m1, n1, x1)
 
-        # Spec 2: DID + controls (includes prior_6m_return and log_funds_raised
-        # from 裁员影响模型; N drops where these are unavailable)
+        # Spec 2: DID + controls
         x2 = ['ai_mentioned','post_chatgpt','ai_x_post',
                'log_count','layoff_pct_n','beta_mkt_ff4','intl',
                'prior_6m_return','log_funds_raised']
@@ -569,7 +566,7 @@ def run_cross_section(df: pd.DataFrame):
 
     results = []
     for y_col, wlabel in [('CAR_1_1','[-1,+1]'), ('CAR_0_20','[0,+20]'),
-                           ('CAR_5_30','[-5,+30]')]:
+                           ('CAR_0_60','[0,+60]')]:
         if y_col not in df.columns:
             continue
         df_c = df.copy()
@@ -603,7 +600,7 @@ def print_summary_stats(car_updated: pd.DataFrame):
     print('DESCRIPTIVE STATISTICS')
     print('='*65)
     df = car_updated.copy()
-    for col in ['CAR_1_1','CAR_0_20','CAR_5_30']:
+    for col in ['CAR_1_1','CAR_0_5','CAR_0_10','CAR_0_20','CAR_0_60']:
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors='coerce') * 100
 
@@ -618,7 +615,7 @@ def print_summary_stats(car_updated: pd.DataFrame):
     print()
     for col, label in [('CAR_1_1','CAR[-1,+1] (%)'),
                         ('CAR_0_20','CAR[0,+20] (%)'),
-                        ('CAR_5_30','CAR[-5,+30] (%)')]:
+                        ('CAR_0_60','CAR[0,+60] (%)')]:
         if col not in df.columns:
             continue
         s = df[col].dropna()
@@ -627,7 +624,7 @@ def print_summary_stats(car_updated: pd.DataFrame):
     print()
 
     # Group means
-    print(f"  {'Group':<30} {'CAR[-1,+1]':>12} {'CAR[-5,+30]':>13} {'N':>6}")
+    print(f"  {'Group':<30} {'CAR[-1,+1]':>12} {'CAR[0,+60]':>13} {'N':>6}")
     print(f"  {'─'*63}")
     for ai_val, post_val, label in [
             (1, 0, 'AI=1, Pre-ChatGPT'),
@@ -636,7 +633,7 @@ def print_summary_stats(car_updated: pd.DataFrame):
             (0, 1, 'AI=0, Post-ChatGPT')]:
         sub = df[(df['ai_mentioned']==ai_val) & (df['post_chatgpt']==post_val)]
         c1 = sub['CAR_1_1'].mean() if 'CAR_1_1' in sub.columns else np.nan
-        c2 = sub['CAR_5_30'].mean() if 'CAR_5_30' in sub.columns else np.nan
+        c2 = sub['CAR_0_60'].mean() if 'CAR_0_60' in sub.columns else np.nan
         print(f"  {label:<30} {c1:>12.3f} {c2:>13.3f} {len(sub):>6}")
 
 

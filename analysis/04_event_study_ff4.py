@@ -33,14 +33,14 @@ os.makedirs(RESULTS_DIR, exist_ok=True)
 
 # ── Event windows ──────────────────────────────────────────────────────
 EVENT_WINDOWS = {
-    '[-1,+1]': (-1, 1),
-    '[0,+1]':  (0, 1),
-    '[0,+5]':  (0, 5),
-    '[0,+10]': (0, 10),
-    '[0,+20]': (0, 20),
-    '[-5,+60]': (-5, 60),   # main CAAP window
-    '[-20,+60]': (-20, 60),
+    '[-1,+1]':  (-1,  1),   # 3-day announcement window (short-term)
+    '[0,+5]':   (0,   5),   # post-announcement week (short-term)
+    '[0,+10]':  (0,  10),   # two weeks (medium-term)
+    '[0,+20]':  (0,  20),   # one month (medium-term)
+    '[0,+60]':  (0,  60),   # three months (long-term)
 }
+# NOTE: estimation window is [-260, -11]. All event windows start at -1 or later
+# to avoid any overlap with the estimation period.
 
 EST_START, EST_END = -260, -11  # estimation window in trading days
 
@@ -127,7 +127,7 @@ def run_single_event(event_row, ff, model='ff4'):
     # Check we have enough data
     est_start_loc = t0_loc + EST_START
     est_end_loc = t0_loc + EST_END
-    evt_end_loc = t0_loc + 60  # max event window end
+    evt_end_loc = t0_loc + 60  # max event window end (+60 = 3 months)
 
     if est_start_loc < 0:
         return None
@@ -137,7 +137,7 @@ def run_single_event(event_row, ff, model='ff4'):
     # Estimation window dates
     est_dates = trading_dates[est_start_loc:est_end_loc + 1]
     # Full event window dates [-20, +60]
-    evt_start_loc = t0_loc - 20
+    evt_start_loc = t0_loc - 11  # start at day -11 (first day outside estimation window)
     if evt_start_loc < 0:
         return None
     evt_dates = trading_dates[evt_start_loc:evt_end_loc + 1]
@@ -204,14 +204,14 @@ def run_single_event(event_row, ff, model='ff4'):
         SAR[j] = AR[j] / (s_i * np.sqrt(var_adj))
 
     # Map event-window dates to relative trading days
-    # evt_dates starts at t0_loc - 20
-    rel_days = np.arange(-20, -20 + len(evt_data))
+    # evt_dates starts at t0_loc - 11
+    rel_days = np.arange(-11, -11 + len(evt_data))
     # But some days may be missing due to factor alignment, so recompute
     # Actually we need to be precise: the evt_dates we sliced are consecutive trading days
     # from t0-20 to t0+60. After inner join with factors, some may drop.
     # We need to map each remaining date to its relative day.
     all_trading = trading_dates[evt_start_loc:evt_end_loc + 1]
-    date_to_relday = {d: i - 20 for i, d in enumerate(all_trading)}
+    date_to_relday = {d: i - 11 for i, d in enumerate(all_trading)}
     rel_days = np.array([date_to_relday.get(d, np.nan) for d in evt_data.index])
 
     # ── Data quality filter: exclude penny stocks / bankrupt OTC stocks ──────
@@ -412,7 +412,7 @@ def aggregate_tests(results_list, window_name):
     }
 
 
-def compute_daily_caar(results_list, min_day=-20, max_day=60):
+def compute_daily_caar(results_list, min_day=-11, max_day=60):
     """Compute CAAR path day by day for plotting, with confidence bands."""
     daily_ars = {}  # rel_day -> list of AR values across events
     for res in results_list:
@@ -602,6 +602,51 @@ def plot_caap_tech_vs_nontech(results_tech, results_nontech, save_path):
     print(f'  Saved: {save_path}')
 
 
+def plot_caar_path(results_ff4, save_path, title='CAAR Time Path: Layoff Announcements'):
+    """Plot CAAR cumulative path from day -11 to +60 (FF4, full sample).
+
+    The pre-announcement window [-11, 0] should sit near zero if there is no
+    information leakage. The post-announcement path shows the short-negative /
+    long-positive structure and the approximate zero-crossing point.
+    """
+    days, caar, lo, hi = compute_daily_caar(results_ff4, min_day=-11, max_day=60)
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+
+    ax.plot(days, caar, color='#b2182b', linewidth=2.0, label=f'FF4 CAAR (N={len(results_ff4)})')
+    ax.fill_between(days, lo, hi, color='#b2182b', alpha=0.12, label='95% CI')
+
+    # Mark announcement day
+    ax.axvline(x=0, color='black', linestyle='--', linewidth=0.9, alpha=0.7, label='Announcement (t=0)')
+    ax.axhline(y=0, color='grey', linestyle='-', linewidth=0.6, alpha=0.6)
+
+    # Shade pre-announcement window to highlight no-leakage check
+    ax.axvspan(-11, 0, alpha=0.04, color='steelblue', label='Pre-announcement window [-11,0]')
+
+    # Annotate key event windows
+    for day, label in [(-1, '[-1,+1]'), (5, '[0,+5]'), (10, '[0,+10]'), (20, '[0,+20]'), (60, '[0,+60]')]:
+        if day in days:
+            idx = days.index(day)
+            ax.annotate(f'{label}\n{caar[idx]:.2f}%',
+                        xy=(day, caar[idx]),
+                        xytext=(day + 2, caar[idx] + 0.3),
+                        fontsize=7, color='#444444',
+                        arrowprops=dict(arrowstyle='->', color='#888888', lw=0.7))
+
+    ax.set_xlabel('Trading Days Relative to Announcement (t = 0)', fontsize=12)
+    ax.set_ylabel('Cumulative Average Abnormal Return (%)', fontsize=12)
+    ax.set_title(title, fontsize=13)
+    ax.legend(frameon=True, fontsize=9, loc='upper left')
+    ax.grid(True, alpha=0.25)
+    ax.set_facecolor('white')
+    fig.patch.set_facecolor('white')
+
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=300, bbox_inches='tight', facecolor='white')
+    plt.close()
+    print(f'  Saved: {save_path}')
+
+
 def build_per_event_table(results_capm, results_ff4):
     """Build per-event CAR table (Step 5)."""
     # Index ff4 results by (ticker, announcement_date)
@@ -624,10 +669,10 @@ def build_per_event_table(results_capm, results_ff4):
             'layoff_count': res['layoff_count'],
             'layoff_pct': res['layoff_pct'],
             'CAR_1_1': cars.get('[-1,+1]', np.nan),
-            'CAR_0_1': cars.get('[0,+1]', np.nan),
             'CAR_0_5': cars.get('[0,+5]', np.nan),
+            'CAR_0_10': cars.get('[0,+10]', np.nan),
             'CAR_0_20': cars.get('[0,+20]', np.nan),
-            'CAR_5_60': cars.get('[-5,+60]', np.nan),
+            'CAR_0_60': cars.get('[0,+60]', np.nan),
             'alpha_ff4': res['alpha'],
             'beta_mkt_ff4': res['beta_mkt'],
             'r2_ff4': res['r2'],
@@ -788,6 +833,12 @@ def main():
                            lambda r: r['listing_region'] == 'US' and r['industry'] not in CORE_TECH_INDUSTRIES)
     plot_caap_tech_vs_nontech(us_tech, us_nontech,
                               os.path.join(RESULTS_DIR, 'caap_tech_vs_nontech.png'))
+
+    # Plot 5: CAAR time path -11 to +60 (primary path figure for README)
+    us_ff4 = subsample(results_ff4, lambda r: r['listing_region'] == 'US')
+    plot_caar_path(us_ff4,
+                   os.path.join(RESULTS_DIR, 'fig_caar_path_full.png'),
+                   title='CAAR Time Path: US Layoff Announcements (FF4, t = −11 to +60)')
 
     # ── Final summary ──
     print('\n' + '=' * 72)
